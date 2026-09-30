@@ -1,0 +1,25 @@
+[
+  {
+    "user": "user-001",
+    "balance": 2450,
+    "history": [
+      { "id": "PT-0001", "date": "2026-09-10", "concept": "Compra ORD-2026-0001", "points": 145, "type": "ganado" },
+      { "id": "PT-0002", "date": "2026-08-28", "concept": "Compra ORD-2026-0004", "points": 168, "type": "ganado" },
+      { "id": "PT-0003", "date": "2026-09-05", "concept": "Compra ORD-2026-0005", "points": 38, "type": "ganado" },
+      { "id": "PT-0004", "date": "2026-09-12", "concept": "Canje: Voucher S/ 20", "points": -500, "type": "canjeado" },
+      { "id": "PT-0005", "date": "2026-09-01", "concept": "Bono de bienvenida", "points": 1000, "type": "ganado" },
+      { "id": "PT-0006", "date": "2026-09-20", "concept": "Promoción Movistar", "points": 1599, "type": "ganado" }
+    ]
+  },
+  {
+    "user": "seller-001",
+    "balance": 3800,
+    "history": [
+      { "id": "PT-0101", "date": "2026-09-12", "concept": "Compra ORD-2026-0101", "points": 150, "type": "ganado" },
+      { "id": "PT-0102", "date": "2026-09-01", "concept": "Bono Seller destacado", "points": 3000, "type": "ganado" },
+      { "id": "PT-0103", "date": "2026-09-18", "concept": "Canje: Voucher 10%", "points": -800, "type": "canjeado" },
+      { "id": "PT-0104", "date": "2026-09-22", "concept": "Compra ORD-2026-0102", "points": 18, "type": "ganado" },
+      { "id": "PT-0105", "date": "2026-09-25", "concept": "Programa de fidelidad", "points": 1432, "type": "ganado" }
+    ]
+  }
+]

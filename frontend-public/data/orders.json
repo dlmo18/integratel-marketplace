@@ -1,0 +1,135 @@
+[
+  {
+    "id": "ORD-2026-0001",
+    "buyer": "user-001",
+    "date": "2026-09-10",
+    "status": "entregado",
+    "total": 1448.0,
+    "paymentMethod": "Visa ****4242",
+    "shippingAddress": "Av. Javier Prado Este 123, San Isidro, Lima",
+    "tracking": "TRK-889201",
+    "items": [
+      { "productId": "prod-001", "name": "Smartphone Movistar Galaxy A55 5G", "qty": 1, "price": 1299.0 },
+      { "productId": "prod-003", "name": "Audífonos Movistar TWS Pro", "qty": 1, "price": 149.0 }
+    ]
+  },
+  {
+    "id": "ORD-2026-0002",
+    "buyer": "user-001",
+    "date": "2026-09-20",
+    "status": "en camino",
+    "total": 1999.0,
+    "paymentMethod": "Yape",
+    "shippingAddress": "Calle Las Begonias 456, San Isidro, Lima",
+    "tracking": "TRK-889455",
+    "items": [
+      { "productId": "prod-004", "name": "Laptop Lenovo IdeaPad 3 Ryzen 5", "qty": 1, "price": 1999.0 }
+    ]
+  },
+  {
+    "id": "ORD-2026-0003",
+    "buyer": "user-001",
+    "date": "2026-09-25",
+    "status": "en preparación",
+    "total": 249.0,
+    "paymentMethod": "Depósito bancario",
+    "shippingAddress": "Av. Javier Prado Este 123, San Isidro, Lima",
+    "tracking": "TRK-889777",
+    "items": [
+      { "productId": "prod-009", "name": "Zapatillas Adidas Runfalcon", "qty": 1, "price": 249.0 }
+    ]
+  },
+  {
+    "id": "ORD-2026-0004",
+    "buyer": "user-001",
+    "date": "2026-08-28",
+    "status": "entregado",
+    "total": 1678.0,
+    "paymentMethod": "Visa ****4242",
+    "shippingAddress": "Av. Javier Prado Este 123, San Isidro, Lima",
+    "tracking": "TRK-885012",
+    "items": [
+      { "productId": "prod-006", "name": "Refrigeradora Samsung 300L No Frost", "qty": 1, "price": 1799.0 }
+    ]
+  },
+  {
+    "id": "ORD-2026-0005",
+    "buyer": "user-001",
+    "date": "2026-09-05",
+    "status": "entregado",
+    "total": 378.0,
+    "paymentMethod": "Plin",
+    "shippingAddress": "Calle Las Begonias 456, San Isidro, Lima",
+    "tracking": "TRK-887340",
+    "items": [
+      { "productId": "prod-010", "name": "Set de Skincare Facial", "qty": 1, "price": 179.0 },
+      { "productId": "prod-008", "name": "Polo Deportivo Nike Dri-FIT", "qty": 1, "price": 129.0 },
+      { "productId": "prod-011", "name": "Set de Bloques de Construcción 500 pzs", "qty": 1, "price": 149.0 }
+    ]
+  },
+  {
+    "id": "ORD-2026-0006",
+    "buyer": "user-001",
+    "date": "2026-09-28",
+    "status": "en camino",
+    "total": 398.0,
+    "paymentMethod": "Mastercard ****5555",
+    "shippingAddress": "Av. Javier Prado Este 123, San Isidro, Lima",
+    "tracking": "TRK-889980",
+    "items": [
+      { "productId": "prod-012", "name": "Smartwatch Movistar FitBand 2", "qty": 2, "price": 199.0 }
+    ]
+  },
+  {
+    "id": "ORD-2026-0007",
+    "buyer": "user-001",
+    "date": "2026-09-29",
+    "status": "cancelado",
+    "total": 189.0,
+    "paymentMethod": "Yape",
+    "shippingAddress": "Av. Javier Prado Este 123, San Isidro, Lima",
+    "tracking": "TRK-890114",
+    "items": [
+      { "productId": "prod-007", "name": "Licuadora Oster 3 Velocidades", "qty": 1, "price": 189.0 }
+    ]
+  },
+  {
+    "id": "ORD-2026-0101",
+    "buyer": "seller-001",
+    "date": "2026-09-12",
+    "status": "entregado",
+    "total": 1499.0,
+    "paymentMethod": "Mastercard ****5555",
+    "shippingAddress": "Av. Arequipa 4545, Miraflores, Lima",
+    "tracking": "TRK-891201",
+    "items": [
+      { "productId": "prod-005", "name": "Tablet Xiaomi Pad 6", "qty": 1, "price": 1499.0 }
+    ]
+  },
+  {
+    "id": "ORD-2026-0102",
+    "buyer": "seller-001",
+    "date": "2026-09-22",
+    "status": "en camino",
+    "total": 189.0,
+    "paymentMethod": "Mastercard ****5555",
+    "shippingAddress": "Av. Arequipa 4545, Miraflores, Lima",
+    "tracking": "TRK-891455",
+    "items": [
+      { "productId": "prod-007", "name": "Licuadora Oster 3 Velocidades", "qty": 1, "price": 189.0 }
+    ]
+  },
+  {
+    "id": "ORD-2026-0103",
+    "buyer": "seller-001",
+    "date": "2026-09-27",
+    "status": "en preparación",
+    "total": 258.0,
+    "paymentMethod": "Yape",
+    "shippingAddress": "Av. Arequipa 4545, Miraflores, Lima",
+    "tracking": "TRK-891777",
+    "items": [
+      { "productId": "prod-008", "name": "Polo Deportivo Nike Dri-FIT", "qty": 2, "price": 129.0 }
+    ]
+  }
+]

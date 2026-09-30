@@ -1,0 +1,99 @@
+[
+  {
+    "id": "SALE-2026-0101",
+    "seller": "seller-001",
+    "date": "2026-09-10",
+    "buyerName": "Lucía Fernández",
+    "status": "completada",
+    "total": 1448.0,
+    "payout": "abonado",
+    "items": [
+      { "productId": "prod-001", "name": "Smartphone Movistar Galaxy A55 5G", "qty": 1, "price": 1299.0 },
+      { "productId": "prod-003", "name": "Audífonos Movistar TWS Pro", "qty": 1, "price": 149.0 }
+    ]
+  },
+  {
+    "id": "SALE-2026-0102",
+    "seller": "seller-001",
+    "date": "2026-09-18",
+    "buyerName": "Mario Quispe",
+    "status": "completada",
+    "total": 3799.0,
+    "payout": "pendiente",
+    "items": [
+      { "productId": "prod-002", "name": "iPhone 15 128GB Movistar", "qty": 1, "price": 3799.0 }
+    ]
+  },
+  {
+    "id": "SALE-2026-0103",
+    "seller": "seller-001",
+    "date": "2026-09-26",
+    "buyerName": "Ana Torres",
+    "status": "en proceso",
+    "total": 398.0,
+    "payout": "pendiente",
+    "items": [
+      { "productId": "prod-012", "name": "Smartwatch Movistar FitBand 2", "qty": 2, "price": 199.0 }
+    ]
+  },
+  {
+    "id": "SALE-2026-0104",
+    "seller": "seller-001",
+    "date": "2026-08-30",
+    "buyerName": "Rosa Medina",
+    "status": "completada",
+    "total": 149.0,
+    "payout": "abonado",
+    "items": [
+      { "productId": "prod-003", "name": "Audífonos Movistar TWS Pro", "qty": 1, "price": 149.0 }
+    ]
+  },
+  {
+    "id": "SALE-2026-0105",
+    "seller": "seller-001",
+    "date": "2026-09-08",
+    "buyerName": "Jorge Salazar",
+    "status": "completada",
+    "total": 2598.0,
+    "payout": "abonado",
+    "items": [
+      { "productId": "prod-001", "name": "Smartphone Movistar Galaxy A55 5G", "qty": 2, "price": 1299.0 }
+    ]
+  },
+  {
+    "id": "SALE-2026-0106",
+    "seller": "seller-001",
+    "date": "2026-09-21",
+    "buyerName": "Carmen Ríos",
+    "status": "en proceso",
+    "total": 199.0,
+    "payout": "pendiente",
+    "items": [
+      { "productId": "prod-012", "name": "Smartwatch Movistar FitBand 2", "qty": 1, "price": 199.0 }
+    ]
+  },
+  {
+    "id": "SALE-2026-0107",
+    "seller": "seller-001",
+    "date": "2026-09-29",
+    "buyerName": "Diego Flores",
+    "status": "cancelada",
+    "total": 3799.0,
+    "payout": "reembolsado",
+    "items": [
+      { "productId": "prod-002", "name": "iPhone 15 128GB Movistar", "qty": 1, "price": 3799.0 }
+    ]
+  },
+  {
+    "id": "SALE-2026-0108",
+    "seller": "seller-001",
+    "date": "2026-09-15",
+    "buyerName": "Patricia Núñez",
+    "status": "completada",
+    "total": 447.0,
+    "payout": "abonado",
+    "items": [
+      { "productId": "prod-003", "name": "Audífonos Movistar TWS Pro", "qty": 3, "price": 149.0 }
+    ]
+  }
+]

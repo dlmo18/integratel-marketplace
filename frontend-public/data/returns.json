@@ -1,0 +1,52 @@
+[
+  {
+    "id": "RET-2026-001",
+    "buyer": "user-001",
+    "orderId": "ORD-2026-0001",
+    "date": "2026-09-15",
+    "product": "Audífonos Movistar TWS Pro",
+    "reason": "Producto con falla en el estuche de carga",
+    "status": "aprobada",
+    "refund": 149.0
+  },
+  {
+    "id": "RET-2026-002",
+    "buyer": "user-001",
+    "orderId": "ORD-2026-0002",
+    "date": "2026-09-24",
+    "product": "Laptop Lenovo IdeaPad 3 Ryzen 5",
+    "reason": "Cambio por modelo superior",
+    "status": "en revisión",
+    "refund": 0.0
+  },
+  {
+    "id": "RET-2026-003",
+    "buyer": "user-001",
+    "orderId": "ORD-2026-0005",
+    "date": "2026-09-09",
+    "product": "Polo Deportivo Nike Dri-FIT",
+    "reason": "Talla incorrecta, se solicita cambio a talla L",
+    "status": "aprobada",
+    "refund": 129.0
+  },
+  {
+    "id": "RET-2026-004",
+    "buyer": "user-001",
+    "orderId": "ORD-2026-0004",
+    "date": "2026-09-02",
+    "product": "Refrigeradora Samsung 300L No Frost",
+    "reason": "Llegó con una abolladura en la puerta",
+    "status": "rechazada",
+    "refund": 0.0
+  },
+  {
+    "id": "RET-2026-101",
+    "buyer": "seller-001",
+    "orderId": "ORD-2026-0101",
+    "date": "2026-09-18",
+    "product": "Tablet Xiaomi Pad 6",
+    "reason": "No corresponde al color solicitado",
+    "status": "en revisión",
+    "refund": 0.0
+  }
+]

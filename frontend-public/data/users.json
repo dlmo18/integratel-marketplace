@@ -1,0 +1,121 @@
+[
+  {
+    "id": "user-001",
+    "type": "buyer",
+    "tier": "regular",
+    "name": "Lucía Fernández",
+    "email": "comprador@demo.com",
+    "password": "demo1234",
+    "phone": "+51 987 654 321",
+    "avatar": "/img/avatars/user-001.jpg",
+    "addresses": [
+      {
+        "id": "addr-001",
+        "alias": "Casa",
+        "line1": "Av. Javier Prado Este 123",
+        "district": "San Isidro",
+        "city": "Lima",
+        "region": "Lima",
+        "zip": "15046",
+        "default": true
+      },
+      {
+        "id": "addr-002",
+        "alias": "Oficina",
+        "line1": "Calle Las Begonias 456",
+        "district": "San Isidro",
+        "city": "Lima",
+        "region": "Lima",
+        "zip": "15047",
+        "default": false
+      }
+    ],
+    "paymentMethods": [
+      {
+        "id": "pm-001",
+        "type": "card",
+        "brand": "Visa",
+        "last4": "4242",
+        "holder": "Lucía Fernández",
+        "expiry": "08/28",
+        "default": true
+      },
+      {
+        "id": "pm-002",
+        "type": "wallet",
+        "brand": "Yape",
+        "phone": "+51 987 654 321",
+        "default": false
+      }
+    ]
+  },
+  {
+    "id": "user-002",
+    "type": "buyer",
+    "tier": "vip",
+    "name": "Ricardo Vega Prado",
+    "email": "vip@demo.com",
+    "password": "demo1234",
+    "phone": "+51 950 111 222",
+    "avatar": "/img/avatars/user-001.jpg",
+    "vipSince": "2025-03-01",
+    "addresses": [
+      {
+        "id": "addr-201",
+        "alias": "Residencia",
+        "line1": "Av. El Golf Los Incas 780",
+        "district": "Santiago de Surco",
+        "city": "Lima",
+        "region": "Lima",
+        "zip": "15023",
+        "default": true
+      }
+    ],
+    "paymentMethods": [
+      {
+        "id": "pm-201",
+        "type": "card",
+        "brand": "Amex",
+        "last4": "1005",
+        "holder": "Ricardo Vega",
+        "expiry": "11/29",
+        "default": true
+      }
+    ]
+  },
+  {
+    "id": "seller-001",
+    "type": "seller",
+    "tier": "seller",
+    "name": "Carlos Movistar Store",
+    "email": "seller@demo.com",
+    "password": "demo1234",
+    "phone": "+51 999 888 777",
+    "avatar": "/img/avatars/seller-001.jpg",
+    "storeName": "Movistar Oficial",
+    "ruc": "20123456789",
+    "addresses": [
+      {
+        "id": "addr-101",
+        "alias": "Tienda principal",
+        "line1": "Av. Arequipa 4545",
+        "district": "Miraflores",
+        "city": "Lima",
+        "region": "Lima",
+        "zip": "15074",
+        "default": true
+      }
+    ],
+    "paymentMethods": [
+      {
+        "id": "pm-101",
+        "type": "card",
+        "brand": "Mastercard",
+        "last4": "5555",
+        "holder": "Carlos Perez",
+        "expiry": "05/27",
+        "default": true
+      }
+    ]
+  }
+]

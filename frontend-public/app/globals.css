@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==========================================================================
+   Temas por tipo de usuario.
+   Las variables --c-* son canales RGB (sin "rgb()") para que Tailwind pueda
+   aplicar opacidades (bg-movistar-blue/10). Se cambian con data-theme en <html>.
+   ========================================================================== */
+:root,
+[data-theme="regular"] {
+  --font-sans: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+
+  /* Movistar (movistar.com.pe) */
+  --c-blue: 1 157 244;        /* #019DF4 */
+  --c-blue-dark: 11 39 57;    /* #0B2739 */
+  --c-navy: 0 51 122;         /* #00337A */
+  --c-green: 92 182 21;       /* #5CB615 */
+  --c-purple: 139 92 246;     /* #8B5CF6 */
+  --c-gray: 244 244 244;      /* #F4F4F4 */
+  --c-gray-med: 107 114 128;  /* #6B7280 */
+
+  --c-blue-hover: 3 132 207;  /* hover del botón primario */
+  --c-green-hover: 76 156 17;
+  --page-bg: 255 255 255;
+  --page-fg: 11 39 57;
+}
+
+/* VIP: negro, blanco y gris (sin dorados) */
+[data-theme="vip"] {
+  --c-blue: 24 24 27;         /* negro como color de acción #18181B */
+  --c-blue-dark: 10 10 10;    /* negro */
+  --c-navy: 17 17 17;         /* casi negro para cabeceras */
+  --c-green: 63 63 70;        /* gris oscuro para acciones "verdes" */
+  --c-purple: 24 24 27;
+  --c-gray: 245 245 245;      /* blanco / gris muy claro */
+  --c-gray-med: 113 113 122;  /* gris medio */
+
+  --c-blue-hover: 39 39 42;
+  --c-green-hover: 82 82 91;
+  --page-bg: 255 255 255;
+  --page-fg: 10 10 10;
+}
+
+/* Seller: Movistar Empresas (azules corporativos profundos + teal) */
+[data-theme="seller"] {
+  --c-blue: 0 121 193;        /* #0079C1 */
+  --c-blue-dark: 8 30 63;     /* #081E3F */
+  --c-navy: 11 46 99;         /* #0B2E63 */
+  --c-green: 0 169 165;       /* teal corporativo #00A9A5 */
+  --c-purple: 0 121 193;
+  --c-gray: 240 243 248;
+  --c-gray-med: 90 103 120;
+
+  --c-blue-hover: 0 103 165;
+  --c-green-hover: 0 143 140;
+  --page-bg: 255 255 255;
+  --page-fg: 8 30 63;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  background-color: rgb(var(--page-bg));
+  color: rgb(var(--page-fg));
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-2.5 text-sm font-semibold transition-colors;
+  }
+
+  .btn-primary {
+    @apply btn bg-movistar-blue text-white;
+    background-color: rgb(var(--c-blue));
+  }
+  .btn-primary:hover {
+    background-color: rgb(var(--c-blue-hover));
+  }
+
+  .btn-outline {
+    @apply btn border-2 border-movistar-blue text-movistar-blue hover:bg-movistar-blue hover:text-white;
+  }
+
+  .btn-green {
+    @apply btn bg-movistar-green text-white;
+    background-color: rgb(var(--c-green));
+  }
+  .btn-green:hover {
+    background-color: rgb(var(--c-green-hover));
+  }
+
+  .card {
+    @apply rounded-2xl bg-white shadow-card;
+  }
+
+  .input {
+    @apply w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm outline-none focus:border-movistar-blue focus:ring-2 focus:ring-movistar-blue/20;
+  }
+
+  .badge {
+    @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold;
+  }
+}

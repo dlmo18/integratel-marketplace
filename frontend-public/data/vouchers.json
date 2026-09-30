@@ -1,0 +1,68 @@
+[
+  {
+    "id": "VCH-0001",
+    "user": "user-001",
+    "code": "DESC20SOLES",
+    "discountType": "fixed",
+    "value": 20,
+    "minPurchase": 100,
+    "expiry": "2026-12-31",
+    "status": "activo",
+    "source": "Canje de 500 puntos"
+  },
+  {
+    "id": "VCH-0002",
+    "user": "user-001",
+    "code": "MOVISTAR10",
+    "discountType": "percent",
+    "value": 10,
+    "minPurchase": 200,
+    "expiry": "2026-11-30",
+    "status": "activo",
+    "source": "Canje de 800 puntos"
+  },
+  {
+    "id": "VCH-0003",
+    "user": "user-001",
+    "code": "BIENVENIDA15",
+    "discountType": "fixed",
+    "value": 15,
+    "minPurchase": 0,
+    "expiry": "2026-09-15",
+    "status": "expirado",
+    "source": "Bono de bienvenida"
+  },
+  {
+    "id": "VCH-0004",
+    "user": "user-001",
+    "code": "VERANO50",
+    "discountType": "fixed",
+    "value": 50,
+    "minPurchase": 500,
+    "expiry": "2026-08-31",
+    "status": "usado",
+    "source": "Canje de 1200 puntos"
+  },
+  {
+    "id": "VCH-0101",
+    "user": "seller-001",
+    "code": "SELLER10PCT",
+    "discountType": "percent",
+    "value": 10,
+    "minPurchase": 150,
+    "expiry": "2026-12-15",
+    "status": "activo",
+    "source": "Canje de 800 puntos"
+  },
+  {
+    "id": "VCH-0102",
+    "user": "seller-001",
+    "code": "PROMO30SOLES",
+    "discountType": "fixed",
+    "value": 30,
+    "minPurchase": 300,
+    "expiry": "2026-11-20",
+    "status": "activo",
+    "source": "Programa de fidelidad"
+  }
+]

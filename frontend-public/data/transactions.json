@@ -1,0 +1,90 @@
+[
+  {
+    "id": "TXN-90001",
+    "seller": "seller-001",
+    "saleId": "SALE-2026-0101",
+    "date": "2026-09-12",
+    "method": "Tarjeta Visa",
+    "amount": 1448.0,
+    "fee": 72.4,
+    "net": 1375.6,
+    "status": "abonado"
+  },
+  {
+    "id": "TXN-90002",
+    "seller": "seller-001",
+    "saleId": "SALE-2026-0102",
+    "date": "2026-09-20",
+    "method": "Billetera Yape",
+    "amount": 3799.0,
+    "fee": 189.95,
+    "net": 3609.05,
+    "status": "pendiente"
+  },
+  {
+    "id": "TXN-90003",
+    "seller": "seller-001",
+    "saleId": "SALE-2026-0103",
+    "date": "2026-09-27",
+    "method": "Depósito bancario",
+    "amount": 398.0,
+    "fee": 19.9,
+    "net": 378.1,
+    "status": "pendiente"
+  },
+  {
+    "id": "TXN-90004",
+    "seller": "seller-001",
+    "saleId": "SALE-2026-0104",
+    "date": "2026-09-01",
+    "method": "Billetera Plin",
+    "amount": 149.0,
+    "fee": 7.45,
+    "net": 141.55,
+    "status": "abonado"
+  },
+  {
+    "id": "TXN-90005",
+    "seller": "seller-001",
+    "saleId": "SALE-2026-0105",
+    "date": "2026-09-10",
+    "method": "Tarjeta Mastercard",
+    "amount": 2598.0,
+    "fee": 129.9,
+    "net": 2468.1,
+    "status": "abonado"
+  },
+  {
+    "id": "TXN-90006",
+    "seller": "seller-001",
+    "saleId": "SALE-2026-0106",
+    "date": "2026-09-22",
+    "method": "Billetera Yape",
+    "amount": 199.0,
+    "fee": 9.95,
+    "net": 189.05,
+    "status": "pendiente"
+  },
+  {
+    "id": "TXN-90007",
+    "seller": "seller-001",
+    "saleId": "SALE-2026-0107",
+    "date": "2026-09-29",
+    "method": "Tarjeta Visa",
+    "amount": 3799.0,
+    "fee": 0.0,
+    "net": 0.0,
+    "status": "reembolsado"
+  },
+  {
+    "id": "TXN-90008",
+    "seller": "seller-001",
+    "saleId": "SALE-2026-0108",
+    "date": "2026-09-16",
+    "method": "Depósito bancario",
+    "amount": 447.0,
+    "fee": 22.35,
+    "net": 424.65,
+    "status": "abonado"
+  }
+]

@@ -1,0 +1,104 @@
+name: CI/CD Integratel Marketplace
+
+# Validación en cada Pull Request a master y despliegue al hacer merge (push a master).
+on:
+  pull_request:
+    branches: [master]
+  push:
+    branches: [master]
+
+# Evita despliegues solapados
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # ---------------------------------------------------------------------------
+  # Validación: se ejecuta en PRs y en push. Instala y compila los 3 proyectos.
+  # ---------------------------------------------------------------------------
+  validate:
+    name: Instalar y compilar
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Instalar dependencias (raíz + apps)
+        run: npm run install:all
+
+      - name: Compilar (frontend-public, frontend-manager, backend)
+        run: npm run build
+
+  # ---------------------------------------------------------------------------
+  # Despliegue: SOLO en push a master (es decir, cuando el PR se fusiona).
+  # Un PR abierto no despliega; solo valida. Al hacer merge, master recibe el
+  # push y se dispara este job.
+  # ---------------------------------------------------------------------------
+  deploy:
+    name: Desplegar a Google Cloud (SSH)
+    needs: validate
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Instalar dependencias
+        run: npm run install:all
+
+      - name: Crear archivos .env desde secrets
+        run: |
+          printf '%s' "${{ secrets.ENV_BACKEND }}" > backend/.env
+          printf '%s' "${{ secrets.ENV_FRONTEND_PUBLIC }}" > frontend-public/.env.local
+          printf '%s' "${{ secrets.ENV_FRONTEND_MANAGER }}" > frontend-manager/.env.local
+
+      - name: Compilar para producción
+        run: npm run build
+
+      - name: Preparar clave SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.GCP_SSH_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H "${{ secrets.GCP_SSH_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null
+
+      - name: Sincronizar código al servidor (rsync)
+        env:
+          HOST: ${{ secrets.GCP_SSH_HOST }}
+          USER: ${{ secrets.GCP_SSH_USER }}
+          TARGET_DIR: ${{ secrets.DEPLOY_PATH }}
+        run: |
+          rsync -az --delete \
+            --exclude '.git' \
+            --exclude 'node_modules' \
+            --exclude '.github' \
+            -e "ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no" \
+            ./ "$USER@$HOST:${TARGET_DIR:-/opt/integratel-marketplace}/"
+
+      - name: Instalar dependencias y reiniciar servicios en el servidor
+        env:
+          HOST: ${{ secrets.GCP_SSH_HOST }}
+          USER: ${{ secrets.GCP_SSH_USER }}
+          TARGET_DIR: ${{ secrets.DEPLOY_PATH }}
+        run: |
+          ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no "$USER@$HOST" bash -s <<'EOF'
+            set -e
+            cd "${TARGET_DIR:-/opt/integratel-marketplace}"
+            npm run install:all
+            npm run build
+            # Arranque/recarga con PM2 (instalar con: npm i -g pm2)
+            pm2 startOrReload ecosystem.config.js --update-env
+            pm2 save
+          EOF

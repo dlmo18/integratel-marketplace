@@ -1,0 +1,45 @@
+{
+  "autoplayMs": 6000,
+  "slides": [
+    {
+      "id": "slide-marketplace",
+      "badge": "Nuevo · Marketplace multivendedor",
+      "titleLine1": "Todo lo que buscas,",
+      "titleHighlight": "en un solo lugar",
+      "text": "Equipos móviles Movistar, accesorios y miles de productos publicados por nuestros sellers. Compra fácil, rápido y seguro.",
+      "image": "/img/banners/hero-ecommerce.jpg",
+      "primaryCta": { "label": "Explorar catálogo", "href": "/catalogo" },
+      "secondaryCta": { "label": "Quiero vender", "href": "/soporte/vender" }
+    },
+    {
+      "id": "slide-movistar",
+      "badge": "Categoría Movistar",
+      "titleLine1": "Equipos y planes",
+      "titleHighlight": "con la red Movistar",
+      "text": "Smartphones de última generación, accesorios oficiales y portabilidad. Encuentra tu próximo equipo con las mejores promociones.",
+      "image": "/img/banners/hero-movistar.jpg",
+      "primaryCta": { "label": "Ver equipos Movistar", "href": "/catalogo?categoria=movistar" },
+      "secondaryCta": { "label": "Ver ofertas", "href": "/catalogo?orden=ofertas" }
+    },
+    {
+      "id": "slide-ofertas",
+      "badge": "Promociones",
+      "titleLine1": "Ofertas de la semana",
+      "titleHighlight": "hasta -25% de descuento",
+      "text": "Cientos de productos en oferta por tiempo limitado. Tecnología, hogar, moda, deportes y mucho más.",
+      "image": "/img/banners/hero-ofertas.jpg",
+      "primaryCta": { "label": "Ver promociones", "href": "/catalogo?orden=ofertas" },
+      "secondaryCta": { "label": "Los más vendidos", "href": "/catalogo?orden=vendidos" }
+    },
+    {
+      "id": "slide-seller",
+      "badge": "Para emprendedores",
+      "titleLine1": "Vende en Integratel",
+      "titleHighlight": "y haz crecer tu negocio",
+      "text": "Publica tus productos, gestiona tu stock y llega a miles de clientes en todo el Perú. Sin costo de registro en la demo.",
+      "image": "/img/banners/seller-cta.jpg",
+      "primaryCta": { "label": "Empezar a vender", "href": "/registro?tipo=seller" },
+      "secondaryCta": { "label": "Cómo funciona", "href": "/soporte/vender" }
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+[
+  {
+    "id": "movistar",
+    "name": "Movistar",
+    "slug": "movistar",
+    "description": "Equipos móviles, accesorios y planes de la marca Movistar.",
+    "icon": "📱",
+    "image": "/img/categories/movistar.jpg"
+  },
+  {
+    "id": "tecnologia",
+    "name": "Tecnología",
+    "slug": "tecnologia",
+    "description": "Laptops, tablets, wearables y gadgets.",
+    "icon": "💻",
+    "image": "/img/categories/tecnologia.jpg"
+  },
+  {
+    "id": "hogar",
+    "name": "Hogar",
+    "slug": "hogar",
+    "description": "Electrodomésticos y artículos para el hogar.",
+    "icon": "🏠",
+    "image": "/img/categories/hogar.jpg"
+  },
+  {
+    "id": "moda",
+    "name": "Moda",
+    "slug": "moda",
+    "description": "Ropa, calzado y accesorios de moda.",
+    "icon": "👕",
+    "image": "/img/categories/moda.jpg"
+  },
+  {
+    "id": "deportes",
+    "name": "Deportes",
+    "slug": "deportes",
+    "description": "Equipamiento y ropa deportiva.",
+    "icon": "⚽",
+    "image": "/img/categories/deportes.jpg"
+  },
+  {
+    "id": "belleza",
+    "name": "Belleza",
+    "slug": "belleza",
+    "description": "Cuidado personal y cosmética.",
+    "icon": "💄",
+    "image": "/img/categories/belleza.jpg"
+  },
+  {
+    "id": "juguetes",
+    "name": "Juguetes",
+    "slug": "juguetes",
+    "description": "Juguetes y entretenimiento para todas las edades.",
+    "icon": "🧸",
+    "image": "/img/categories/juguetes.jpg"
+  }
+]
