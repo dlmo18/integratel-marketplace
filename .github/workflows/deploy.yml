@@ -87,18 +87,34 @@ jobs:
             -e "ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no" \
             ./ "$USER@$HOST:${TARGET_DIR:-/opt/integratel-marketplace}/"
 
-      - name: Instalar dependencias y reiniciar servicios en el servidor
+      - name: Instalar dependencias, reiniciar PM2 y aplicar Apache
         env:
           HOST: ${{ secrets.GCP_SSH_HOST }}
           USER: ${{ secrets.GCP_SSH_USER }}
           TARGET_DIR: ${{ secrets.DEPLOY_PATH }}
         run: |
-          ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no "$USER@$HOST" bash -s <<'EOF'
+          REMOTE_DIR="${TARGET_DIR:-/opt/integratel-marketplace}"
+          # Se pasa la ruta como primer argumento al script remoto ($1).
+          ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no "$USER@$HOST" 'bash -s' "$REMOTE_DIR" <<'EOF'
             set -e
-            cd "${TARGET_DIR:-/opt/integratel-marketplace}"
+            APP_DIR="$1"
+            cd "$APP_DIR"
             npm run install:all
             npm run build
+
             # Arranque/recarga con PM2 (instalar con: npm i -g pm2)
             pm2 startOrReload ecosystem.config.js --update-env
             pm2 save
+
+            # Publica/actualiza el VirtualHost de Apache si hay sudo sin contraseña.
+            # No toca los otros sites. Si sudo pide contraseña, se omite (hazlo una vez a mano).
+            CONF_SRC="$APP_DIR/deploy/apache/integratel-marketplace.conf"
+            if [ -f "$CONF_SRC" ] && sudo -n true 2>/dev/null; then
+              sudo cp "$CONF_SRC" /etc/apache2/sites-available/integratel-marketplace.conf
+              sudo a2enmod proxy proxy_http headers rewrite >/dev/null 2>&1 || true
+              sudo a2ensite integratel-marketplace >/dev/null 2>&1 || true
+              if sudo apache2ctl configtest 2>/dev/null; then
+                sudo systemctl reload apache2
+              fi
+            fi
           EOF
