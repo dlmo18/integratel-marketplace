@@ -1,11 +1,11 @@
 name: CI/CD Integratel Marketplace
 
-# Validación en cada Pull Request a master y despliegue al hacer merge (push a master).
+# Validación en cada Pull Request a main y despliegue al hacer merge (push a main).
 on:
   pull_request:
-    branches: [master]
+    branches: [main]
   push:
-    branches: [master]
+    branches: [main]
 
 # Evita despliegues solapados
 concurrency:
@@ -36,14 +36,14 @@ jobs:
         run: npm run build
 
   # ---------------------------------------------------------------------------
-  # Despliegue: SOLO en push a master (es decir, cuando el PR se fusiona).
-  # Un PR abierto no despliega; solo valida. Al hacer merge, master recibe el
+  # Despliegue: SOLO en push a main (es decir, cuando el PR se fusiona).
+  # Un PR abierto no despliega; solo valida. Al hacer merge, main recibe el
   # push y se dispara este job.
   # ---------------------------------------------------------------------------
   deploy:
     name: Desplegar a Google Cloud (SSH)
     needs: validate
-    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
