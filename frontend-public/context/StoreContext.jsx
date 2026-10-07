@@ -2,10 +2,12 @@
 
 import {
   createContext,
+  useCallback,
   useContext,
   useEffect,
   useMemo,
   useReducer,
+  useRef,
   useState
 } from "react";
 
@@ -15,6 +17,13 @@ const CART_KEY = "itm_cart";
 const USER_KEY = "itm_user";
 const VOUCHER_KEY = "itm_voucher";
 const GIFTCARDS_KEY = "itm_giftcards";
+const FAVORITES_KEY = "itm_favorites";
+const COMPARE_KEY = "itm_compare";
+const RECENT_KEY = "itm_recent";
+const REVIEWS_KEY = "itm_reviews";
+
+const MAX_COMPARE = 4;
+const MAX_RECENT = 12;
 
 function cartReducer(state, action) {
   switch (action.type) {
@@ -58,7 +67,14 @@ export function StoreProvider({ children }) {
   const [user, setUser] = useState(null);
   const [voucher, setVoucher] = useState(null);
   const [giftcards, setGiftcards] = useState([]);
+  const [favorites, setFavorites] = useState([]); // array de product ids
+  const [compare, setCompare] = useState([]); // array de product ids
+  const [recent, setRecent] = useState([]); // array de product ids (más reciente primero)
+  const [reviews, setReviews] = useState([]); // reseñas escritas por la comunidad
+  const [toasts, setToasts] = useState([]);
   const [ready, setReady] = useState(false);
+
+  const toastId = useRef(0);
 
   useEffect(() => {
     try {
@@ -74,6 +90,10 @@ export function StoreProvider({ children }) {
         localStorage.getItem(GIFTCARDS_KEY) || "[]"
       );
       setGiftcards(storedGiftcards);
+      setFavorites(JSON.parse(localStorage.getItem(FAVORITES_KEY) || "[]"));
+      setCompare(JSON.parse(localStorage.getItem(COMPARE_KEY) || "[]"));
+      setRecent(JSON.parse(localStorage.getItem(RECENT_KEY) || "[]"));
+      setReviews(JSON.parse(localStorage.getItem(REVIEWS_KEY) || "[]"));
     } catch (e) {
       // noop
     }
@@ -91,6 +111,22 @@ export function StoreProvider({ children }) {
   useEffect(() => {
     if (ready) localStorage.setItem(GIFTCARDS_KEY, JSON.stringify(giftcards));
   }, [giftcards, ready]);
+
+  useEffect(() => {
+    if (ready) localStorage.setItem(FAVORITES_KEY, JSON.stringify(favorites));
+  }, [favorites, ready]);
+
+  useEffect(() => {
+    if (ready) localStorage.setItem(COMPARE_KEY, JSON.stringify(compare));
+  }, [compare, ready]);
+
+  useEffect(() => {
+    if (ready) localStorage.setItem(RECENT_KEY, JSON.stringify(recent));
+  }, [recent, ready]);
+
+  useEffect(() => {
+    if (ready) localStorage.setItem(REVIEWS_KEY, JSON.stringify(reviews));
+  }, [reviews, ready]);
 
   // Tema de color según el tipo de usuario. No logueado => "regular".
   const resolveTier = (u) => {
@@ -122,6 +158,24 @@ export function StoreProvider({ children }) {
     setVoucher(null);
   };
 
+  // --- Toasts (notificaciones efímeras) -------------------------------------
+  const removeToast = useCallback((id) => {
+    setToasts((prev) => prev.filter((t) => t.id !== id));
+  }, []);
+
+  const toast = useCallback(
+    (message, options = {}) => {
+      const id = ++toastId.current;
+      const { type = "success", icon, duration = 2600 } = options;
+      setToasts((prev) => [...prev, { id, message, type, icon }]);
+      if (duration > 0) {
+        setTimeout(() => removeToast(id), duration);
+      }
+      return id;
+    },
+    [removeToast]
+  );
+
   const value = useMemo(() => {
     const count = cart.reduce((acc, i) => acc + i.qty, 0);
     const subtotal = cart.reduce((acc, i) => acc + i.qty * i.price, 0);
@@ -136,6 +190,65 @@ export function StoreProvider({ children }) {
       discount = Math.min(discount, subtotal);
     }
 
+    // --- Favoritos ----------------------------------------------------------
+    const isFavorite = (id) => favorites.includes(id);
+    const toggleFavorite = (product) => {
+      const id = typeof product === "object" ? product.id : product;
+      const name = typeof product === "object" ? product.name : "Producto";
+      setFavorites((prev) => {
+        if (prev.includes(id)) {
+          toast(`Quitado de favoritos`, { type: "info", icon: "💔" });
+          return prev.filter((x) => x !== id);
+        }
+        toast(`${name} agregado a favoritos`, { icon: "❤️" });
+        return [id, ...prev];
+      });
+    };
+
+    // --- Comparador ---------------------------------------------------------
+    const isComparing = (id) => compare.includes(id);
+    const canAddCompare = compare.length < MAX_COMPARE;
+    const toggleCompare = (product) => {
+      const id = typeof product === "object" ? product.id : product;
+      const name = typeof product === "object" ? product.name : "Producto";
+      setCompare((prev) => {
+        if (prev.includes(id)) return prev.filter((x) => x !== id);
+        if (prev.length >= MAX_COMPARE) {
+          toast(`Máximo ${MAX_COMPARE} productos para comparar`, {
+            type: "info",
+            icon: "⚖️"
+          });
+          return prev;
+        }
+        toast(`${name} agregado al comparador`, { icon: "⚖️" });
+        return [...prev, id];
+      });
+    };
+    const clearCompare = () => setCompare([]);
+
+    // --- Vistos recientemente ----------------------------------------------
+    const registerRecent = (id) => {
+      setRecent((prev) => {
+        const next = [id, ...prev.filter((x) => x !== id)];
+        return next.slice(0, MAX_RECENT);
+      });
+    };
+
+    // --- Reseñas de la comunidad -------------------------------------------
+    const addReview = (review) => {
+      const entry = {
+        id: `urev-${Date.now()}`,
+        date: new Date().toISOString().slice(0, 10),
+        userId: user?.id || "guest",
+        ...review
+      };
+      setReviews((prev) => [entry, ...prev]);
+      toast("¡Gracias! Tu reseña fue publicada", { icon: "⭐" });
+      return entry;
+    };
+    const getUserReviews = (productId) =>
+      productId ? reviews.filter((r) => r.productId === productId) : reviews;
+
     return {
       cart,
       cartCount: count,
@@ -146,10 +259,39 @@ export function StoreProvider({ children }) {
       removeVoucher: () => setVoucher(null),
       giftcards,
       addGiftcard: (g) => setGiftcards((prev) => [g, ...prev]),
-      addToCart: (product, qty) => dispatch({ type: "ADD", product, qty }),
+      addToCart: (product, qty = 1, opts = {}) => {
+        dispatch({ type: "ADD", product, qty });
+        if (opts.silent !== true) {
+          toast(`${product.name} agregado al carrito`, { icon: "🛒" });
+        }
+      },
       setQty: (id, qty) => dispatch({ type: "SET_QTY", id, qty }),
       removeFromCart: (id) => dispatch({ type: "REMOVE", id }),
       clearCart,
+      // favoritos
+      favorites,
+      favoritesCount: favorites.length,
+      isFavorite,
+      toggleFavorite,
+      // comparador
+      compare,
+      compareCount: compare.length,
+      maxCompare: MAX_COMPARE,
+      isComparing,
+      canAddCompare,
+      toggleCompare,
+      clearCompare,
+      // vistos recientemente
+      recent,
+      registerRecent,
+      // reseñas
+      reviews,
+      addReview,
+      getUserReviews,
+      // toasts
+      toasts,
+      toast,
+      removeToast,
       user,
       tier,
       isSeller: tier === "seller",
@@ -158,7 +300,21 @@ export function StoreProvider({ children }) {
       logout,
       ready
     };
-  }, [cart, user, tier, voucher, giftcards, ready]);
+  }, [
+    cart,
+    user,
+    tier,
+    voucher,
+    giftcards,
+    favorites,
+    compare,
+    recent,
+    reviews,
+    toasts,
+    toast,
+    removeToast,
+    ready
+  ]);
 
   return (
     <StoreContext.Provider value={value}>{children}</StoreContext.Provider>

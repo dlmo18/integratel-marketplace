@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600" role="img" aria-label="Deportes">
+  <defs>
+    <linearGradient id="bgd" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ff8a1e"/>
+      <stop offset="1" stop-color="#d1480a"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bgd)"/>
+  <circle cx="650" cy="500" r="150" fill="#ffffff" opacity="0.08"/>
+  <!-- Soccer ball -->
+  <g transform="translate(400,270)">
+    <circle r="150" fill="#ffffff" stroke="#1b2748" stroke-width="6"/>
+    <g fill="#1b2748">
+      <polygon points="0,-60 57,-18 35,50 -35,50 -57,-18"/>
+      <polygon points="0,-150 42,-120 20,-72 -20,-72 -42,-120"/>
+      <polygon points="150,-10 120,45 70,30 72,-30 128,-55" transform="rotate(72)"/>
+      <polygon points="150,-10 120,45 70,30 72,-30 128,-55" transform="rotate(144)"/>
+      <polygon points="150,-10 120,45 70,30 72,-30 128,-55" transform="rotate(216)"/>
+      <polygon points="150,-10 120,45 70,30 72,-30 128,-55" transform="rotate(288)"/>
+    </g>
+  </g>
+  <text x="400" y="560" text-anchor="middle" font-family="Arial, sans-serif" font-size="52" font-weight="bold" fill="#ffffff">Deportes</text>
+</svg>

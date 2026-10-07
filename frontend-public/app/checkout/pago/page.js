@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { useStore } from "@/context/StoreContext";
-import { formatCurrency } from "@/lib/format";
+import { formatCurrency, breakdownIgv } from "@/lib/format";
 
 // Fuentes de pago disponibles para el cobro compartido ("Pagos asociados").
 const SOURCES = [
@@ -55,6 +55,11 @@ export default function PaymentPage() {
       : newAddress.line1.trim() && newAddress.district.trim() && newAddress.city.trim();
 
   const total = round2(Math.max(0, subtotal - discount) + shipping);
+
+  // Desglose de IGV (18%) sobre el valor de los productos (precios con IGV
+  // incluido). El envío no está afecto en este desglose demostrativo.
+  const taxedAmount = Math.max(0, subtotal - discount);
+  const { base: taxBase, igv } = breakdownIgv(taxedAmount);
 
   // Estado de pagos asociados: qué fuentes están activas y con cuánto monto.
   const [selected, setSelected] = useState({ wallet: true });
@@ -481,14 +486,44 @@ export default function PaymentPage() {
               <span>-{formatCurrency(discount)}</span>
             </div>
           )}
+
+          {/* Desglose de IGV (precios con IGV incluido) */}
+          <div className="space-y-1 border-t pt-3 text-sm text-movistar-gray-med">
+            <div className="flex justify-between">
+              <span>Base imponible</span>
+              <span>{formatCurrency(taxBase)}</span>
+            </div>
+            <div className="flex justify-between">
+              <span>IGV (18%)</span>
+              <span>{formatCurrency(igv)}</span>
+            </div>
+          </div>
+
           <div className="flex justify-between text-sm">
             <span>Envío ({courier.label})</span>
             <span>{shipping === 0 ? "Gratis" : formatCurrency(shipping)}</span>
           </div>
+
+          {/* Aviso de envío gratis */}
+          <div className="rounded-lg bg-movistar-green/10 px-3 py-2 text-xs text-movistar-green">
+            {freeShipping ? (
+              "🎉 ¡Tu compra tiene envío gratis!"
+            ) : (
+              <>
+                🚚 Te faltan{" "}
+                <b>{formatCurrency(Math.max(0, 1000 - subtotal))}</b> para
+                envío gratis.
+              </>
+            )}
+          </div>
+
           <div className="flex justify-between border-t pt-3 text-lg font-bold text-movistar-navy">
             <span>Total a pagar</span>
             <span>{formatCurrency(total)}</span>
           </div>
+          <p className="text-[11px] text-movistar-gray-med">
+            IGV incluido en el precio de los productos.
+          </p>
           {!addressComplete && (
             <p className="text-xs text-yellow-700">
               Completa la dirección de envío para continuar.

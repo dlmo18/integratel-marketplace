@@ -93,6 +93,68 @@ export class ChatService {
     }
   }
 
+  // Indica si la IA real está activa (hay API key válida).
+  isAiEnabled(): boolean {
+    return this.client !== null;
+  }
+
+  // Genera un mensaje personalizado para la recomendación del perfilador.
+  // Usa IA si está disponible; si no, un texto determinista amable.
+  async profileMessage(
+    profileSummary: string,
+    products: { name: string; price: number; reason: string }[]
+  ): Promise<string> {
+    if (!this.client) {
+      return this.fallbackProfileMessage(profileSummary, products);
+    }
+
+    const productLines = products
+      .map((p) => `- ${p.name} (S/ ${p.price}) — ${p.reason}`)
+      .join("\n");
+
+    const prompt = [
+      `Perfil del cliente: ${profileSummary}.`,
+      "Productos recomendados del catálogo (no inventes otros, usa solo estos):",
+      productLines,
+      "",
+      "Redacta un mensaje breve (máx. 3 frases), cálido y en español peruano, que:",
+      "1) resuma en una frase el perfil del cliente,",
+      "2) presente estas recomendaciones de forma natural,",
+      "3) invite a ver el detalle o seguir preguntando.",
+      "No uses listas ni markdown; solo texto corrido. Usa montos en soles (S/)."
+    ].join("\n");
+
+    try {
+      const completion = await this.client.chat.completions.create({
+        model: this.model,
+        messages: [
+          { role: "system", content: this.buildSystemPrompt() },
+          { role: "user", content: prompt }
+        ],
+        temperature: 0.6,
+        max_tokens: 220
+      });
+      return (
+        completion.choices?.[0]?.message?.content?.trim() ||
+        this.fallbackProfileMessage(profileSummary, products)
+      );
+    } catch (err) {
+      this.logger.error(`Error llamando a OpenAI (perfil): ${err?.message || err}`);
+      return this.fallbackProfileMessage(profileSummary, products);
+    }
+  }
+
+  private fallbackProfileMessage(
+    profileSummary: string,
+    products: { name: string; price: number; reason: string }[]
+  ): string {
+    const names = products.map((p) => p.name).join(", ");
+    return (
+      `¡Listo! Según tu perfil (${profileSummary}), creo que estas opciones te van muy bien: ${names}. ` +
+      "Mira el detalle de cada una abajo y, si quieres, te ayudo a comparar o a agregar alguna al carrito. 🛍️"
+    );
+  }
+
   // Respuesta simulada cuando no hay API key (para no bloquear la demo).
   private fallbackReply(message: string): string {
     const m = message.toLowerCase();

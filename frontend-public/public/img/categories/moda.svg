@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600" role="img" aria-label="Moda">
+  <defs>
+    <linearGradient id="bgm" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#b4408f"/>
+      <stop offset="1" stop-color="#5e1b63"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bgm)"/>
+  <circle cx="140" cy="110" r="130" fill="#ffffff" opacity="0.08"/>
+  <!-- T-shirt -->
+  <g transform="translate(250,140)">
+    <path d="M110 0 L170 0 L300 70 L255 130 L220 110 V320 H60 V110 L25 130 L-20 70 L110 0 Z"
+          fill="#ffffff"/>
+    <path d="M110 0 C130 40 150 40 170 0" fill="none" stroke="#5e1b63" stroke-width="8"/>
+    <circle cx="140" cy="210" r="30" fill="#b4408f"/>
+  </g>
+  <text x="400" y="545" text-anchor="middle" font-family="Arial, sans-serif" font-size="52" font-weight="bold" fill="#ffffff">Moda</text>
+</svg>

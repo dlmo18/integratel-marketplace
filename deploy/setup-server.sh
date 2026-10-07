@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Preparación del servidor (Google Cloud, Debian/Ubuntu) para desplegar
-# Integratel Marketplace detrás de un Apache2 que YA tiene otras webs.
+# Ecommerce detrás de un Apache2 que YA tiene otras webs.
 #
 # Es idempotente: se puede correr varias veces. NO modifica los VirtualHost
 # existentes; solo agrega el de este proyecto.
@@ -9,9 +9,9 @@
 #   sudo bash deploy/setup-server.sh
 set -euo pipefail
 
-DEPLOY_PATH="${DEPLOY_PATH:-/opt/integratel-marketplace}"
-CONF_SRC="$DEPLOY_PATH/deploy/apache/integratel-marketplace.conf"
-CONF_DST="/etc/apache2/sites-available/integratel-marketplace.conf"
+DEPLOY_PATH="${DEPLOY_PATH:-/opt/ecommerce}"
+CONF_SRC="$DEPLOY_PATH/deploy/apache/ecommerce.conf"
+CONF_DST="/etc/apache2/sites-available/ecommerce.conf"
 
 echo "==> 1. Node.js 20 y herramientas"
 if ! command -v node >/dev/null 2>&1 || [ "$(node -v | cut -d. -f1 | tr -d v)" -lt 20 ]; then
@@ -33,7 +33,7 @@ mkdir -p "$DEPLOY_PATH"
 echo "==> 5. VirtualHost del proyecto (sin tocar otros sites)"
 if [ -f "$CONF_SRC" ]; then
   cp "$CONF_SRC" "$CONF_DST"
-  a2ensite integratel-marketplace >/dev/null
+  a2ensite ecommerce >/dev/null
   if apache2ctl configtest; then
     systemctl reload apache2
     echo "    VirtualHost habilitado y Apache recargado."

@@ -26,7 +26,7 @@
       "badge": "Promociones",
       "titleLine1": "Ofertas de la semana",
       "titleHighlight": "hasta -25% de descuento",
-      "text": "Cientos de productos en oferta por tiempo limitado. Tecnología, hogar, moda, deportes y mucho más.",
+      "text": "Cientos de productos en oferta por tiempo limitado. Tecnología, hogar, streaming, servicios digitales y mucho más.",
       "image": "/img/banners/hero-ofertas.jpg",
       "primaryCta": { "label": "Ver promociones", "href": "/catalogo?orden=ofertas" },
       "secondaryCta": { "label": "Los más vendidos", "href": "/catalogo?orden=vendidos" }

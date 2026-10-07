@@ -21,7 +21,49 @@
       "/img/products/prod-001-1.jpg"
     ],
     "shortDescription": "Pantalla Super AMOLED 6.6\", 128GB, 5G. Incluye chip Movistar.",
-    "description": "El Galaxy A55 5G ofrece rendimiento fluido, gran batería y conectividad 5G Movistar. Ideal para el día a día."
+    "description": "El Galaxy A55 5G ofrece rendimiento fluido, gran batería y conectividad 5G Movistar. Ideal para el día a día.",
+    "specs": [
+      {
+        "label": "Pantalla",
+        "value": "6.6\" Super AMOLED, 120Hz"
+      },
+      {
+        "label": "Procesador",
+        "value": "Exynos 1480 Octa-core"
+      },
+      {
+        "label": "Memoria RAM",
+        "value": "8 GB"
+      },
+      {
+        "label": "Almacenamiento",
+        "value": "128 GB (ampliable microSD)"
+      },
+      {
+        "label": "Cámara principal",
+        "value": "50 MP + 12 MP + 5 MP"
+      },
+      {
+        "label": "Cámara frontal",
+        "value": "32 MP"
+      },
+      {
+        "label": "Batería",
+        "value": "5000 mAh, carga rápida 25W"
+      },
+      {
+        "label": "Conectividad",
+        "value": "5G, Wi-Fi 6, Bluetooth 5.3, NFC"
+      },
+      {
+        "label": "Sistema operativo",
+        "value": "Android 14 (One UI 6)"
+      },
+      {
+        "label": "Garantía",
+        "value": "12 meses"
+      }
+    ]
   },
   {
     "id": "prod-002",
@@ -45,7 +87,53 @@
       "/img/products/prod-002-1.jpg"
     ],
     "shortDescription": "Chip A16 Bionic, cámara de 48MP, portabilidad Movistar disponible.",
-    "description": "El iPhone 15 combina potencia y diseño con la red 5G de Movistar. Portabilidad y planes disponibles."
+    "description": "El iPhone 15 combina potencia y diseño con la red 5G de Movistar. Portabilidad y planes disponibles.",
+    "specs": [
+      {
+        "label": "Pantalla",
+        "value": "6.1\" Super Retina XDR OLED"
+      },
+      {
+        "label": "Procesador",
+        "value": "Apple A16 Bionic"
+      },
+      {
+        "label": "Almacenamiento",
+        "value": "128 GB"
+      },
+      {
+        "label": "Cámara principal",
+        "value": "48 MP + 12 MP ultra gran angular"
+      },
+      {
+        "label": "Cámara frontal",
+        "value": "12 MP TrueDepth"
+      },
+      {
+        "label": "Batería",
+        "value": "Hasta 20 h de video"
+      },
+      {
+        "label": "Conectividad",
+        "value": "5G, Wi-Fi 6, Bluetooth 5.3"
+      },
+      {
+        "label": "Puerto",
+        "value": "USB-C"
+      },
+      {
+        "label": "Resistencia",
+        "value": "IP68 (agua y polvo)"
+      },
+      {
+        "label": "Sistema operativo",
+        "value": "iOS 17"
+      },
+      {
+        "label": "Garantía",
+        "value": "12 meses"
+      }
+    ]
   },
   {
     "id": "prod-003",
@@ -68,7 +156,45 @@
       "/img/products/prod-003-0.jpg"
     ],
     "shortDescription": "Audífonos inalámbricos con cancelación de ruido.",
-    "description": "Accesorio oficial Movistar. Bluetooth 5.3, estuche de carga y hasta 24h de autonomía."
+    "description": "Accesorio oficial Movistar. Bluetooth 5.3, estuche de carga y hasta 24h de autonomía.",
+    "specs": [
+      {
+        "label": "Tipo",
+        "value": "In-ear TWS inalámbricos"
+      },
+      {
+        "label": "Cancelación de ruido",
+        "value": "Activa (ANC)"
+      },
+      {
+        "label": "Conectividad",
+        "value": "Bluetooth 5.3"
+      },
+      {
+        "label": "Autonomía",
+        "value": "6 h + 18 h con estuche"
+      },
+      {
+        "label": "Carga",
+        "value": "USB-C, carga rápida"
+      },
+      {
+        "label": "Resistencia",
+        "value": "IPX4 (resistente al sudor)"
+      },
+      {
+        "label": "Controles",
+        "value": "Táctiles"
+      },
+      {
+        "label": "Micrófono",
+        "value": "Dual con reducción de ruido"
+      },
+      {
+        "label": "Garantía",
+        "value": "6 meses"
+      }
+    ]
   },
   {
     "id": "prod-004",
@@ -91,7 +217,53 @@
       "/img/products/prod-004-0.jpg"
     ],
     "shortDescription": "Ryzen 5, 16GB RAM, 512GB SSD, pantalla 15.6\" FHD.",
-    "description": "Laptop ideal para trabajo y estudio con gran rendimiento y almacenamiento SSD veloz."
+    "description": "Laptop ideal para trabajo y estudio con gran rendimiento y almacenamiento SSD veloz.",
+    "specs": [
+      {
+        "label": "Pantalla",
+        "value": "15.6\" Full HD (1920x1080)"
+      },
+      {
+        "label": "Procesador",
+        "value": "AMD Ryzen 5 7520U"
+      },
+      {
+        "label": "Memoria RAM",
+        "value": "16 GB DDR4"
+      },
+      {
+        "label": "Almacenamiento",
+        "value": "512 GB SSD NVMe"
+      },
+      {
+        "label": "Gráficos",
+        "value": "AMD Radeon integrada"
+      },
+      {
+        "label": "Conectividad",
+        "value": "Wi-Fi 6, Bluetooth 5.1"
+      },
+      {
+        "label": "Puertos",
+        "value": "USB-C, 2x USB-A, HDMI, jack 3.5mm"
+      },
+      {
+        "label": "Batería",
+        "value": "Hasta 8 h de uso"
+      },
+      {
+        "label": "Sistema operativo",
+        "value": "Windows 11 Home"
+      },
+      {
+        "label": "Peso",
+        "value": "1.62 kg"
+      },
+      {
+        "label": "Garantía",
+        "value": "12 meses"
+      }
+    ]
   },
   {
     "id": "prod-005",
@@ -114,7 +286,49 @@
       "/img/products/prod-005-0.jpg"
     ],
     "shortDescription": "Pantalla 11\" 144Hz, Snapdragon 870, 128GB.",
-    "description": "Tablet potente para productividad y entretenimiento con pantalla de alta tasa de refresco."
+    "description": "Tablet potente para productividad y entretenimiento con pantalla de alta tasa de refresco.",
+    "specs": [
+      {
+        "label": "Pantalla",
+        "value": "11\" IPS LCD, 144Hz, 2.8K"
+      },
+      {
+        "label": "Procesador",
+        "value": "Snapdragon 870"
+      },
+      {
+        "label": "Memoria RAM",
+        "value": "6 GB"
+      },
+      {
+        "label": "Almacenamiento",
+        "value": "128 GB"
+      },
+      {
+        "label": "Cámara",
+        "value": "13 MP trasera / 8 MP frontal"
+      },
+      {
+        "label": "Batería",
+        "value": "8840 mAh, carga 33W"
+      },
+      {
+        "label": "Audio",
+        "value": "4 altavoces Dolby Atmos"
+      },
+      {
+        "label": "Conectividad",
+        "value": "Wi-Fi 6, Bluetooth 5.2"
+      },
+      {
+        "label": "Sistema operativo",
+        "value": "Android 13 (MIUI Pad)"
+      },
+      {
+        "label": "Garantía",
+        "value": "12 meses"
+      }
+    ]
   },
   {
     "id": "prod-006",
@@ -137,7 +351,45 @@
       "/img/products/prod-006-0.jpg"
     ],
     "shortDescription": "Tecnología No Frost, 300 litros, bajo consumo.",
-    "description": "Refrigeradora eficiente con amplio espacio y tecnología No Frost para conservación óptima."
+    "description": "Refrigeradora eficiente con amplio espacio y tecnología No Frost para conservación óptima.",
+    "specs": [
+      {
+        "label": "Capacidad",
+        "value": "300 litros"
+      },
+      {
+        "label": "Tecnología",
+        "value": "No Frost (sin escarcha)"
+      },
+      {
+        "label": "Tipo",
+        "value": "Top Mount (freezer superior)"
+      },
+      {
+        "label": "Eficiencia energética",
+        "value": "Clase A+"
+      },
+      {
+        "label": "Compresor",
+        "value": "Digital Inverter"
+      },
+      {
+        "label": "Nivel de ruido",
+        "value": "39 dB"
+      },
+      {
+        "label": "Color",
+        "value": "Silver / acero inoxidable"
+      },
+      {
+        "label": "Dimensiones",
+        "value": "170 x 60 x 67 cm"
+      },
+      {
+        "label": "Garantía",
+        "value": "12 meses (10 años compresor)"
+      }
+    ]
   },
   {
     "id": "prod-007",
@@ -160,13 +412,47 @@
       "/img/products/prod-007-0.jpg"
     ],
     "shortDescription": "Jarra de vidrio, cuchillas de acero inoxidable.",
-    "description": "Licuadora resistente y práctica para tu cocina, con 3 velocidades y función pulso."
+    "description": "Licuadora resistente y práctica para tu cocina, con 3 velocidades y función pulso.",
+    "specs": [
+      {
+        "label": "Potencia",
+        "value": "600 W"
+      },
+      {
+        "label": "Capacidad de jarra",
+        "value": "1.5 litros"
+      },
+      {
+        "label": "Material de jarra",
+        "value": "Vidrio templado"
+      },
+      {
+        "label": "Velocidades",
+        "value": "3 + función pulso"
+      },
+      {
+        "label": "Cuchillas",
+        "value": "Acero inoxidable 4 puntas"
+      },
+      {
+        "label": "Base",
+        "value": "Antideslizante"
+      },
+      {
+        "label": "Voltaje",
+        "value": "220 V"
+      },
+      {
+        "label": "Garantía",
+        "value": "12 meses"
+      }
+    ]
   },
   {
     "id": "prod-008",
     "name": "Polo Deportivo Nike Dri-FIT",
     "slug": "polo-deportivo-nike-dri-fit",
-    "category": "moda",
+    "category": "deportes",
     "brand": "Nike",
     "seller": "seller-003",
     "provider": "Hogar Total EIRL",
@@ -183,7 +469,41 @@
       "/img/products/prod-008-0.jpg"
     ],
     "shortDescription": "Tela transpirable Dri-FIT, tallas S a XL.",
-    "description": "Polo deportivo ligero y cómodo, ideal para entrenamiento y uso diario."
+    "description": "Polo deportivo ligero y cómodo, ideal para entrenamiento y uso diario.",
+    "specs": [
+      {
+        "label": "Material",
+        "value": "100% poliéster Dri-FIT"
+      },
+      {
+        "label": "Tecnología",
+        "value": "Absorción de humedad"
+      },
+      {
+        "label": "Tallas disponibles",
+        "value": "S, M, L, XL"
+      },
+      {
+        "label": "Tipo de cuello",
+        "value": "Redondo"
+      },
+      {
+        "label": "Uso",
+        "value": "Entrenamiento / casual"
+      },
+      {
+        "label": "Cuidado",
+        "value": "Lavable en máquina"
+      },
+      {
+        "label": "Género",
+        "value": "Unisex"
+      },
+      {
+        "label": "Garantía",
+        "value": "Cambio por talla (30 días)"
+      }
+    ]
   },
   {
     "id": "prod-009",
@@ -206,30 +526,98 @@
       "/img/products/prod-009-0.jpg"
     ],
     "shortDescription": "Zapatillas de running, amortiguación Cloudfoam.",
-    "description": "Zapatillas cómodas para correr con buena amortiguación y diseño moderno."
+    "description": "Zapatillas cómodas para correr con buena amortiguación y diseño moderno.",
+    "specs": [
+      {
+        "label": "Tipo",
+        "value": "Running / entrenamiento"
+      },
+      {
+        "label": "Amortiguación",
+        "value": "Cloudfoam"
+      },
+      {
+        "label": "Material superior",
+        "value": "Textil transpirable"
+      },
+      {
+        "label": "Suela",
+        "value": "Caucho antideslizante"
+      },
+      {
+        "label": "Cierre",
+        "value": "Pasadores"
+      },
+      {
+        "label": "Tallas disponibles",
+        "value": "38 a 44"
+      },
+      {
+        "label": "Peso aprox.",
+        "value": "280 g"
+      },
+      {
+        "label": "Garantía",
+        "value": "Cambio por talla (30 días)"
+      }
+    ]
   },
   {
     "id": "prod-010",
-    "name": "Set de Skincare Facial",
-    "slug": "set-skincare-facial",
-    "category": "belleza",
-    "brand": "CeraVe",
+    "name": "Microsoft 365 Personal (1 año)",
+    "slug": "microsoft-365-personal-1-anio",
+    "category": "servicios-digitales",
+    "brand": "Microsoft",
     "seller": "seller-002",
     "provider": "TechStore SAC",
-    "price": 179,
-    "listPrice": 219,
+    "price": 259,
+    "listPrice": 299,
     "currency": "PEN",
-    "stock": 40,
+    "stock": 999,
     "rating": 4.8,
     "reviews": 91,
-    "featured": false,
+    "featured": true,
     "bestSeller": true,
     "onSale": true,
     "images": [
-      "/img/products/prod-010-0.jpg"
+      "/img/products/prod-010-0.svg"
     ],
-    "shortDescription": "Limpiador, hidratante y protector solar.",
-    "description": "Rutina de cuidado facial completa para piel saludable e hidratada."
+    "shortDescription": "Office completo + 1 TB OneDrive para 1 usuario, 1 año.",
+    "description": "Licencia anual de Microsoft 365 Personal: Word, Excel, PowerPoint, Outlook y 1 TB de almacenamiento en OneDrive. Entrega de clave digital por correo.",
+    "specs": [
+      {
+        "label": "Tipo de licencia",
+        "value": "Suscripción anual (1 usuario)"
+      },
+      {
+        "label": "Aplicaciones",
+        "value": "Word, Excel, PowerPoint, Outlook, OneNote"
+      },
+      {
+        "label": "Almacenamiento",
+        "value": "1 TB OneDrive"
+      },
+      {
+        "label": "Dispositivos",
+        "value": "PC, Mac, tablet y móvil"
+      },
+      {
+        "label": "Entrega",
+        "value": "Clave digital por correo"
+      },
+      {
+        "label": "Idioma",
+        "value": "Multilenguaje"
+      },
+      {
+        "label": "Vigencia",
+        "value": "12 meses"
+      },
+      {
+        "label": "Garantía",
+        "value": "Reposición de clave si falla"
+      }
+    ]
   },
   {
     "id": "prod-011",
@@ -252,7 +640,41 @@
       "/img/products/prod-011-0.jpg"
     ],
     "shortDescription": "500 piezas compatibles, estimula la creatividad.",
-    "description": "Set de bloques para armar múltiples figuras, ideal para niños desde 5 años."
+    "description": "Set de bloques para armar múltiples figuras, ideal para niños desde 5 años.",
+    "specs": [
+      {
+        "label": "Número de piezas",
+        "value": "500"
+      },
+      {
+        "label": "Edad recomendada",
+        "value": "5+ años"
+      },
+      {
+        "label": "Material",
+        "value": "Plástico ABS libre de BPA"
+      },
+      {
+        "label": "Compatibilidad",
+        "value": "Compatible con otras marcas de bloques"
+      },
+      {
+        "label": "Beneficios",
+        "value": "Motricidad fina y creatividad"
+      },
+      {
+        "label": "Incluye",
+        "value": "Manual de construcción"
+      },
+      {
+        "label": "Certificación",
+        "value": "Seguridad para juguetes"
+      },
+      {
+        "label": "Garantía",
+        "value": "Reposición de piezas (30 días)"
+      }
+    ]
   },
   {
     "id": "prod-012",
@@ -275,6 +697,3090 @@
       "/img/products/prod-012-0.jpg"
     ],
     "shortDescription": "Monitor de ritmo cardíaco, notificaciones y GPS.",
-    "description": "Smartwatch deportivo con múltiples modos de actividad y batería de larga duración."
+    "description": "Smartwatch deportivo con múltiples modos de actividad y batería de larga duración.",
+    "specs": [
+      {
+        "label": "Pantalla",
+        "value": "1.4\" AMOLED táctil"
+      },
+      {
+        "label": "Sensores",
+        "value": "Ritmo cardíaco, SpO2, GPS"
+      },
+      {
+        "label": "Modos deportivos",
+        "value": "Más de 100"
+      },
+      {
+        "label": "Batería",
+        "value": "Hasta 7 días de uso"
+      },
+      {
+        "label": "Resistencia al agua",
+        "value": "5 ATM"
+      },
+      {
+        "label": "Conectividad",
+        "value": "Bluetooth 5.0"
+      },
+      {
+        "label": "Compatibilidad",
+        "value": "Android e iOS"
+      },
+      {
+        "label": "Notificaciones",
+        "value": "Llamadas, mensajes y apps"
+      },
+      {
+        "label": "Garantía",
+        "value": "12 meses"
+      }
+    ]
+  },
+  {
+    "id": "prod-013",
+    "name": "Netflix Plan Premium 4K (1 mes)",
+    "slug": "netflix-plan-premium-4k-1-mes",
+    "category": "over-the-top",
+    "brand": "Netflix",
+    "seller": "seller-001",
+    "provider": "Integratel Digital",
+    "price": 44.9,
+    "listPrice": 44.9,
+    "currency": "PEN",
+    "stock": 999,
+    "rating": 4.8,
+    "reviews": 320,
+    "featured": true,
+    "bestSeller": true,
+    "onSale": false,
+    "images": [
+      "/img/products/prod-013-0.svg"
+    ],
+    "shortDescription": "4K UHD, 4 pantallas simultáneas.",
+    "description": "Suscripción mensual a Netflix Premium: calidad 4K Ultra HD, HDR y hasta 4 dispositivos a la vez.",
+    "specs": [
+      {
+        "label": "Tipo",
+        "value": "Suscripción digital"
+      },
+      {
+        "label": "Entrega",
+        "value": "Código / activación por correo"
+      },
+      {
+        "label": "Dispositivos",
+        "value": "Smart TV, móvil, web y consola"
+      },
+      {
+        "label": "Calidad",
+        "value": "4K UHD + HDR"
+      },
+      {
+        "label": "Pantallas simultáneas",
+        "value": "4"
+      },
+      {
+        "label": "Renovación",
+        "value": "Mensual (cancelable)"
+      },
+      {
+        "label": "Soporte",
+        "value": "Chat 24/7"
+      },
+      {
+        "label": "Garantía",
+        "value": "Reposición de código si falla"
+      }
+    ]
+  },
+  {
+    "id": "prod-014",
+    "name": "Netflix Plan Estándar (1 mes)",
+    "slug": "netflix-plan-estandar-1-mes",
+    "category": "over-the-top",
+    "brand": "Netflix",
+    "seller": "seller-001",
+    "provider": "Integratel Digital",
+    "price": 34.9,
+    "listPrice": 34.9,
+    "currency": "PEN",
+    "stock": 999,
+    "rating": 4.6,
+    "reviews": 210,
+    "featured": false,
+    "bestSeller": true,
+    "onSale": false,
+    "images": [
+      "/img/products/prod-014-0.svg"
+    ],
+    "shortDescription": "Full HD, 2 pantallas simultáneas.",
+    "description": "Suscripción mensual a Netflix Estándar: Full HD y hasta 2 dispositivos simultáneos.",
+    "specs": [
+      {
+        "label": "Tipo",
+        "value": "Suscripción digital"
+      },
+      {
+        "label": "Entrega",
+        "value": "Código / activación por correo"
+      },
+      {
+        "label": "Dispositivos",
+        "value": "Smart TV, móvil, web y consola"
+      },
+      {
+        "label": "Calidad",
+        "value": "1080p Full HD"
+      },
+      {
+        "label": "Pantallas simultáneas",
+        "value": "2"
+      },
+      {
+        "label": "Renovación",
+        "value": "Mensual (cancelable)"
+      },
+      {
+        "label": "Soporte",
+        "value": "Chat 24/7"
+      },
+      {
+        "label": "Garantía",
+        "value": "Reposición de código si falla"
+      }
+    ]
+  },
+  {
+    "id": "prod-015",
+    "name": "Disney+ Estándar (1 mes)",
+    "slug": "disney-estandar-1-mes",
+    "category": "over-the-top",
+    "brand": "Disney+",
+    "seller": "seller-001",
+    "provider": "Integratel Digital",
+    "price": 28.9,
+    "listPrice": 32.9,
+    "currency": "PEN",
+    "stock": 999,
+    "rating": 4.7,
+    "reviews": 185,
+    "featured": true,
+    "bestSeller": false,
+    "onSale": true,
+    "images": [
+      "/img/products/prod-015-0.svg"
+    ],
+    "shortDescription": "Disney, Pixar, Marvel y Star Wars.",
+    "description": "Suscripción mensual a Disney+ con todo el catálogo de Disney, Pixar, Marvel, Star Wars y National Geographic.",
+    "specs": [
+      {
+        "label": "Tipo",
+        "value": "Suscripción digital"
+      },
+      {
+        "label": "Entrega",
+        "value": "Código / activación por correo"
+      },
+      {
+        "label": "Dispositivos",
+        "value": "Smart TV, móvil, web y consola"
+      },
+      {
+        "label": "Calidad",
+        "value": "Full HD"
+      },
+      {
+        "label": "Pantallas simultáneas",
+        "value": "2"
+      },
+      {
+        "label": "Renovación",
+        "value": "Mensual (cancelable)"
+      },
+      {
+        "label": "Soporte",
+        "value": "Chat 24/7"
+      },
+      {
+        "label": "Garantía",
+        "value": "Reposición de código si falla"
+      }
+    ]
+  },
+  {
+    "id": "prod-016",
+    "name": "Prime Video (1 mes)",
+    "slug": "prime-video-1-mes",
+    "category": "over-the-top",
+    "brand": "Amazon",
+    "seller": "seller-001",
+    "provider": "Integratel Digital",
+    "price": 19.9,
+    "listPrice": 24.9,
+    "currency": "PEN",
+    "stock": 999,
+    "rating": 4.5,
+    "reviews": 160,
+    "featured": false,
+    "bestSeller": true,
+    "onSale": true,
+    "images": [
+      "/img/products/prod-016-0.svg"
+    ],
+    "shortDescription": "Series y películas Amazon Originals.",
+    "description": "Suscripción mensual a Amazon Prime Video con contenido Originals y estrenos exclusivos.",
+    "specs": [
+      {
+        "label": "Tipo",
+        "value": "Suscripción digital"
+      },
+      {
+        "label": "Entrega",
+        "value": "Código / activación por correo"
+      },
+      {
+        "label": "Dispositivos",
+        "value": "Smart TV, móvil, web y consola"
+      },
+      {
+        "label": "Calidad",
+        "value": "4K UHD"
+      },
+      {
+        "label": "Pantallas simultáneas",
+        "value": "3"
+      },
+      {
+        "label": "Renovación",
+        "value": "Mensual (cancelable)"
+      },
+      {
+        "label": "Soporte",
+        "value": "Chat 24/7"
+      },
+      {
+        "label": "Garantía",
+        "value": "Reposición de código si falla"
+      }
+    ]
+  },
+  {
+    "id": "prod-017",
+    "name": "Max Estándar (1 mes)",
+    "slug": "max-estandar-1-mes",
+    "category": "over-the-top",
+    "brand": "HBO Max",
+    "seller": "seller-001",
+    "provider": "Integratel Digital",
+    "price": 29.9,
+    "listPrice": 34.9,
+    "currency": "PEN",
+    "stock": 999,
+    "rating": 4.6,
+    "reviews": 140,
+    "featured": true,
+    "bestSeller": false,
+    "onSale": true,
+    "images": [
+      "/img/products/prod-017-0.svg"
+    ],
+    "shortDescription": "HBO, Warner, DC y más.",
+    "description": "Suscripción mensual a Max (HBO) con series de HBO, estrenos de Warner y el universo DC.",
+    "specs": [
+      {
+        "label": "Tipo",
+        "value": "Suscripción digital"
+      },
+      {
+        "label": "Entrega",
+        "value": "Código / activación por correo"
+      },
+      {
+        "label": "Dispositivos",
+        "value": "Smart TV, móvil, web y consola"
+      },
+      {
+        "label": "Calidad",
+        "value": "Full HD"
+      },
+      {
+        "label": "Pantallas simultáneas",
+        "value": "2"
+      },
+      {
+        "label": "Renovación",
+        "value": "Mensual (cancelable)"
+      },
+      {
+        "label": "Soporte",
+        "value": "Chat 24/7"
+      },
+      {
+        "label": "Garantía",
+        "value": "Reposición de código si falla"
+      }
+    ]
+  },
+  {
+    "id": "prod-018",
+    "name": "Spotify Premium Individual (1 mes)",
+    "slug": "spotify-premium-individual-1-mes",
+    "category": "over-the-top",
+    "brand": "Spotify",
+    "seller": "seller-001",
+    "provider": "Integratel Digital",
+    "price": 19.9,
+    "listPrice": 19.9,
+    "currency": "PEN",
+    "stock": 999,
+    "rating": 4.8,
+    "reviews": 410,
+    "featured": false,
+    "bestSeller": true,
+    "onSale": false,
+    "images": [
+      "/img/products/prod-018-0.svg"
+    ],
+    "shortDescription": "Música sin anuncios, descargas offline.",
+    "description": "Suscripción mensual a Spotify Premium: música sin anuncios, saltos ilimitados y escucha sin conexión.",
+    "specs": [
+      {
+        "label": "Tipo",
+        "value": "Suscripción digital"
+      },
+      {
+        "label": "Entrega",
+        "value": "Código / activación por correo"
+      },
+      {
+        "label": "Dispositivos",
+        "value": "Smart TV, móvil, web y consola"
+      },
+      {
+        "label": "Calidad de audio",
+        "value": "Hasta 320 kbps"
+      },
+      {
+        "label": "Modo offline",
+        "value": "Sí"
+      },
+      {
+        "label": "Renovación",
+        "value": "Mensual (cancelable)"
+      },
+      {
+        "label": "Soporte",
+        "value": "Chat 24/7"
+      },
+      {
+        "label": "Garantía",
+        "value": "Reposición de código si falla"
+      }
+    ]
+  },
+  {
+    "id": "prod-019",
+    "name": "YouTube Premium (1 mes)",
+    "slug": "youtube-premium-1-mes",
+    "category": "over-the-top",
+    "brand": "YouTube",
+    "seller": "seller-001",
+    "provider": "Integratel Digital",
+    "price": 23.9,
+    "listPrice": 26.9,
+    "currency": "PEN",
+    "stock": 999,
+    "rating": 4.5,
+    "reviews": 175,
+    "featured": false,
+    "bestSeller": false,
+    "onSale": true,
+    "images": [
+      "/img/products/prod-019-0.svg"
+    ],
+    "shortDescription": "Sin anuncios + YouTube Music.",
+    "description": "Suscripción mensual a YouTube Premium: videos sin anuncios, reproducción en segundo plano y YouTube Music incluido.",
+    "specs": [
+      {
+        "label": "Tipo",
+        "value": "Suscripción digital"
+      },
+      {
+        "label": "Entrega",
+        "value": "Código / activación por correo"
+      },
+      {
+        "label": "Dispositivos",
+        "value": "Smart TV, móvil, web y consola"
+      },
+      {
+        "label": "Reproducción en segundo plano",
+        "value": "Sí"
+      },
+      {
+        "label": "Incluye",
+        "value": "YouTube Music"
+      },
+      {
+        "label": "Renovación",
+        "value": "Mensual (cancelable)"
+      },
+      {
+        "label": "Soporte",
+        "value": "Chat 24/7"
+      },
+      {
+        "label": "Garantía",
+        "value": "Reposición de código si falla"
+      }
+    ]
+  },
+  {
+    "id": "prod-020",
+    "name": "Apple TV+ (1 mes)",
+    "slug": "apple-tv-1-mes",
+    "category": "over-the-top",
+    "brand": "Apple",
+    "seller": "seller-001",
+    "provider": "Integratel Digital",
+    "price": 24.9,
+    "listPrice": 24.9,
+    "currency": "PEN",
+    "stock": 999,
+    "rating": 4.4,
+    "reviews": 95,
+    "featured": false,
+    "bestSeller": false,
+    "onSale": false,
+    "images": [
+      "/img/products/prod-020-0.svg"
+    ],
+    "shortDescription": "Apple Originals en 4K Dolby Vision.",
+    "description": "Suscripción mensual a Apple TV+ con producciones originales en 4K Dolby Vision y audio espacial.",
+    "specs": [
+      {
+        "label": "Tipo",
+        "value": "Suscripción digital"
+      },
+      {
+        "label": "Entrega",
+        "value": "Código / activación por correo"
+      },
+      {
+        "label": "Dispositivos",
+        "value": "Smart TV, móvil, web y consola"
+      },
+      {
+        "label": "Calidad",
+        "value": "4K Dolby Vision"
+      },
+      {
+        "label": "Pantallas simultáneas",
+        "value": "6"
+      },
+      {
+        "label": "Renovación",
+        "value": "Mensual (cancelable)"
+      },
+      {
+        "label": "Soporte",
+        "value": "Chat 24/7"
+      },
+      {
+        "label": "Garantía",
+        "value": "Reposición de código si falla"
+      }
+    ]
+  },
+  {
+    "id": "prod-021",
+    "name": "Paramount+ (1 mes)",
+    "slug": "paramount-1-mes",
+    "category": "over-the-top",
+    "brand": "Paramount+",
+    "seller": "seller-001",
+    "provider": "Integratel Digital",
+    "price": 18.9,
+    "listPrice": 22.9,
+    "currency": "PEN",
+    "stock": 999,
+    "rating": 4.3,
+    "reviews": 70,
+    "featured": false,
+    "bestSeller": false,
+    "onSale": true,
+    "images": [
+      "/img/products/prod-021-0.svg"
+    ],
+    "shortDescription": "Películas, series y deportes.",
+    "description": "Suscripción mensual a Paramount+ con estrenos de cine, series exclusivas y eventos en vivo.",
+    "specs": [
+      {
+        "label": "Tipo",
+        "value": "Suscripción digital"
+      },
+      {
+        "label": "Entrega",
+        "value": "Código / activación por correo"
+      },
+      {
+        "label": "Dispositivos",
+        "value": "Smart TV, móvil, web y consola"
+      },
+      {
+        "label": "Calidad",
+        "value": "Full HD"
+      },
+      {
+        "label": "Pantallas simultáneas",
+        "value": "3"
+      },
+      {
+        "label": "Renovación",
+        "value": "Mensual (cancelable)"
+      },
+      {
+        "label": "Soporte",
+        "value": "Chat 24/7"
+      },
+      {
+        "label": "Garantía",
+        "value": "Reposición de código si falla"
+      }
+    ]
+  },
+  {
+    "id": "prod-022",
+    "name": "Crunchyroll Mega Fan (1 mes)",
+    "slug": "crunchyroll-mega-fan-1-mes",
+    "category": "over-the-top",
+    "brand": "Crunchyroll",
+    "seller": "seller-001",
+    "provider": "Integratel Digital",
+    "price": 21.9,
+    "listPrice": 25.9,
+    "currency": "PEN",
+    "stock": 999,
+    "rating": 4.6,
+    "reviews": 130,
+    "featured": true,
+    "bestSeller": false,
+    "onSale": true,
+    "images": [
+      "/img/products/prod-022-0.svg"
+    ],
+    "shortDescription": "Anime sin anuncios, simulcast.",
+    "description": "Suscripción mensual a Crunchyroll Mega Fan: catálogo de anime sin anuncios y estrenos simultáneos con Japón.",
+    "specs": [
+      {
+        "label": "Tipo",
+        "value": "Suscripción digital"
+      },
+      {
+        "label": "Entrega",
+        "value": "Código / activación por correo"
+      },
+      {
+        "label": "Dispositivos",
+        "value": "Smart TV, móvil, web y consola"
+      },
+      {
+        "label": "Pantallas simultáneas",
+        "value": "4"
+      },
+      {
+        "label": "Simulcast",
+        "value": "Sí"
+      },
+      {
+        "label": "Renovación",
+        "value": "Mensual (cancelable)"
+      },
+      {
+        "label": "Soporte",
+        "value": "Chat 24/7"
+      },
+      {
+        "label": "Garantía",
+        "value": "Reposición de código si falla"
+      }
+    ]
+  },
+  {
+    "id": "prod-023",
+    "name": "Office 2021 Hogar y Estudiantes",
+    "slug": "office-2021-hogar-y-estudiantes",
+    "category": "servicios-digitales",
+    "brand": "Microsoft",
+    "seller": "seller-002",
+    "provider": "TechStore SAC",
+    "price": 419,
+    "listPrice": 499,
+    "currency": "PEN",
+    "stock": 500,
+    "rating": 4.7,
+    "reviews": 120,
+    "featured": true,
+    "bestSeller": true,
+    "onSale": true,
+    "images": [
+      "/img/products/prod-023-0.svg"
+    ],
+    "shortDescription": "Licencia perpetua: Word, Excel y PowerPoint.",
+    "description": "Licencia perpetua de Office 2021 Hogar y Estudiantes para 1 PC o Mac. Incluye Word, Excel y PowerPoint.",
+    "specs": [
+      {
+        "label": "Tipo de licencia",
+        "value": "Clave digital"
+      },
+      {
+        "label": "Entrega",
+        "value": "Clave por correo electrónico"
+      },
+      {
+        "label": "Plataforma",
+        "value": "Windows / macOS"
+      },
+      {
+        "label": "Aplicaciones",
+        "value": "Word, Excel, PowerPoint"
+      },
+      {
+        "label": "Vigencia",
+        "value": "Perpetua (1 equipo)"
+      },
+      {
+        "label": "Activación",
+        "value": "En línea, inmediata"
+      },
+      {
+        "label": "Soporte",
+        "value": "Centro de ayuda del fabricante"
+      },
+      {
+        "label": "Garantía",
+        "value": "Reposición de clave si falla"
+      }
+    ]
+  },
+  {
+    "id": "prod-024",
+    "name": "Windows 11 Pro",
+    "slug": "windows-11-pro",
+    "category": "servicios-digitales",
+    "brand": "Microsoft",
+    "seller": "seller-002",
+    "provider": "TechStore SAC",
+    "price": 329,
+    "listPrice": 399,
+    "currency": "PEN",
+    "stock": 500,
+    "rating": 4.6,
+    "reviews": 98,
+    "featured": false,
+    "bestSeller": true,
+    "onSale": true,
+    "images": [
+      "/img/products/prod-024-0.svg"
+    ],
+    "shortDescription": "Clave de activación Windows 11 Pro.",
+    "description": "Licencia digital de Windows 11 Pro para 1 equipo. Activación en línea con cuenta de Microsoft.",
+    "specs": [
+      {
+        "label": "Tipo de licencia",
+        "value": "Clave digital"
+      },
+      {
+        "label": "Entrega",
+        "value": "Clave por correo electrónico"
+      },
+      {
+        "label": "Plataforma",
+        "value": "Windows / macOS"
+      },
+      {
+        "label": "Edición",
+        "value": "Pro"
+      },
+      {
+        "label": "Vigencia",
+        "value": "Perpetua (1 equipo)"
+      },
+      {
+        "label": "Activación",
+        "value": "En línea, inmediata"
+      },
+      {
+        "label": "Soporte",
+        "value": "Centro de ayuda del fabricante"
+      },
+      {
+        "label": "Garantía",
+        "value": "Reposición de clave si falla"
+      }
+    ]
+  },
+  {
+    "id": "prod-025",
+    "name": "Adobe Creative Cloud (1 año)",
+    "slug": "adobe-creative-cloud-1-ano",
+    "category": "servicios-digitales",
+    "brand": "Adobe",
+    "seller": "seller-001",
+    "provider": "Integratel Digital",
+    "price": 1899,
+    "listPrice": 2199,
+    "currency": "PEN",
+    "stock": 300,
+    "rating": 4.8,
+    "reviews": 210,
+    "featured": true,
+    "bestSeller": true,
+    "onSale": true,
+    "images": [
+      "/img/products/prod-025-0.svg"
+    ],
+    "shortDescription": "Suite completa: Photoshop, Illustrator, Premiere.",
+    "description": "Suscripción anual a Adobe Creative Cloud con todas las apps: Photoshop, Illustrator, Premiere Pro, After Effects y más.",
+    "specs": [
+      {
+        "label": "Tipo de licencia",
+        "value": "Clave digital"
+      },
+      {
+        "label": "Entrega",
+        "value": "Clave por correo electrónico"
+      },
+      {
+        "label": "Plataforma",
+        "value": "Windows / macOS"
+      },
+      {
+        "label": "Apps incluidas",
+        "value": "20+ aplicaciones Adobe"
+      },
+      {
+        "label": "Almacenamiento",
+        "value": "100 GB en la nube"
+      },
+      {
+        "label": "Vigencia",
+        "value": "12 meses"
+      },
+      {
+        "label": "Activación",
+        "value": "En línea, inmediata"
+      },
+      {
+        "label": "Soporte",
+        "value": "Centro de ayuda del fabricante"
+      },
+      {
+        "label": "Garantía",
+        "value": "Reposición de clave si falla"
+      }
+    ]
+  },
+  {
+    "id": "prod-026",
+    "name": "Adobe Photoshop (1 año)",
+    "slug": "adobe-photoshop-1-ano",
+    "category": "servicios-digitales",
+    "brand": "Adobe",
+    "seller": "seller-001",
+    "provider": "Integratel Digital",
+    "price": 899,
+    "listPrice": 999,
+    "currency": "PEN",
+    "stock": 300,
+    "rating": 4.7,
+    "reviews": 150,
+    "featured": false,
+    "bestSeller": false,
+    "onSale": true,
+    "images": [
+      "/img/products/prod-026-0.svg"
+    ],
+    "shortDescription": "Edición de imagen profesional, 1 usuario.",
+    "description": "Suscripción anual a Adobe Photoshop para edición de imagen profesional. Incluye Lightroom y 20 GB en la nube.",
+    "specs": [
+      {
+        "label": "Tipo de licencia",
+        "value": "Clave digital"
+      },
+      {
+        "label": "Entrega",
+        "value": "Clave por correo electrónico"
+      },
+      {
+        "label": "Plataforma",
+        "value": "Windows / macOS"
+      },
+      {
+        "label": "Incluye",
+        "value": "Photoshop + Lightroom"
+      },
+      {
+        "label": "Almacenamiento",
+        "value": "20 GB"
+      },
+      {
+        "label": "Vigencia",
+        "value": "12 meses"
+      },
+      {
+        "label": "Activación",
+        "value": "En línea, inmediata"
+      },
+      {
+        "label": "Soporte",
+        "value": "Centro de ayuda del fabricante"
+      },
+      {
+        "label": "Garantía",
+        "value": "Reposición de clave si falla"
+      }
+    ]
+  },
+  {
+    "id": "prod-027",
+    "name": "NordVPN Premium (1 año)",
+    "slug": "nordvpn-premium-1-ano",
+    "category": "servicios-digitales",
+    "brand": "NordVPN",
+    "seller": "seller-001",
+    "provider": "Integratel Digital",
+    "price": 199,
+    "listPrice": 299,
+    "currency": "PEN",
+    "stock": 800,
+    "rating": 4.6,
+    "reviews": 175,
+    "featured": true,
+    "bestSeller": false,
+    "onSale": true,
+    "images": [
+      "/img/products/prod-027-0.svg"
+    ],
+    "shortDescription": "VPN segura para 6 dispositivos.",
+    "description": "Suscripción anual a NordVPN: navegación privada, cifrado de nivel bancario y hasta 6 dispositivos.",
+    "specs": [
+      {
+        "label": "Tipo de licencia",
+        "value": "Clave digital"
+      },
+      {
+        "label": "Entrega",
+        "value": "Clave por correo electrónico"
+      },
+      {
+        "label": "Plataforma",
+        "value": "Windows / macOS"
+      },
+      {
+        "label": "Dispositivos",
+        "value": "6 simultáneos"
+      },
+      {
+        "label": "Servidores",
+        "value": "5000+ en 60 países"
+      },
+      {
+        "label": "Vigencia",
+        "value": "12 meses"
+      },
+      {
+        "label": "Activación",
+        "value": "En línea, inmediata"
+      },
+      {
+        "label": "Soporte",
+        "value": "Centro de ayuda del fabricante"
+      },
+      {
+        "label": "Garantía",
+        "value": "Reposición de clave si falla"
+      }
+    ]
+  },
+  {
+    "id": "prod-028",
+    "name": "Kaspersky Total Security (1 año, 3 disp.)",
+    "slug": "kaspersky-total-security-1-ano-3-disp",
+    "category": "servicios-digitales",
+    "brand": "Kaspersky",
+    "seller": "seller-002",
+    "provider": "TechStore SAC",
+    "price": 149,
+    "listPrice": 199,
+    "currency": "PEN",
+    "stock": 800,
+    "rating": 4.5,
+    "reviews": 110,
+    "featured": false,
+    "bestSeller": false,
+    "onSale": true,
+    "images": [
+      "/img/products/prod-028-0.svg"
+    ],
+    "shortDescription": "Antivirus completo para 3 dispositivos.",
+    "description": "Licencia anual de Kaspersky Total Security para 3 dispositivos: antivirus, firewall, VPN y gestor de contraseñas.",
+    "specs": [
+      {
+        "label": "Tipo de licencia",
+        "value": "Clave digital"
+      },
+      {
+        "label": "Entrega",
+        "value": "Clave por correo electrónico"
+      },
+      {
+        "label": "Plataforma",
+        "value": "Windows / macOS"
+      },
+      {
+        "label": "Dispositivos",
+        "value": "3"
+      },
+      {
+        "label": "Incluye",
+        "value": "Antivirus, VPN, gestor de contraseñas"
+      },
+      {
+        "label": "Vigencia",
+        "value": "12 meses"
+      },
+      {
+        "label": "Activación",
+        "value": "En línea, inmediata"
+      },
+      {
+        "label": "Soporte",
+        "value": "Centro de ayuda del fabricante"
+      },
+      {
+        "label": "Garantía",
+        "value": "Reposición de clave si falla"
+      }
+    ]
+  },
+  {
+    "id": "prod-029",
+    "name": "Bitdefender Total Security (1 año, 5 disp.)",
+    "slug": "bitdefender-total-security-1-ano-5-disp",
+    "category": "servicios-digitales",
+    "brand": "Bitdefender",
+    "seller": "seller-002",
+    "provider": "TechStore SAC",
+    "price": 179,
+    "listPrice": 229,
+    "currency": "PEN",
+    "stock": 800,
+    "rating": 4.6,
+    "reviews": 95,
+    "featured": false,
+    "bestSeller": true,
+    "onSale": true,
+    "images": [
+      "/img/products/prod-029-0.svg"
+    ],
+    "shortDescription": "Protección total para 5 dispositivos.",
+    "description": "Licencia anual de Bitdefender Total Security para 5 dispositivos con protección multicapa contra ransomware.",
+    "specs": [
+      {
+        "label": "Tipo de licencia",
+        "value": "Clave digital"
+      },
+      {
+        "label": "Entrega",
+        "value": "Clave por correo electrónico"
+      },
+      {
+        "label": "Plataforma",
+        "value": "Windows / macOS"
+      },
+      {
+        "label": "Dispositivos",
+        "value": "5"
+      },
+      {
+        "label": "Plataforma",
+        "value": "Windows, macOS, Android, iOS"
+      },
+      {
+        "label": "Vigencia",
+        "value": "12 meses"
+      },
+      {
+        "label": "Activación",
+        "value": "En línea, inmediata"
+      },
+      {
+        "label": "Soporte",
+        "value": "Centro de ayuda del fabricante"
+      },
+      {
+        "label": "Garantía",
+        "value": "Reposición de clave si falla"
+      }
+    ]
+  },
+  {
+    "id": "prod-030",
+    "name": "Google One 200 GB (1 año)",
+    "slug": "google-one-200-gb-1-ano",
+    "category": "servicios-digitales",
+    "brand": "Google",
+    "seller": "seller-001",
+    "provider": "Integratel Digital",
+    "price": 129,
+    "listPrice": 149,
+    "currency": "PEN",
+    "stock": 900,
+    "rating": 4.5,
+    "reviews": 80,
+    "featured": false,
+    "bestSeller": false,
+    "onSale": true,
+    "images": [
+      "/img/products/prod-030-0.svg"
+    ],
+    "shortDescription": "200 GB de almacenamiento en la nube.",
+    "description": "Suscripción anual a Google One con 200 GB compartidos en Drive, Gmail y Fotos para toda la familia.",
+    "specs": [
+      {
+        "label": "Tipo de licencia",
+        "value": "Clave digital"
+      },
+      {
+        "label": "Entrega",
+        "value": "Clave por correo electrónico"
+      },
+      {
+        "label": "Plataforma",
+        "value": "Windows / macOS"
+      },
+      {
+        "label": "Almacenamiento",
+        "value": "200 GB"
+      },
+      {
+        "label": "Plataforma",
+        "value": "Web, Android, iOS"
+      },
+      {
+        "label": "Vigencia",
+        "value": "12 meses"
+      },
+      {
+        "label": "Activación",
+        "value": "En línea, inmediata"
+      },
+      {
+        "label": "Soporte",
+        "value": "Centro de ayuda del fabricante"
+      },
+      {
+        "label": "Garantía",
+        "value": "Reposición de clave si falla"
+      }
+    ]
+  },
+  {
+    "id": "prod-031",
+    "name": "Canva Pro (1 año)",
+    "slug": "canva-pro-1-ano",
+    "category": "servicios-digitales",
+    "brand": "Canva",
+    "seller": "seller-001",
+    "provider": "Integratel Digital",
+    "price": 219,
+    "listPrice": 269,
+    "currency": "PEN",
+    "stock": 900,
+    "rating": 4.7,
+    "reviews": 160,
+    "featured": true,
+    "bestSeller": false,
+    "onSale": true,
+    "images": [
+      "/img/products/prod-031-0.svg"
+    ],
+    "shortDescription": "Diseño con plantillas premium y marca.",
+    "description": "Suscripción anual a Canva Pro: plantillas premium, kit de marca, fondo mágico y 1 TB de almacenamiento.",
+    "specs": [
+      {
+        "label": "Tipo de licencia",
+        "value": "Clave digital"
+      },
+      {
+        "label": "Entrega",
+        "value": "Clave por correo electrónico"
+      },
+      {
+        "label": "Plataforma",
+        "value": "Windows / macOS"
+      },
+      {
+        "label": "Almacenamiento",
+        "value": "1 TB"
+      },
+      {
+        "label": "Incluye",
+        "value": "Plantillas premium y Brand Kit"
+      },
+      {
+        "label": "Vigencia",
+        "value": "12 meses"
+      },
+      {
+        "label": "Activación",
+        "value": "En línea, inmediata"
+      },
+      {
+        "label": "Soporte",
+        "value": "Centro de ayuda del fabricante"
+      },
+      {
+        "label": "Garantía",
+        "value": "Reposición de clave si falla"
+      }
+    ]
+  },
+  {
+    "id": "prod-032",
+    "name": "Plan Postpago Movistar 60GB",
+    "slug": "plan-postpago-movistar-60gb",
+    "category": "movistar",
+    "brand": "Movistar",
+    "seller": "seller-001",
+    "provider": "Movistar Perú",
+    "price": 69.9,
+    "listPrice": 79.9,
+    "currency": "PEN",
+    "stock": 999,
+    "rating": 4.3,
+    "reviews": 140,
+    "featured": true,
+    "bestSeller": false,
+    "onSale": true,
+    "images": [
+      "/img/products/prod-032-0.svg"
+    ],
+    "shortDescription": "60GB, llamadas y redes ilimitadas.",
+    "description": "Plan postpago mensual con 60GB de datos, llamadas ilimitadas y redes sociales libres.",
+    "specs": [
+      {
+        "label": "Datos",
+        "value": "60 GB"
+      },
+      {
+        "label": "Llamadas",
+        "value": "Ilimitadas"
+      },
+      {
+        "label": "Redes sociales",
+        "value": "Libres"
+      },
+      {
+        "label": "Roaming",
+        "value": "Opcional"
+      },
+      {
+        "label": "Permanencia",
+        "value": "Sin permanencia"
+      },
+      {
+        "label": "Garantía",
+        "value": "—"
+      }
+    ]
+  },
+  {
+    "id": "prod-033",
+    "name": "Smartphone Movistar Galaxy S24 5G",
+    "slug": "smartphone-movistar-galaxy-s24-5g",
+    "category": "movistar",
+    "brand": "Samsung",
+    "seller": "seller-001",
+    "provider": "Movistar Perú",
+    "price": 3299,
+    "listPrice": 3599,
+    "currency": "PEN",
+    "stock": 15,
+    "rating": 4.8,
+    "reviews": 180,
+    "featured": true,
+    "bestSeller": true,
+    "onSale": true,
+    "images": [
+      "/img/products/prod-033-0.svg"
+    ],
+    "shortDescription": "Galaxy S24 con IA, 256GB, 5G.",
+    "description": "Samsung Galaxy S24 5G con Galaxy AI, pantalla Dynamic AMOLED y chip Movistar incluido.",
+    "specs": [
+      {
+        "label": "Pantalla",
+        "value": "6.2\" Dynamic AMOLED 2X"
+      },
+      {
+        "label": "Procesador",
+        "value": "Exynos 2400"
+      },
+      {
+        "label": "RAM",
+        "value": "8 GB"
+      },
+      {
+        "label": "Almacenamiento",
+        "value": "256 GB"
+      },
+      {
+        "label": "Batería",
+        "value": "4000 mAh"
+      },
+      {
+        "label": "Conectividad",
+        "value": "5G, Wi-Fi 6E"
+      },
+      {
+        "label": "Sistema operativo",
+        "value": "Android 14"
+      },
+      {
+        "label": "Garantía",
+        "value": "12 meses"
+      }
+    ]
+  },
+  {
+    "id": "prod-034",
+    "name": "Smartphone Movistar Redmi Note 13",
+    "slug": "smartphone-movistar-redmi-note-13",
+    "category": "movistar",
+    "brand": "Xiaomi",
+    "seller": "seller-001",
+    "provider": "Movistar Perú",
+    "price": 899,
+    "listPrice": 1049,
+    "currency": "PEN",
+    "stock": 40,
+    "rating": 4.4,
+    "reviews": 120,
+    "featured": false,
+    "bestSeller": true,
+    "onSale": true,
+    "images": [
+      "/img/products/prod-034-0.svg"
+    ],
+    "shortDescription": "AMOLED 120Hz, 256GB, cámara 108MP.",
+    "description": "Redmi Note 13 con pantalla AMOLED de 120Hz, cámara de 108MP y chip Movistar.",
+    "specs": [
+      {
+        "label": "Pantalla",
+        "value": "6.67\" AMOLED 120Hz"
+      },
+      {
+        "label": "Procesador",
+        "value": "Snapdragon 685"
+      },
+      {
+        "label": "RAM",
+        "value": "8 GB"
+      },
+      {
+        "label": "Almacenamiento",
+        "value": "256 GB"
+      },
+      {
+        "label": "Cámara principal",
+        "value": "108 MP"
+      },
+      {
+        "label": "Batería",
+        "value": "5000 mAh"
+      },
+      {
+        "label": "Conectividad",
+        "value": "4G, Wi-Fi 5"
+      },
+      {
+        "label": "Garantía",
+        "value": "12 meses"
+      }
+    ]
+  },
+  {
+    "id": "prod-035",
+    "name": "Router Movistar Wi-Fi 6 Mesh",
+    "slug": "router-movistar-wi-fi-6-mesh",
+    "category": "movistar",
+    "brand": "Movistar",
+    "seller": "seller-001",
+    "provider": "Movistar Perú",
+    "price": 299,
+    "listPrice": 349,
+    "currency": "PEN",
+    "stock": 60,
+    "rating": 4.2,
+    "reviews": 44,
+    "featured": false,
+    "bestSeller": false,
+    "onSale": true,
+    "images": [
+      "/img/products/prod-035-0.svg"
+    ],
+    "shortDescription": "Cobertura mesh para todo el hogar.",
+    "description": "Router Movistar Wi-Fi 6 con tecnología mesh para cobertura total y conexión estable en toda la casa.",
+    "specs": [
+      {
+        "label": "Estándar",
+        "value": "Wi-Fi 6 (802.11ax)"
+      },
+      {
+        "label": "Velocidad",
+        "value": "Hasta 3000 Mbps"
+      },
+      {
+        "label": "Bandas",
+        "value": "Doble banda"
+      },
+      {
+        "label": "Puertos",
+        "value": "3x Gigabit Ethernet"
+      },
+      {
+        "label": "Cobertura",
+        "value": "Hasta 200 m²"
+      },
+      {
+        "label": "Garantía",
+        "value": "12 meses"
+      }
+    ]
+  },
+  {
+    "id": "prod-036",
+    "name": "Chip Movistar Prepago + Recarga S/20",
+    "slug": "chip-movistar-prepago-recarga-s-20",
+    "category": "movistar",
+    "brand": "Movistar",
+    "seller": "seller-001",
+    "provider": "Movistar Perú",
+    "price": 20,
+    "listPrice": 25,
+    "currency": "PEN",
+    "stock": 999,
+    "rating": 4,
+    "reviews": 60,
+    "featured": false,
+    "bestSeller": false,
+    "onSale": true,
+    "images": [
+      "/img/products/prod-036-0.svg"
+    ],
+    "shortDescription": "Chip nuevo con saldo inicial incluido.",
+    "description": "Chip prepago Movistar con S/20 de saldo inicial y bono de datos de bienvenida.",
+    "specs": [
+      {
+        "label": "Tipo",
+        "value": "Prepago"
+      },
+      {
+        "label": "Saldo inicial",
+        "value": "S/ 20"
+      },
+      {
+        "label": "Bono",
+        "value": "Datos de bienvenida"
+      },
+      {
+        "label": "Formato",
+        "value": "Triple SIM"
+      },
+      {
+        "label": "Red",
+        "value": "4G/5G"
+      },
+      {
+        "label": "Garantía",
+        "value": "—"
+      }
+    ]
+  },
+  {
+    "id": "prod-037",
+    "name": "Powerbank Movistar 20000mAh",
+    "slug": "powerbank-movistar-20000mah",
+    "category": "movistar",
+    "brand": "Movistar",
+    "seller": "seller-001",
+    "provider": "Movistar Perú",
+    "price": 119,
+    "listPrice": 149,
+    "currency": "PEN",
+    "stock": 85,
+    "rating": 4.3,
+    "reviews": 51,
+    "featured": false,
+    "bestSeller": false,
+    "onSale": true,
+    "images": [
+      "/img/products/prod-037-0.svg"
+    ],
+    "shortDescription": "Carga rápida 22.5W, 2 salidas USB.",
+    "description": "Batería portátil Movistar de 20000mAh con carga rápida 22.5W y dos salidas para cargar varios equipos.",
+    "specs": [
+      {
+        "label": "Capacidad",
+        "value": "20000 mAh"
+      },
+      {
+        "label": "Carga rápida",
+        "value": "22.5W PD/QC"
+      },
+      {
+        "label": "Salidas",
+        "value": "2x USB-A + 1 USB-C"
+      },
+      {
+        "label": "Pantalla",
+        "value": "Indicador LED"
+      },
+      {
+        "label": "Peso",
+        "value": "390 g"
+      },
+      {
+        "label": "Garantía",
+        "value": "6 meses"
+      }
+    ]
+  },
+  {
+    "id": "prod-038",
+    "name": "MacBook Air M3 13\"",
+    "slug": "macbook-air-m3-13",
+    "category": "tecnologia",
+    "brand": "Apple",
+    "seller": "seller-002",
+    "provider": "TechStore SAC",
+    "price": 5499,
+    "listPrice": 5899,
+    "currency": "PEN",
+    "stock": 10,
+    "rating": 4.9,
+    "reviews": 95,
+    "featured": true,
+    "bestSeller": true,
+    "onSale": true,
+    "images": [
+      "/img/products/prod-038-0.svg"
+    ],
+    "shortDescription": "Chip M3, 8GB, 256GB SSD.",
+    "description": "MacBook Air con chip M3, pantalla Liquid Retina y hasta 18 horas de batería.",
+    "specs": [
+      {
+        "label": "Pantalla",
+        "value": "13.6\" Liquid Retina"
+      },
+      {
+        "label": "Procesador",
+        "value": "Apple M3"
+      },
+      {
+        "label": "RAM",
+        "value": "8 GB"
+      },
+      {
+        "label": "Almacenamiento",
+        "value": "256 GB SSD"
+      },
+      {
+        "label": "Batería",
+        "value": "Hasta 18 h"
+      },
+      {
+        "label": "Peso",
+        "value": "1.24 kg"
+      },
+      {
+        "label": "Sistema operativo",
+        "value": "macOS"
+      },
+      {
+        "label": "Garantía",
+        "value": "12 meses"
+      }
+    ]
+  },
+  {
+    "id": "prod-039",
+    "name": "Monitor HP 27\" IPS 100Hz",
+    "slug": "monitor-hp-27-ips-100hz",
+    "category": "tecnologia",
+    "brand": "HP",
+    "seller": "seller-002",
+    "provider": "TechStore SAC",
+    "price": 749,
+    "listPrice": 899,
+    "currency": "PEN",
+    "stock": 25,
+    "rating": 4.5,
+    "reviews": 60,
+    "featured": false,
+    "bestSeller": true,
+    "onSale": true,
+    "images": [
+      "/img/products/prod-039-0.svg"
+    ],
+    "shortDescription": "Full HD, IPS, 100Hz, sin bordes.",
+    "description": "Monitor HP de 27 pulgadas Full HD IPS con 100Hz, ideal para trabajo y entretenimiento.",
+    "specs": [
+      {
+        "label": "Tamaño",
+        "value": "27 pulgadas"
+      },
+      {
+        "label": "Resolución",
+        "value": "1920x1080 Full HD"
+      },
+      {
+        "label": "Panel",
+        "value": "IPS"
+      },
+      {
+        "label": "Frecuencia",
+        "value": "100 Hz"
+      },
+      {
+        "label": "Puertos",
+        "value": "HDMI + VGA"
+      },
+      {
+        "label": "Garantía",
+        "value": "12 meses"
+      }
+    ]
+  },
+  {
+    "id": "prod-040",
+    "name": "Teclado y Mouse Logitech MK540",
+    "slug": "teclado-y-mouse-logitech-mk540",
+    "category": "tecnologia",
+    "brand": "Logitech",
+    "seller": "seller-002",
+    "provider": "TechStore SAC",
+    "price": 189,
+    "listPrice": 229,
+    "currency": "PEN",
+    "stock": 70,
+    "rating": 4.6,
+    "reviews": 88,
+    "featured": false,
+    "bestSeller": false,
+    "onSale": true,
+    "images": [
+      "/img/products/prod-040-0.svg"
+    ],
+    "shortDescription": "Combo inalámbrico silencioso.",
+    "description": "Combo inalámbrico Logitech MK540 con teclado de tamaño completo y mouse ergonómico.",
+    "specs": [
+      {
+        "label": "Conexión",
+        "value": "Inalámbrica 2.4GHz (USB)"
+      },
+      {
+        "label": "Teclado",
+        "value": "Tamaño completo + teclas rápidas"
+      },
+      {
+        "label": "Mouse",
+        "value": "1000 DPI ergonómico"
+      },
+      {
+        "label": "Batería teclado",
+        "value": "Hasta 36 meses"
+      },
+      {
+        "label": "Batería mouse",
+        "value": "Hasta 18 meses"
+      },
+      {
+        "label": "Garantía",
+        "value": "12 meses"
+      }
+    ]
+  },
+  {
+    "id": "prod-041",
+    "name": "Audífonos Sony WH-1000XM5",
+    "slug": "audifonos-sony-wh-1000xm5",
+    "category": "tecnologia",
+    "brand": "Sony",
+    "seller": "seller-002",
+    "provider": "TechStore SAC",
+    "price": 1299,
+    "listPrice": 1499,
+    "currency": "PEN",
+    "stock": 20,
+    "rating": 4.8,
+    "reviews": 140,
+    "featured": true,
+    "bestSeller": false,
+    "onSale": true,
+    "images": [
+      "/img/products/prod-041-0.svg"
+    ],
+    "shortDescription": "Cancelación de ruido líder, 30h.",
+    "description": "Audífonos over-ear Sony WH-1000XM5 con la mejor cancelación de ruido y 30h de batería.",
+    "specs": [
+      {
+        "label": "Tipo",
+        "value": "Over-ear inalámbricos"
+      },
+      {
+        "label": "Cancelación de ruido",
+        "value": "Adaptativa (ANC)"
+      },
+      {
+        "label": "Autonomía",
+        "value": "30 h"
+      },
+      {
+        "label": "Carga rápida",
+        "value": "3 min = 3 h"
+      },
+      {
+        "label": "Conectividad",
+        "value": "Bluetooth 5.2 + multipunto"
+      },
+      {
+        "label": "Garantía",
+        "value": "12 meses"
+      }
+    ]
+  },
+  {
+    "id": "prod-042",
+    "name": "SSD Kingston NV2 1TB NVMe",
+    "slug": "ssd-kingston-nv2-1tb-nvme",
+    "category": "tecnologia",
+    "brand": "Kingston",
+    "seller": "seller-002",
+    "provider": "TechStore SAC",
+    "price": 329,
+    "listPrice": 399,
+    "currency": "PEN",
+    "stock": 90,
+    "rating": 4.7,
+    "reviews": 102,
+    "featured": false,
+    "bestSeller": true,
+    "onSale": true,
+    "images": [
+      "/img/products/prod-042-0.svg"
+    ],
+    "shortDescription": "SSD M.2 PCIe 4.0, lectura 3500MB/s.",
+    "description": "Unidad SSD Kingston NV2 de 1TB M.2 NVMe PCIe 4.0 para acelerar tu PC o laptop.",
+    "specs": [
+      {
+        "label": "Capacidad",
+        "value": "1 TB"
+      },
+      {
+        "label": "Formato",
+        "value": "M.2 2280 NVMe"
+      },
+      {
+        "label": "Interfaz",
+        "value": "PCIe 4.0"
+      },
+      {
+        "label": "Lectura",
+        "value": "Hasta 3500 MB/s"
+      },
+      {
+        "label": "Escritura",
+        "value": "Hasta 2100 MB/s"
+      },
+      {
+        "label": "Garantía",
+        "value": "36 meses"
+      }
+    ]
+  },
+  {
+    "id": "prod-043",
+    "name": "Cámara de Seguridad Wi-Fi Tapo C200",
+    "slug": "camara-de-seguridad-wi-fi-tapo-c200",
+    "category": "tecnologia",
+    "brand": "TP-Link",
+    "seller": "seller-002",
+    "provider": "TechStore SAC",
+    "price": 109,
+    "listPrice": 139,
+    "currency": "PEN",
+    "stock": 110,
+    "rating": 4.4,
+    "reviews": 76,
+    "featured": false,
+    "bestSeller": false,
+    "onSale": true,
+    "images": [
+      "/img/products/prod-043-0.svg"
+    ],
+    "shortDescription": "1080p, visión nocturna, giro 360°.",
+    "description": "Cámara de seguridad Wi-Fi Tapo C200 con 1080p, visión nocturna y seguimiento de movimiento.",
+    "specs": [
+      {
+        "label": "Resolución",
+        "value": "1080p Full HD"
+      },
+      {
+        "label": "Visión nocturna",
+        "value": "Hasta 9 m"
+      },
+      {
+        "label": "Movimiento",
+        "value": "Giro 360° / inclinación"
+      },
+      {
+        "label": "Almacenamiento",
+        "value": "microSD hasta 256 GB"
+      },
+      {
+        "label": "App",
+        "value": "Tapo (Android/iOS)"
+      },
+      {
+        "label": "Garantía",
+        "value": "12 meses"
+      }
+    ]
+  },
+  {
+    "id": "prod-044",
+    "name": "Cargador Anker GaN 65W",
+    "slug": "cargador-anker-gan-65w",
+    "category": "tecnologia",
+    "brand": "Anker",
+    "seller": "seller-002",
+    "provider": "TechStore SAC",
+    "price": 129,
+    "listPrice": 159,
+    "currency": "PEN",
+    "stock": 130,
+    "rating": 4.7,
+    "reviews": 64,
+    "featured": false,
+    "bestSeller": false,
+    "onSale": true,
+    "images": [
+      "/img/products/prod-044-0.svg"
+    ],
+    "shortDescription": "USB-C 65W para laptop y móvil.",
+    "description": "Cargador Anker GaN de 65W con 2 puertos para cargar laptop, tablet y móvil a la vez.",
+    "specs": [
+      {
+        "label": "Potencia",
+        "value": "65 W"
+      },
+      {
+        "label": "Tecnología",
+        "value": "GaN II"
+      },
+      {
+        "label": "Puertos",
+        "value": "2x USB-C"
+      },
+      {
+        "label": "Compatibilidad",
+        "value": "Laptop, tablet, móvil"
+      },
+      {
+        "label": "Tamaño",
+        "value": "Compacto de viaje"
+      },
+      {
+        "label": "Garantía",
+        "value": "18 meses"
+      }
+    ]
+  },
+  {
+    "id": "prod-045",
+    "name": "Streaming Fire TV Stick 4K",
+    "slug": "streaming-fire-tv-stick-4k",
+    "category": "tecnologia",
+    "brand": "Amazon",
+    "seller": "seller-002",
+    "provider": "TechStore SAC",
+    "price": 229,
+    "listPrice": 279,
+    "currency": "PEN",
+    "stock": 95,
+    "rating": 4.6,
+    "reviews": 150,
+    "featured": true,
+    "bestSeller": false,
+    "onSale": true,
+    "images": [
+      "/img/products/prod-045-0.svg"
+    ],
+    "shortDescription": "Convierte tu TV en Smart TV 4K.",
+    "description": "Fire TV Stick 4K con Alexa por voz para transmitir en 4K Ultra HD desde tus apps favoritas.",
+    "specs": [
+      {
+        "label": "Resolución",
+        "value": "4K Ultra HD"
+      },
+      {
+        "label": "HDR",
+        "value": "Dolby Vision / HDR10+"
+      },
+      {
+        "label": "Control",
+        "value": "Por voz con Alexa"
+      },
+      {
+        "label": "Conexión",
+        "value": "HDMI + Wi-Fi 6"
+      },
+      {
+        "label": "Apps",
+        "value": "Netflix, Prime, Disney+, etc."
+      },
+      {
+        "label": "Garantía",
+        "value": "12 meses"
+      }
+    ]
+  },
+  {
+    "id": "prod-046",
+    "name": "Lavadora LG 15kg Carga Frontal",
+    "slug": "lavadora-lg-15kg-carga-frontal",
+    "category": "hogar",
+    "brand": "LG",
+    "seller": "seller-003",
+    "provider": "Hogar Total EIRL",
+    "price": 1899,
+    "listPrice": 2199,
+    "currency": "PEN",
+    "stock": 12,
+    "rating": 4.6,
+    "reviews": 70,
+    "featured": true,
+    "bestSeller": true,
+    "onSale": true,
+    "images": [
+      "/img/products/prod-046-0.svg"
+    ],
+    "shortDescription": "15kg, AI DD, vapor higienizante.",
+    "description": "Lavadora LG de carga frontal 15kg con tecnología AI DD y vapor para un lavado más cuidadoso.",
+    "specs": [
+      {
+        "label": "Capacidad",
+        "value": "15 kg"
+      },
+      {
+        "label": "Tipo",
+        "value": "Carga frontal"
+      },
+      {
+        "label": "Tecnología",
+        "value": "AI DD + vapor"
+      },
+      {
+        "label": "Eficiencia",
+        "value": "Clase A"
+      },
+      {
+        "label": "Motor",
+        "value": "Inverter Direct Drive"
+      },
+      {
+        "label": "Garantía",
+        "value": "12 meses (10 años motor)"
+      }
+    ]
+  },
+  {
+    "id": "prod-047",
+    "name": "Freidora de Aire Philips 4.1L",
+    "slug": "freidora-de-aire-philips-4-1l",
+    "category": "hogar",
+    "brand": "Philips",
+    "seller": "seller-003",
+    "provider": "Hogar Total EIRL",
+    "price": 399,
+    "listPrice": 499,
+    "currency": "PEN",
+    "stock": 50,
+    "rating": 4.7,
+    "reviews": 130,
+    "featured": false,
+    "bestSeller": true,
+    "onSale": true,
+    "images": [
+      "/img/products/prod-047-0.svg"
+    ],
+    "shortDescription": "Air Fryer sin aceite, 4.1 litros.",
+    "description": "Freidora de aire Philips de 4.1L con tecnología Rapid Air para frituras sin aceite.",
+    "specs": [
+      {
+        "label": "Capacidad",
+        "value": "4.1 litros"
+      },
+      {
+        "label": "Potencia",
+        "value": "1400 W"
+      },
+      {
+        "label": "Tecnología",
+        "value": "Rapid Air"
+      },
+      {
+        "label": "Temperatura",
+        "value": "Hasta 200 °C"
+      },
+      {
+        "label": "Material cesta",
+        "value": "Antiadherente"
+      },
+      {
+        "label": "Garantía",
+        "value": "12 meses"
+      }
+    ]
+  },
+  {
+    "id": "prod-048",
+    "name": "Microondas Bosch 25L",
+    "slug": "microondas-bosch-25l",
+    "category": "hogar",
+    "brand": "Bosch",
+    "seller": "seller-003",
+    "provider": "Hogar Total EIRL",
+    "price": 549,
+    "listPrice": 649,
+    "currency": "PEN",
+    "stock": 30,
+    "rating": 4.5,
+    "reviews": 55,
+    "featured": false,
+    "bestSeller": false,
+    "onSale": true,
+    "images": [
+      "/img/products/prod-048-0.svg"
+    ],
+    "shortDescription": "25 litros, grill, 900W.",
+    "description": "Microondas Bosch de 25 litros con función grill y 900W de potencia.",
+    "specs": [
+      {
+        "label": "Capacidad",
+        "value": "25 litros"
+      },
+      {
+        "label": "Potencia",
+        "value": "900 W"
+      },
+      {
+        "label": "Funciones",
+        "value": "Microondas + grill"
+      },
+      {
+        "label": "Niveles",
+        "value": "5 de potencia"
+      },
+      {
+        "label": "Panel",
+        "value": "Digital táctil"
+      },
+      {
+        "label": "Garantía",
+        "value": "12 meses"
+      }
+    ]
+  },
+  {
+    "id": "prod-049",
+    "name": "Aspiradora Dyson V8 Inalámbrica",
+    "slug": "aspiradora-dyson-v8-inalambrica",
+    "category": "hogar",
+    "brand": "Dyson",
+    "seller": "seller-003",
+    "provider": "Hogar Total EIRL",
+    "price": 1699,
+    "listPrice": 1999,
+    "currency": "PEN",
+    "stock": 15,
+    "rating": 4.8,
+    "reviews": 90,
+    "featured": true,
+    "bestSeller": false,
+    "onSale": true,
+    "images": [
+      "/img/products/prod-049-0.svg"
+    ],
+    "shortDescription": "Inalámbrica, hasta 40 min.",
+    "description": "Aspiradora Dyson V8 inalámbrica con potente succión y hasta 40 minutos de autonomía.",
+    "specs": [
+      {
+        "label": "Tipo",
+        "value": "Vertical inalámbrica"
+      },
+      {
+        "label": "Autonomía",
+        "value": "Hasta 40 min"
+      },
+      {
+        "label": "Filtración",
+        "value": "HEPA sellada"
+      },
+      {
+        "label": "Capacidad",
+        "value": "0.54 L"
+      },
+      {
+        "label": "Accesorios",
+        "value": "Múltiples cabezales"
+      },
+      {
+        "label": "Garantía",
+        "value": "12 meses"
+      }
+    ]
+  },
+  {
+    "id": "prod-050",
+    "name": "Juego de Ollas T-fal 7 piezas",
+    "slug": "juego-de-ollas-t-fal-7-piezas",
+    "category": "hogar",
+    "brand": "T-fal",
+    "seller": "seller-003",
+    "provider": "Hogar Total EIRL",
+    "price": 349,
+    "listPrice": 429,
+    "currency": "PEN",
+    "stock": 45,
+    "rating": 4.4,
+    "reviews": 48,
+    "featured": false,
+    "bestSeller": false,
+    "onSale": true,
+    "images": [
+      "/img/products/prod-050-0.svg"
+    ],
+    "shortDescription": "Antiadherentes con indicador Thermo-Spot.",
+    "description": "Set de 7 piezas T-fal con recubrimiento antiadherente e indicador de temperatura Thermo-Spot.",
+    "specs": [
+      {
+        "label": "Piezas",
+        "value": "7"
+      },
+      {
+        "label": "Material",
+        "value": "Aluminio antiadherente"
+      },
+      {
+        "label": "Indicador",
+        "value": "Thermo-Spot"
+      },
+      {
+        "label": "Aptas para",
+        "value": "Gas y eléctrica"
+      },
+      {
+        "label": "Lavado",
+        "value": "Apto lavavajillas"
+      },
+      {
+        "label": "Garantía",
+        "value": "12 meses"
+      }
+    ]
+  },
+  {
+    "id": "prod-051",
+    "name": "Juego de Sábanas King 400 Hilos",
+    "slug": "juego-de-sabanas-king-400-hilos",
+    "category": "hogar",
+    "brand": "Record",
+    "seller": "seller-003",
+    "provider": "Hogar Total EIRL",
+    "price": 149,
+    "listPrice": 199,
+    "currency": "PEN",
+    "stock": 80,
+    "rating": 4.3,
+    "reviews": 37,
+    "featured": false,
+    "bestSeller": false,
+    "onSale": true,
+    "images": [
+      "/img/products/prod-051-0.svg"
+    ],
+    "shortDescription": "Algodón 400 hilos, tamaño King.",
+    "description": "Juego de sábanas King de algodón 400 hilos: suave, fresco y de larga duración.",
+    "specs": [
+      {
+        "label": "Tamaño",
+        "value": "King"
+      },
+      {
+        "label": "Material",
+        "value": "100% algodón"
+      },
+      {
+        "label": "Densidad",
+        "value": "400 hilos"
+      },
+      {
+        "label": "Incluye",
+        "value": "1 sábana + funda + 2 fundas de almohada"
+      },
+      {
+        "label": "Cuidado",
+        "value": "Lavable en máquina"
+      },
+      {
+        "label": "Garantía",
+        "value": "30 días"
+      }
+    ]
+  },
+  {
+    "id": "prod-052",
+    "name": "Hervidor Eléctrico 1.7L",
+    "slug": "hervidor-electrico-1-7l",
+    "category": "hogar",
+    "brand": "Imaco",
+    "seller": "seller-003",
+    "provider": "Hogar Total EIRL",
+    "price": 79,
+    "listPrice": 99,
+    "currency": "PEN",
+    "stock": 120,
+    "rating": 4.2,
+    "reviews": 29,
+    "featured": false,
+    "bestSeller": false,
+    "onSale": true,
+    "images": [
+      "/img/products/prod-052-0.svg"
+    ],
+    "shortDescription": "Acero inoxidable, apagado automático.",
+    "description": "Hervidor eléctrico de 1.7L en acero inoxidable con apagado automático y protección anti-seco.",
+    "specs": [
+      {
+        "label": "Capacidad",
+        "value": "1.7 litros"
+      },
+      {
+        "label": "Potencia",
+        "value": "1500 W"
+      },
+      {
+        "label": "Material",
+        "value": "Acero inoxidable"
+      },
+      {
+        "label": "Seguridad",
+        "value": "Apagado automático"
+      },
+      {
+        "label": "Base",
+        "value": "Giratoria 360°"
+      },
+      {
+        "label": "Garantía",
+        "value": "12 meses"
+      }
+    ]
+  },
+  {
+    "id": "prod-053",
+    "name": "Plancha a Vapor Philips 2400W",
+    "slug": "plancha-a-vapor-philips-2400w",
+    "category": "hogar",
+    "brand": "Philips",
+    "seller": "seller-003",
+    "provider": "Hogar Total EIRL",
+    "price": 139,
+    "listPrice": 169,
+    "currency": "PEN",
+    "stock": 90,
+    "rating": 4.4,
+    "reviews": 42,
+    "featured": false,
+    "bestSeller": false,
+    "onSale": true,
+    "images": [
+      "/img/products/prod-053-0.svg"
+    ],
+    "shortDescription": "Golpe de vapor y suela antiadherente.",
+    "description": "Plancha a vapor Philips de 2400W con golpe de vapor potente y suela antiadherente.",
+    "specs": [
+      {
+        "label": "Potencia",
+        "value": "2400 W"
+      },
+      {
+        "label": "Golpe de vapor",
+        "value": "150 g/min"
+      },
+      {
+        "label": "Suela",
+        "value": "Antiadherente"
+      },
+      {
+        "label": "Depósito",
+        "value": "300 ml"
+      },
+      {
+        "label": "Anti-cal",
+        "value": "Sí"
+      },
+      {
+        "label": "Garantía",
+        "value": "12 meses"
+      }
+    ]
+  },
+  {
+    "id": "prod-054",
+    "name": "Zapatillas Nike Revolution 7",
+    "slug": "zapatillas-nike-revolution-7",
+    "category": "deportes",
+    "brand": "Nike",
+    "seller": "seller-003",
+    "provider": "Hogar Total EIRL",
+    "price": 299,
+    "listPrice": 349,
+    "currency": "PEN",
+    "stock": 70,
+    "rating": 4.6,
+    "reviews": 110,
+    "featured": true,
+    "bestSeller": true,
+    "onSale": true,
+    "images": [
+      "/img/products/prod-054-0.svg"
+    ],
+    "shortDescription": "Running cómodas y ligeras.",
+    "description": "Zapatillas Nike Revolution 7 para running con amortiguación suave y buen agarre.",
+    "specs": [
+      {
+        "label": "Tipo",
+        "value": "Running"
+      },
+      {
+        "label": "Amortiguación",
+        "value": "Espuma suave"
+      },
+      {
+        "label": "Material superior",
+        "value": "Malla transpirable"
+      },
+      {
+        "label": "Suela",
+        "value": "Caucho"
+      },
+      {
+        "label": "Tallas",
+        "value": "38 a 45"
+      },
+      {
+        "label": "Garantía",
+        "value": "Cambio por talla (30 días)"
+      }
+    ]
+  },
+  {
+    "id": "prod-055",
+    "name": "Pelota de Básquet Wilson #7",
+    "slug": "pelota-de-basquet-wilson-7",
+    "category": "deportes",
+    "brand": "Wilson",
+    "seller": "seller-003",
+    "provider": "Hogar Total EIRL",
+    "price": 129,
+    "listPrice": 159,
+    "currency": "PEN",
+    "stock": 100,
+    "rating": 4.5,
+    "reviews": 54,
+    "featured": false,
+    "bestSeller": false,
+    "onSale": true,
+    "images": [
+      "/img/products/prod-055-0.svg"
+    ],
+    "shortDescription": "Tamaño oficial, interior/exterior.",
+    "description": "Pelota de básquet Wilson tamaño 7 oficial, apta para interior y exterior.",
+    "specs": [
+      {
+        "label": "Deporte",
+        "value": "Básquet"
+      },
+      {
+        "label": "Tamaño",
+        "value": "7 (oficial)"
+      },
+      {
+        "label": "Material",
+        "value": "Caucho resistente"
+      },
+      {
+        "label": "Uso",
+        "value": "Interior / exterior"
+      },
+      {
+        "label": "Inflado",
+        "value": "Con aguja"
+      },
+      {
+        "label": "Garantía",
+        "value": "30 días"
+      }
+    ]
+  },
+  {
+    "id": "prod-056",
+    "name": "Bicicleta Montañera Aro 29",
+    "slug": "bicicleta-montanera-aro-29",
+    "category": "deportes",
+    "brand": "Trek",
+    "seller": "seller-003",
+    "provider": "Hogar Total EIRL",
+    "price": 1499,
+    "listPrice": 1799,
+    "currency": "PEN",
+    "stock": 18,
+    "rating": 4.7,
+    "reviews": 61,
+    "featured": true,
+    "bestSeller": false,
+    "onSale": true,
+    "images": [
+      "/img/products/prod-056-0.svg"
+    ],
+    "shortDescription": "Aro 29, 21 velocidades, frenos a disco.",
+    "description": "Bicicleta montañera aro 29 con cuadro de aluminio, 21 velocidades y frenos a disco.",
+    "specs": [
+      {
+        "label": "Aro",
+        "value": "29 pulgadas"
+      },
+      {
+        "label": "Cuadro",
+        "value": "Aluminio"
+      },
+      {
+        "label": "Velocidades",
+        "value": "21"
+      },
+      {
+        "label": "Frenos",
+        "value": "A disco"
+      },
+      {
+        "label": "Suspensión",
+        "value": "Delantera"
+      },
+      {
+        "label": "Garantía",
+        "value": "12 meses"
+      }
+    ]
+  },
+  {
+    "id": "prod-057",
+    "name": "Mancuernas Ajustables 20kg (par)",
+    "slug": "mancuernas-ajustables-20kg-par",
+    "category": "deportes",
+    "brand": "Under Armour",
+    "seller": "seller-003",
+    "provider": "Hogar Total EIRL",
+    "price": 399,
+    "listPrice": 499,
+    "currency": "PEN",
+    "stock": 40,
+    "rating": 4.6,
+    "reviews": 48,
+    "featured": false,
+    "bestSeller": true,
+    "onSale": true,
+    "images": [
+      "/img/products/prod-057-0.svg"
+    ],
+    "shortDescription": "Par ajustable hasta 20kg c/u.",
+    "description": "Par de mancuernas ajustables hasta 20kg cada una, ideales para entrenamiento en casa.",
+    "specs": [
+      {
+        "label": "Peso máximo",
+        "value": "20 kg por mancuerna"
+      },
+      {
+        "label": "Ajuste",
+        "value": "Discos intercambiables"
+      },
+      {
+        "label": "Material",
+        "value": "Acero + recubrimiento"
+      },
+      {
+        "label": "Uso",
+        "value": "Entrenamiento en casa"
+      },
+      {
+        "label": "Incluye",
+        "value": "Par de mancuernas"
+      },
+      {
+        "label": "Garantía",
+        "value": "12 meses"
+      }
+    ]
+  },
+  {
+    "id": "prod-058",
+    "name": "Colchoneta de Yoga 8mm",
+    "slug": "colchoneta-de-yoga-8mm",
+    "category": "deportes",
+    "brand": "Decathlon",
+    "seller": "seller-003",
+    "provider": "Hogar Total EIRL",
+    "price": 89,
+    "listPrice": 119,
+    "currency": "PEN",
+    "stock": 150,
+    "rating": 4.4,
+    "reviews": 72,
+    "featured": false,
+    "bestSeller": false,
+    "onSale": true,
+    "images": [
+      "/img/products/prod-058-0.svg"
+    ],
+    "shortDescription": "Antideslizante, 8mm de grosor.",
+    "description": "Colchoneta de yoga de 8mm antideslizante y acolchada para yoga, pilates y estiramientos.",
+    "specs": [
+      {
+        "label": "Grosor",
+        "value": "8 mm"
+      },
+      {
+        "label": "Material",
+        "value": "NBR antideslizante"
+      },
+      {
+        "label": "Medidas",
+        "value": "183 x 61 cm"
+      },
+      {
+        "label": "Peso",
+        "value": "900 g"
+      },
+      {
+        "label": "Incluye",
+        "value": "Correa de transporte"
+      },
+      {
+        "label": "Garantía",
+        "value": "30 días"
+      }
+    ]
+  },
+  {
+    "id": "prod-059",
+    "name": "Mochila Deportiva Puma 25L",
+    "slug": "mochila-deportiva-puma-25l",
+    "category": "deportes",
+    "brand": "Puma",
+    "seller": "seller-003",
+    "provider": "Hogar Total EIRL",
+    "price": 149,
+    "listPrice": 189,
+    "currency": "PEN",
+    "stock": 90,
+    "rating": 4.3,
+    "reviews": 38,
+    "featured": false,
+    "bestSeller": false,
+    "onSale": true,
+    "images": [
+      "/img/products/prod-059-0.svg"
+    ],
+    "shortDescription": "25L, compartimento para laptop.",
+    "description": "Mochila deportiva Puma de 25L con compartimento acolchado para laptop y bolsillo para botella.",
+    "specs": [
+      {
+        "label": "Capacidad",
+        "value": "25 litros"
+      },
+      {
+        "label": "Compartimentos",
+        "value": "Principal + laptop + frontal"
+      },
+      {
+        "label": "Material",
+        "value": "Poliéster resistente"
+      },
+      {
+        "label": "Laptop",
+        "value": "Hasta 15.6\""
+      },
+      {
+        "label": "Uso",
+        "value": "Deporte / diario"
+      },
+      {
+        "label": "Garantía",
+        "value": "30 días"
+      }
+    ]
+  },
+  {
+    "id": "prod-060",
+    "name": "Reloj Deportivo Garmin Forerunner 55",
+    "slug": "reloj-deportivo-garmin-forerunner-55",
+    "category": "deportes",
+    "brand": "Garmin",
+    "seller": "seller-003",
+    "provider": "Hogar Total EIRL",
+    "price": 899,
+    "listPrice": 1049,
+    "currency": "PEN",
+    "stock": 25,
+    "rating": 4.7,
+    "reviews": 83,
+    "featured": true,
+    "bestSeller": false,
+    "onSale": true,
+    "images": [
+      "/img/products/prod-060-0.svg"
+    ],
+    "shortDescription": "GPS, planes de entrenamiento.",
+    "description": "Reloj Garmin Forerunner 55 con GPS, métricas de carrera y planes de entrenamiento adaptados.",
+    "specs": [
+      {
+        "label": "GPS",
+        "value": "Integrado"
+      },
+      {
+        "label": "Autonomía",
+        "value": "Hasta 2 semanas"
+      },
+      {
+        "label": "Sensores",
+        "value": "Ritmo cardíaco en muñeca"
+      },
+      {
+        "label": "Resistencia",
+        "value": "5 ATM"
+      },
+      {
+        "label": "Compatibilidad",
+        "value": "Android e iOS"
+      },
+      {
+        "label": "Garantía",
+        "value": "12 meses"
+      }
+    ]
+  },
+  {
+    "id": "prod-061",
+    "name": "Set de Guantes de Box + Vendas",
+    "slug": "set-de-guantes-de-box-vendas",
+    "category": "deportes",
+    "brand": "Everlast",
+    "seller": "seller-003",
+    "provider": "Hogar Total EIRL",
+    "price": 169,
+    "listPrice": 219,
+    "currency": "PEN",
+    "stock": 60,
+    "rating": 4.5,
+    "reviews": 41,
+    "featured": false,
+    "bestSeller": false,
+    "onSale": true,
+    "images": [
+      "/img/products/prod-061-0.svg"
+    ],
+    "shortDescription": "Guantes 12oz + vendas incluidas.",
+    "description": "Set Everlast con guantes de box de 12oz y vendas elásticas para entrenamiento.",
+    "specs": [
+      {
+        "label": "Peso",
+        "value": "12 oz"
+      },
+      {
+        "label": "Material",
+        "value": "Cuero sintético"
+      },
+      {
+        "label": "Incluye",
+        "value": "Par de guantes + vendas"
+      },
+      {
+        "label": "Cierre",
+        "value": "Velcro ajustable"
+      },
+      {
+        "label": "Uso",
+        "value": "Entrenamiento / sparring ligero"
+      },
+      {
+        "label": "Garantía",
+        "value": "30 días"
+      }
+    ]
+  },
+  {
+    "id": "prod-062",
+    "name": "LEGO City Estación de Policía",
+    "slug": "lego-city-estacion-de-policia",
+    "category": "juguetes",
+    "brand": "LEGO",
+    "seller": "seller-003",
+    "provider": "Hogar Total EIRL",
+    "price": 349,
+    "listPrice": 429,
+    "currency": "PEN",
+    "stock": 35,
+    "rating": 4.8,
+    "reviews": 90,
+    "featured": true,
+    "bestSeller": true,
+    "onSale": true,
+    "images": [
+      "/img/products/prod-062-0.svg"
+    ],
+    "shortDescription": "668 piezas, 6 minifiguras.",
+    "description": "Set LEGO City Estación de Policía con 668 piezas, vehículos y 6 minifiguras.",
+    "specs": [
+      {
+        "label": "Piezas",
+        "value": "668"
+      },
+      {
+        "label": "Edad recomendada",
+        "value": "6+ años"
+      },
+      {
+        "label": "Minifiguras",
+        "value": "6"
+      },
+      {
+        "label": "Tema",
+        "value": "LEGO City"
+      },
+      {
+        "label": "Incluye",
+        "value": "Vehículos y accesorios"
+      },
+      {
+        "label": "Garantía",
+        "value": "Reposición de piezas (30 días)"
+      }
+    ]
+  },
+  {
+    "id": "prod-063",
+    "name": "Barbie Casa de los Sueños",
+    "slug": "barbie-casa-de-los-suenos",
+    "category": "juguetes",
+    "brand": "Mattel",
+    "seller": "seller-003",
+    "provider": "Hogar Total EIRL",
+    "price": 599,
+    "listPrice": 749,
+    "currency": "PEN",
+    "stock": 20,
+    "rating": 4.7,
+    "reviews": 65,
+    "featured": true,
+    "bestSeller": false,
+    "onSale": true,
+    "images": [
+      "/img/products/prod-063-0.svg"
+    ],
+    "shortDescription": "3 pisos, 10 áreas, accesorios.",
+    "description": "Barbie Casa de los Sueños con 3 pisos, ascensor, piscina y más de 70 accesorios.",
+    "specs": [
+      {
+        "label": "Pisos",
+        "value": "3"
+      },
+      {
+        "label": "Áreas de juego",
+        "value": "10+"
+      },
+      {
+        "label": "Accesorios",
+        "value": "70+ piezas"
+      },
+      {
+        "label": "Edad recomendada",
+        "value": "3+ años"
+      },
+      {
+        "label": "Altura",
+        "value": "Más de 1 m"
+      },
+      {
+        "label": "Garantía",
+        "value": "30 días"
+      }
+    ]
+  },
+  {
+    "id": "prod-064",
+    "name": "Nerf Elite 2.0 Commander",
+    "slug": "nerf-elite-2-0-commander",
+    "category": "juguetes",
+    "brand": "Hasbro",
+    "seller": "seller-003",
+    "provider": "Hogar Total EIRL",
+    "price": 149,
+    "listPrice": 189,
+    "currency": "PEN",
+    "stock": 80,
+    "rating": 4.5,
+    "reviews": 58,
+    "featured": false,
+    "bestSeller": true,
+    "onSale": true,
+    "images": [
+      "/img/products/prod-064-0.svg"
+    ],
+    "shortDescription": "Lanzador con 6 dardos incluidos.",
+    "description": "Lanzador Nerf Elite 2.0 Commander con tambor rotatorio y 6 dardos oficiales.",
+    "specs": [
+      {
+        "label": "Capacidad",
+        "value": "6 dardos"
+      },
+      {
+        "label": "Alcance",
+        "value": "Hasta 27 m"
+      },
+      {
+        "label": "Edad recomendada",
+        "value": "8+ años"
+      },
+      {
+        "label": "Incluye",
+        "value": "6 dardos Elite"
+      },
+      {
+        "label": "Compatibilidad",
+        "value": "Dardos Nerf Elite"
+      },
+      {
+        "label": "Garantía",
+        "value": "30 días"
+      }
+    ]
+  },
+  {
+    "id": "prod-065",
+    "name": "Fisher-Price Mesa de Aprendizaje",
+    "slug": "fisher-price-mesa-de-aprendizaje",
+    "category": "juguetes",
+    "brand": "Fisher-Price",
+    "seller": "seller-003",
+    "provider": "Hogar Total EIRL",
+    "price": 169,
+    "listPrice": 209,
+    "currency": "PEN",
+    "stock": 55,
+    "rating": 4.6,
+    "reviews": 44,
+    "featured": false,
+    "bestSeller": false,
+    "onSale": true,
+    "images": [
+      "/img/products/prod-065-0.svg"
+    ],
+    "shortDescription": "Luces, sonidos y bilingüe.",
+    "description": "Mesa de aprendizaje Fisher-Price bilingüe con luces, música y actividades para bebés.",
+    "specs": [
+      {
+        "label": "Edad recomendada",
+        "value": "6-36 meses"
+      },
+      {
+        "label": "Idiomas",
+        "value": "Español e inglés"
+      },
+      {
+        "label": "Modos",
+        "value": "Música y aprendizaje"
+      },
+      {
+        "label": "Patas",
+        "value": "Desmontables"
+      },
+      {
+        "label": "Pilas",
+        "value": "Incluidas"
+      },
+      {
+        "label": "Garantía",
+        "value": "30 días"
+      }
+    ]
+  },
+  {
+    "id": "prod-066",
+    "name": "Cubo Rubik 3x3 Original",
+    "slug": "cubo-rubik-3x3-original",
+    "category": "juguetes",
+    "brand": "Rubik's",
+    "seller": "seller-003",
+    "provider": "Hogar Total EIRL",
+    "price": 49,
+    "listPrice": 69,
+    "currency": "PEN",
+    "stock": 200,
+    "rating": 4.7,
+    "reviews": 120,
+    "featured": false,
+    "bestSeller": false,
+    "onSale": true,
+    "images": [
+      "/img/products/prod-066-0.svg"
+    ],
+    "shortDescription": "Giro suave, el clásico original.",
+    "description": "Cubo Rubik 3x3 original con mecanismo de giro suave para resolver el rompecabezas clásico.",
+    "specs": [
+      {
+        "label": "Tipo",
+        "value": "3x3"
+      },
+      {
+        "label": "Edad recomendada",
+        "value": "8+ años"
+      },
+      {
+        "label": "Mecanismo",
+        "value": "Giro suave"
+      },
+      {
+        "label": "Material",
+        "value": "Plástico ABS"
+      },
+      {
+        "label": "Incluye",
+        "value": "Guía de resolución"
+      },
+      {
+        "label": "Garantía",
+        "value": "30 días"
+      }
+    ]
+  },
+  {
+    "id": "prod-067",
+    "name": "Hot Wheels Pista Super Loop",
+    "slug": "hot-wheels-pista-super-loop",
+    "category": "juguetes",
+    "brand": "Hot Wheels",
+    "seller": "seller-003",
+    "provider": "Hogar Total EIRL",
+    "price": 199,
+    "listPrice": 249,
+    "currency": "PEN",
+    "stock": 70,
+    "rating": 4.5,
+    "reviews": 61,
+    "featured": true,
+    "bestSeller": false,
+    "onSale": true,
+    "images": [
+      "/img/products/prod-067-0.svg"
+    ],
+    "shortDescription": "Pista con loop y 2 autos.",
+    "description": "Pista Hot Wheels Super Loop con lanzador motorizado y 2 autos incluidos.",
+    "specs": [
+      {
+        "label": "Incluye",
+        "value": "Pista + 2 autos"
+      },
+      {
+        "label": "Edad recomendada",
+        "value": "5+ años"
+      },
+      {
+        "label": "Tipo",
+        "value": "Pista motorizada"
+      },
+      {
+        "label": "Escala autos",
+        "value": "1:64"
+      },
+      {
+        "label": "Expandible",
+        "value": "Compatible con otras pistas"
+      },
+      {
+        "label": "Garantía",
+        "value": "30 días"
+      }
+    ]
+  },
+  {
+    "id": "prod-068",
+    "name": "Play-Doh Set 20 Botes",
+    "slug": "play-doh-set-20-botes",
+    "category": "juguetes",
+    "brand": "Play-Doh",
+    "seller": "seller-003",
+    "provider": "Hogar Total EIRL",
+    "price": 79,
+    "listPrice": 99,
+    "currency": "PEN",
+    "stock": 140,
+    "rating": 4.6,
+    "reviews": 73,
+    "featured": false,
+    "bestSeller": false,
+    "onSale": true,
+    "images": [
+      "/img/products/prod-068-0.svg"
+    ],
+    "shortDescription": "20 colores de masa no tóxica.",
+    "description": "Set Play-Doh con 20 botes de masa de modelar no tóxica en colores variados.",
+    "specs": [
+      {
+        "label": "Botes",
+        "value": "20"
+      },
+      {
+        "label": "Edad recomendada",
+        "value": "2+ años"
+      },
+      {
+        "label": "Material",
+        "value": "Masa no tóxica"
+      },
+      {
+        "label": "Peso por bote",
+        "value": "56 g"
+      },
+      {
+        "label": "Certificación",
+        "value": "Seguridad infantil"
+      },
+      {
+        "label": "Garantía",
+        "value": "—"
+      }
+    ]
+  },
+  {
+    "id": "prod-069",
+    "name": "Juego de Cartas UNO",
+    "slug": "juego-de-cartas-uno",
+    "category": "juguetes",
+    "brand": "UNO",
+    "seller": "seller-003",
+    "provider": "Hogar Total EIRL",
+    "price": 29,
+    "listPrice": 39,
+    "currency": "PEN",
+    "stock": 250,
+    "rating": 4.8,
+    "reviews": 180,
+    "featured": false,
+    "bestSeller": true,
+    "onSale": true,
+    "images": [
+      "/img/products/prod-069-0.svg"
+    ],
+    "shortDescription": "El clásico juego de cartas familiar.",
+    "description": "Juego de cartas UNO para toda la familia, de 2 a 10 jugadores.",
+    "specs": [
+      {
+        "label": "Jugadores",
+        "value": "2 a 10"
+      },
+      {
+        "label": "Edad recomendada",
+        "value": "7+ años"
+      },
+      {
+        "label": "Cartas",
+        "value": "112"
+      },
+      {
+        "label": "Duración",
+        "value": "15-30 min"
+      },
+      {
+        "label": "Incluye",
+        "value": "Reglas"
+      },
+      {
+        "label": "Garantía",
+        "value": "—"
+      }
+    ]
+  },
+  {
+    "id": "prod-070",
+    "name": "Rompecabezas de Madera 100 pzs",
+    "slug": "rompecabezas-de-madera-100-pzs",
+    "category": "juguetes",
+    "brand": "Melissa & Doug",
+    "seller": "seller-003",
+    "provider": "Hogar Total EIRL",
+    "price": 69,
+    "listPrice": 89,
+    "currency": "PEN",
+    "stock": 90,
+    "rating": 4.5,
+    "reviews": 36,
+    "featured": false,
+    "bestSeller": false,
+    "onSale": true,
+    "images": [
+      "/img/products/prod-070-0.svg"
+    ],
+    "shortDescription": "Madera, ilustración de animales.",
+    "description": "Rompecabezas de madera de 100 piezas con ilustración de animales para desarrollar concentración.",
+    "specs": [
+      {
+        "label": "Piezas",
+        "value": "100"
+      },
+      {
+        "label": "Edad recomendada",
+        "value": "5+ años"
+      },
+      {
+        "label": "Material",
+        "value": "Madera"
+      },
+      {
+        "label": "Tema",
+        "value": "Animales"
+      },
+      {
+        "label": "Beneficios",
+        "value": "Concentración y motricidad"
+      },
+      {
+        "label": "Garantía",
+        "value": "30 días"
+      }
+    ]
   }
 ]

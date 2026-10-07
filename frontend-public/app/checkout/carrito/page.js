@@ -4,7 +4,9 @@ import { useState } from "react";
 import Link from "next/link";
 import { useStore } from "@/context/StoreContext";
 import { findVoucherByCode } from "@/lib/data";
-import { formatCurrency } from "@/lib/format";
+import { formatCurrency, breakdownIgv } from "@/lib/format";
+
+const FREE_SHIPPING_MIN = 1000;
 
 export default function CartPage() {
   const {
@@ -23,8 +25,14 @@ export default function CartPage() {
   const [code, setCode] = useState("");
   const [error, setError] = useState("");
 
-  const shipping = subtotal > 0 ? (subtotal > 1000 ? 0 : 20) : 0;
+  const shipping = subtotal > 0 ? (subtotal > FREE_SHIPPING_MIN ? 0 : 20) : 0;
   const total = Math.max(0, subtotal - discount) + shipping;
+
+  // Desglose de IGV (18%): los precios ya incluyen IGV, así que separamos la
+  // base imponible y el impuesto a partir de los productos (sin el envío).
+  const taxedAmount = Math.max(0, subtotal - discount);
+  const { base: taxBase, igv } = breakdownIgv(taxedAmount);
+  const missingForFree = Math.max(0, FREE_SHIPPING_MIN - subtotal);
 
   const apply = (e) => {
     e.preventDefault();
@@ -171,14 +179,45 @@ export default function CartPage() {
                 <span>-{formatCurrency(discount)}</span>
               </div>
             )}
+
+            {/* Desglose de IGV (precios con IGV incluido) */}
+            <div className="space-y-1 border-t pt-3 text-sm text-movistar-gray-med">
+              <div className="flex justify-between">
+                <span>Base imponible</span>
+                <span>{formatCurrency(taxBase)}</span>
+              </div>
+              <div className="flex justify-between">
+                <span>IGV (18%)</span>
+                <span>{formatCurrency(igv)}</span>
+              </div>
+            </div>
+
             <div className="flex justify-between text-sm">
               <span>Envío</span>
               <span>{shipping === 0 ? "Gratis" : formatCurrency(shipping)}</span>
             </div>
+
+            {/* Aviso de envío gratis */}
+            <div className="rounded-lg bg-movistar-green/10 px-3 py-2 text-xs text-movistar-green">
+              {subtotal === 0 ? (
+                "🚚 Envío gratis en compras mayores a S/ 1,000."
+              ) : missingForFree > 0 ? (
+                <>
+                  🚚 Te faltan <b>{formatCurrency(missingForFree)}</b> para
+                  envío gratis.
+                </>
+              ) : (
+                "🎉 ¡Tu compra tiene envío gratis!"
+              )}
+            </div>
+
             <div className="flex justify-between border-t pt-3 text-lg font-bold text-movistar-navy">
               <span>Total</span>
               <span>{formatCurrency(total)}</span>
             </div>
+            <p className="text-[11px] text-movistar-gray-med">
+              IGV incluido en el precio de los productos.
+            </p>
             <Link href="/checkout/pago" className="btn-primary w-full">
               Continuar al pago
             </Link>

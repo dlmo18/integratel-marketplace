@@ -3,7 +3,8 @@ import ProductDetail from "./ProductDetail";
 import {
   getProductBySlug,
   getProducts,
-  getProductsByCategory
+  getProductsByCategory,
+  getReviewsByProduct
 } from "@/lib/data";
 
 export function generateStaticParams() {
@@ -23,5 +24,9 @@ export default function ProductPage({ params }) {
     .filter((p) => p.id !== product.id)
     .slice(0, 4);
 
-  return <ProductDetail product={product} related={related} />;
+  const reviews = getReviewsByProduct(product.id);
+
+  return (
+    <ProductDetail product={product} related={related} reviews={reviews} />
+  );
 }

@@ -1,8 +1,8 @@
 {
-  "name": "integratel-marketplace",
+  "name": "ecommerce",
   "version": "1.0.0",
   "private": true,
-  "description": "Marketplace piloto (estilo Movistar) - frontend-public, frontend-manager, backend NestJS (agente IA) y datos JSON demo",
+  "description": "Ecommerce (demo) - frontend-public, frontend-manager, backend NestJS (agente IA) y datos JSON demo. Basado en integratel-marketplace.",
   "scripts": {
     "install:all": "npm install && npm --prefix frontend-public install && npm --prefix frontend-manager install && npm --prefix backend install",
     "dev": "concurrently -n public,manager,backend -c blue,magenta,green \"npm --prefix frontend-public run dev\" \"npm --prefix frontend-manager run dev\" \"npm --prefix backend run dev\"",

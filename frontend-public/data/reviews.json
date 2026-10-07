@@ -1,0 +1,39 @@
+[
+  { "id": "rev-0001", "productId": "prod-001", "author": "Jorge C.", "rating": 5, "date": "2026-07-28", "title": "Excelente equipo", "comment": "La pantalla se ve increíble y la batería dura todo el día. El chip Movistar llegó activado y sin problemas." },
+  { "id": "rev-0002", "productId": "prod-001", "author": "Melissa R.", "rating": 4, "date": "2026-07-15", "title": "Muy bueno por el precio", "comment": "Buen rendimiento para el día a día. La cámara cumple bien de día, de noche es correcta nomás." },
+  { "id": "rev-0003", "productId": "prod-001", "author": "Andrés P.", "rating": 5, "date": "2026-06-30", "title": "Recomendado", "comment": "Llegó rápido y bien embalado. El 5G de Movistar funciona de maravilla en Lima." },
+
+  { "id": "rev-0004", "productId": "prod-002", "author": "Daniela M.", "rating": 5, "date": "2026-08-05", "title": "El mejor iPhone", "comment": "Vale cada sol. Las fotos de 48MP son espectaculares y la portabilidad Movistar fue sencilla." },
+  { "id": "rev-0005", "productId": "prod-002", "author": "Luis T.", "rating": 5, "date": "2026-07-22", "title": "Rapidísimo", "comment": "El A16 vuela con todo. Lo uso para trabajo y juegos, nunca se traba." },
+  { "id": "rev-0006", "productId": "prod-002", "author": "Carla V.", "rating": 4, "date": "2026-07-02", "title": "Hermoso pero caro", "comment": "Me encanta, aunque el precio es alto. La batería podría durar un poco más." },
+
+  { "id": "rev-0007", "productId": "prod-003", "author": "Pedro S.", "rating": 4, "date": "2026-08-01", "title": "Buen sonido", "comment": "La cancelación de ruido se nota bastante. Cómodos para usar varias horas." },
+  { "id": "rev-0008", "productId": "prod-003", "author": "Rosa H.", "rating": 4, "date": "2026-07-10", "title": "Relación precio-calidad", "comment": "Por lo que cuestan están muy bien. El estuche carga rápido." },
+
+  { "id": "rev-0009", "productId": "prod-004", "author": "Miguel A.", "rating": 5, "date": "2026-07-30", "title": "Ideal para trabajar", "comment": "El SSD la hace volar al encender. 16GB de RAM se sienten de sobra para ofimática y navegador." },
+  { "id": "rev-0010", "productId": "prod-004", "author": "Natalia F.", "rating": 4, "date": "2026-07-05", "title": "Muy completa", "comment": "Buena laptop para estudiar. La pantalla es correcta, me hubiera gustado más brillo." },
+
+  { "id": "rev-0011", "productId": "prod-005", "author": "Diego R.", "rating": 5, "date": "2026-08-03", "title": "Pantalla espectacular", "comment": "Los 144Hz se notan muchísimo. Perfecta para ver series y tomar apuntes." },
+  { "id": "rev-0012", "productId": "prod-005", "author": "Valeria C.", "rating": 4, "date": "2026-06-28", "title": "Muy buena tablet", "comment": "Rápida y liviana. La batería rinde bastante." },
+
+  { "id": "rev-0013", "productId": "prod-006", "author": "Elena G.", "rating": 5, "date": "2026-07-26", "title": "Enfría muy bien", "comment": "El No Frost cumple perfecto, no hace escarcha. Amplia y silenciosa." },
+  { "id": "rev-0014", "productId": "prod-006", "author": "Raúl B.", "rating": 4, "date": "2026-07-08", "title": "Buen tamaño", "comment": "Para una familia de 4 está perfecta. El consumo eléctrico es bajo." },
+
+  { "id": "rev-0015", "productId": "prod-007", "author": "Patricia L.", "rating": 4, "date": "2026-07-19", "title": "Práctica y resistente", "comment": "Hace batidos sin problema. La jarra de vidrio se siente de buena calidad." },
+  { "id": "rev-0016", "productId": "prod-007", "author": "Hugo M.", "rating": 4, "date": "2026-06-25", "title": "Cumple", "comment": "Por el precio es una muy buena licuadora. Un poco ruidosa en velocidad alta." },
+
+  { "id": "rev-0017", "productId": "prod-008", "author": "Sofía Q.", "rating": 5, "date": "2026-08-04", "title": "Fresco y cómodo", "comment": "La tela Dri-FIT es genial para entrenar, no se queda pegada al sudar." },
+  { "id": "rev-0018", "productId": "prod-008", "author": "Gabriel N.", "rating": 4, "date": "2026-07-12", "title": "Buena calidad", "comment": "Tela suave y buen calce. La talla va justa, pedí una más grande." },
+
+  { "id": "rev-0019", "productId": "prod-009", "author": "Fernando D.", "rating": 5, "date": "2026-07-29", "title": "Comodísimas", "comment": "La amortiguación Cloudfoam se siente desde el primer uso. Perfectas para correr." },
+  { "id": "rev-0020", "productId": "prod-009", "author": "Ana P.", "rating": 4, "date": "2026-07-03", "title": "Buenas para el día a día", "comment": "Livianas y bonitas. El diseño combina con todo." },
+
+  { "id": "rev-0021", "productId": "prod-010", "author": "Camila S.", "rating": 5, "date": "2026-08-06", "title": "Mi piel lo agradece", "comment": "La rutina completa dejó mi piel mucho más hidratada en una semana. CeraVe nunca falla." },
+  { "id": "rev-0022", "productId": "prod-010", "author": "Lucía M.", "rating": 5, "date": "2026-07-18", "title": "Excelente set", "comment": "Ideal para empezar en el skincare. El protector solar no deja sensación grasosa." },
+
+  { "id": "rev-0023", "productId": "prod-011", "author": "Martín R.", "rating": 4, "date": "2026-07-24", "title": "A mi hijo le encantó", "comment": "Muchas piezas y bien hechas. Compatible con otras marcas de bloques." },
+  { "id": "rev-0024", "productId": "prod-011", "author": "Diana T.", "rating": 5, "date": "2026-06-29", "title": "Horas de diversión", "comment": "Estimula mucho la creatividad. Buena calidad del plástico, no se rompe." },
+
+  { "id": "rev-0025", "productId": "prod-012", "author": "Óscar V.", "rating": 4, "date": "2026-07-27", "title": "Buen smartwatch", "comment": "El monitor de ritmo cardíaco es preciso y las notificaciones llegan al instante." },
+  { "id": "rev-0026", "productId": "prod-012", "author": "Isabel C.", "rating": 4, "date": "2026-07-06", "title": "Batería de larga duración", "comment": "Me dura casi una semana. El GPS a veces tarda en engancharse pero cumple." }
+]

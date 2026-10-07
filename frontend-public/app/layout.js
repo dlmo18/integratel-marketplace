@@ -3,6 +3,8 @@ import { StoreProvider } from "@/context/StoreContext";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import VirtualAssistant from "@/components/VirtualAssistant";
+import Toaster from "@/components/Toaster";
+import CompareBar from "@/components/CompareBar";
 
 export const metadata = {
   title: "Integratel Marketplace",
@@ -31,6 +33,8 @@ export default function RootLayout({ children }) {
           <main className="flex-1">{children}</main>
           <Footer />
           <VirtualAssistant />
+          <CompareBar />
+          <Toaster />
         </StoreProvider>
       </body>
     </html>

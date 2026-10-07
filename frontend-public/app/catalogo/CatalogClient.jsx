@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import ProductCard from "@/components/ProductCard";
+import RecentlyViewed from "@/components/RecentlyViewed";
 
 export default function CatalogClient({
   products,
@@ -13,12 +14,13 @@ export default function CatalogClient({
   const params = useSearchParams();
   const initialCat = params.get("categoria") || "";
   const orden = params.get("orden") || "";
+  const initialSearch = params.get("buscar") || "";
 
   const [category, setCategory] = useState(initialCat);
   const [brand, setBrand] = useState("");
   const [provider, setProvider] = useState("");
   const [maxPrice, setMaxPrice] = useState(4000);
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState(initialSearch);
   const [sort, setSort] = useState(
     orden === "vendidos" ? "sales" : orden === "ofertas" ? "discount" : "relevance"
   );
@@ -29,8 +31,14 @@ export default function CatalogClient({
       if (brand && p.brand !== brand) return false;
       if (provider && p.provider !== provider) return false;
       if (p.price > maxPrice) return false;
-      if (search && !p.name.toLowerCase().includes(search.toLowerCase()))
-        return false;
+      if (search) {
+        const q = search.toLowerCase();
+        if (
+          !p.name.toLowerCase().includes(q) &&
+          !p.brand.toLowerCase().includes(q)
+        )
+          return false;
+      }
       return true;
     });
 
@@ -184,6 +192,11 @@ export default function CatalogClient({
             </div>
           )}
         </div>
+      </div>
+
+      {/* Vistos recientemente al pie del catálogo */}
+      <div className="-mx-4 sm:-mx-6 lg:-mx-8">
+        <RecentlyViewed />
       </div>
     </div>
   );

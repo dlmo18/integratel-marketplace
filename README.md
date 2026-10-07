@@ -1,4 +1,6 @@
-# Integratel Marketplace
+# Ecommerce
+
+> Proyecto basado en [integratel-marketplace](https://github.com/dlmo18/integratel-marketplace).
 
 Marketplace piloto (demo) inspirado en la línea gráfica y estructura de
 [movistar.com.pe](https://www.movistar.com.pe/), pero orientado a **ventas
@@ -211,7 +213,7 @@ guiadas) para no bloquear la demo.
 ## Estructura del proyecto
 
 ```
-integratel-marketplace/
+ecommerce/
 ├── package.json              # orquestador (concurrently)
 ├── frontend-public/          # sitio público (Next.js)
 │   ├── app/                  # rutas (App Router)
@@ -238,5 +240,3 @@ transacciones.
 De momento se requiere que este sea un proyecto piloto por lo que se espera
 desarrollar una demo de la parte publica, el procesos de venta, la seccion de
 cuentas de clientes y de los Sellers.
-
-

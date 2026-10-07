@@ -2,6 +2,8 @@ import Link from "next/link";
 import ProductCard from "@/components/ProductCard";
 import CategoryCarousel from "@/components/CategoryCarousel";
 import HeroSlider from "@/components/HeroSlider";
+import FavoritesBlock from "@/components/FavoritesBlock";
+import RecentlyViewed from "@/components/RecentlyViewed";
 import heroData from "@/data/hero-slides.json";
 import {
   getFeaturedProducts,
@@ -53,6 +55,9 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Tus favoritos (solo si hay favoritos guardados) */}
+      <FavoritesBlock />
+
       {/* CTA más vendidos + promociones */}
       <section className="container-page grid gap-6 py-6 lg:grid-cols-2">
         <div className="flex flex-col justify-center rounded-3xl bg-movistar-navy p-8 text-white">
@@ -101,6 +106,9 @@ export default function HomePage() {
           ))}
         </div>
       </section>
+
+      {/* Vistos recientemente */}
+      <RecentlyViewed />
 
       {/* CTA Seller */}
       <section className="container-page py-12">

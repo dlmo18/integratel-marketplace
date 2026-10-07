@@ -1,5 +1,6 @@
 import categories from "@/data/categories.json";
 import products from "@/data/products.json";
+import reviews from "@/data/reviews.json";
 import users from "@/data/users.json";
 import orders from "@/data/orders.json";
 import sales from "@/data/sales.json";
@@ -28,6 +29,33 @@ export const getOnSale = () => products.filter((p) => p.onSale);
 
 export const getProductsByCategory = (slug) =>
   products.filter((p) => p.category === slug);
+
+// --- Reseñas / comentarios de productos -------------------------------------
+// Devuelve las reseñas de un producto ordenadas de la más reciente a la más
+// antigua. Opcionalmente limita la cantidad (p. ej. "últimos comentarios").
+export const getReviewsByProduct = (productId, limit) => {
+  const list = reviews
+    .filter((r) => r.productId === productId)
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
+  return typeof limit === "number" ? list.slice(0, limit) : list;
+};
+
+// Combina el rating "base" del producto (que resume cientos de reseñas
+// históricas) con las reseñas concretas que tengamos a mano (demo + las que
+// escriba la comunidad en el navegador). Pondera el rating base por su conteo
+// de reseñas para que una reseña nueva no mueva bruscamente el promedio.
+export const aggregateRating = (product, extraReviews = []) => {
+  const baseCount = product.reviews || 0;
+  const baseSum = (product.rating || 0) * baseCount;
+  const extraCount = extraReviews.length;
+  const extraSum = extraReviews.reduce((acc, r) => acc + (r.rating || 0), 0);
+  const totalCount = baseCount + extraCount;
+  if (totalCount === 0) {
+    return { average: product.rating || 0, count: 0, communityCount: 0 };
+  }
+  const average = Math.round(((baseSum + extraSum) / totalCount) * 10) / 10;
+  return { average, count: totalCount, communityCount: extraCount };
+};
 
 export const getBrands = () => [...new Set(products.map((p) => p.brand))].sort();
 

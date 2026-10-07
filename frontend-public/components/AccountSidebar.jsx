@@ -19,6 +19,11 @@ const sellerLinks = [
   { href: "/cuenta/ventas/transacciones", label: "Transacciones de pago", icon: "💵" }
 ];
 
+const activityLinks = [
+  { href: "/cuenta/favoritos", label: "Lista de deseos", icon: "❤️" },
+  { href: "/cuenta/resenas", label: "Mis reseñas", icon: "📝" }
+];
+
 const rewardLinks = [
   { href: "/cuenta/puntos", label: "Canje de puntos", icon: "⭐" },
   { href: "/cuenta/vouchers", label: "Vouchers", icon: "🎟️" }
@@ -95,6 +100,7 @@ export default function AccountSidebar() {
       {isSeller && (
         <Group title="Mis ventas" links={sellerLinks} pathname={pathname} />
       )}
+      <Group title="Mi actividad" links={activityLinks} pathname={pathname} />
       <Group title="Recompensas" links={rewardLinks} pathname={pathname} />
       <Group title="Mis datos" links={dataLinks} pathname={pathname} />
 

@@ -30,10 +30,15 @@ module.exports = {
         marquee: {
           "0%": { transform: "translateX(0)" },
           "100%": { transform: "translateX(-50%)" }
+        },
+        toastIn: {
+          "0%": { opacity: "0", transform: "translateY(8px) scale(.98)" },
+          "100%": { opacity: "1", transform: "translateY(0) scale(1)" }
         }
       },
       animation: {
-        marquee: "marquee 40s linear infinite"
+        marquee: "marquee 40s linear infinite",
+        toastIn: "toastIn .2s ease-out"
       }
     }
   },
