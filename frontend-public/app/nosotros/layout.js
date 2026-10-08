@@ -6,11 +6,11 @@ export default function NosotrosLayout({ children }) {
     <div>
       <PageHeader
         title="Nosotros"
-        subtitle="Conoce más sobre Integratel Marketplace y nuestras políticas."
+        subtitle="Conoce más sobre Movistar Marketplace y nuestras políticas."
       />
-      <div className="container-page py-8">
+      <div className="md-container md-page">
         <AboutTabs />
-        <div className="py-8">{children}</div>
+        <div>{children}</div>
       </div>
     </div>
   );

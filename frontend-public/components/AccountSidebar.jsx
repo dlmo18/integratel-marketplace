@@ -3,56 +3,53 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useStore } from "@/context/StoreContext";
+import { getTier } from "@/lib/tiers";
 
 const buyerLinks = [
-  { href: "/cuenta", label: "Panel", icon: "🏠" },
-  { href: "/cuenta/compras", label: "Dashboard compras", icon: "📊" },
-  { href: "/cuenta/compras/historial", label: "Historial de compras", icon: "🧾" },
-  { href: "/cuenta/compras/entregas", label: "Estado de entregas", icon: "🚚" },
-  { href: "/cuenta/compras/devoluciones", label: "Estado de devoluciones", icon: "↩️" }
+  { href: "/cuenta", label: "Panel", icon: "home" },
+  { href: "/cuenta/compras", label: "Dashboard compras", icon: "insights" },
+  { href: "/cuenta/compras/historial", label: "Historial de compras", icon: "receipt_long" },
+  { href: "/cuenta/compras/entregas", label: "Estado de entregas", icon: "local_shipping" },
+  { href: "/cuenta/compras/devoluciones", label: "Estado de devoluciones", icon: "undo" }
 ];
 
 const sellerLinks = [
-  { href: "/cuenta/ventas", label: "Dashboard ventas", icon: "📈" },
-  { href: "/cuenta/ventas/historial", label: "Historial de ventas", icon: "📋" },
-  { href: "/cuenta/ventas/items", label: "Gestión de items", icon: "📦" },
-  { href: "/cuenta/ventas/transacciones", label: "Transacciones de pago", icon: "💵" }
+  { href: "/cuenta/ventas", label: "Dashboard ventas", icon: "trending_up" },
+  { href: "/cuenta/ventas/historial", label: "Historial de ventas", icon: "list_alt" },
+  { href: "/cuenta/ventas/items", label: "Gestión de items", icon: "inventory_2" },
+  { href: "/cuenta/ventas/transacciones", label: "Transacciones de pago", icon: "payments" }
 ];
 
 const activityLinks = [
-  { href: "/cuenta/favoritos", label: "Lista de deseos", icon: "❤️" },
-  { href: "/cuenta/resenas", label: "Mis reseñas", icon: "📝" }
+  { href: "/cuenta/favoritos", label: "Lista de deseos", icon: "favorite" },
+  { href: "/cuenta/resenas", label: "Mis reseñas", icon: "rate_review" }
 ];
 
 const rewardLinks = [
-  { href: "/cuenta/puntos", label: "Canje de puntos", icon: "⭐" },
-  { href: "/cuenta/vouchers", label: "Vouchers", icon: "🎟️" }
+  { href: "/cuenta/puntos", label: "Canje de puntos", icon: "stars" },
+  { href: "/cuenta/vouchers", label: "Vouchers", icon: "confirmation_number" }
 ];
 
 const dataLinks = [
-  { href: "/cuenta/datos", label: "Datos personales", icon: "👤" },
-  { href: "/cuenta/datos/direcciones", label: "Direcciones", icon: "📍" },
-  { href: "/cuenta/datos/pagos", label: "Medios de pago", icon: "💳" }
+  { href: "/cuenta/datos", label: "Datos personales", icon: "person" },
+  { href: "/cuenta/datos/direcciones", label: "Direcciones", icon: "location_on" },
+  { href: "/cuenta/datos/pagos", label: "Medios de pago", icon: "credit_card" }
 ];
 
 function Group({ title, links, pathname }) {
   return (
-    <div className="mb-5">
-      <p className="mb-2 px-3 text-xs font-bold uppercase text-movistar-gray-med">
-        {title}
-      </p>
-      <ul className="space-y-1">
+    <div className="acc-group">
+      <p className="title">{title}</p>
+      <ul>
         {links.map((l) => (
           <li key={l.href}>
             <Link
               href={l.href}
-              className={`flex items-center gap-2 rounded-lg px-3 py-2 text-sm ${
-                pathname === l.href
-                  ? "bg-movistar-blue text-white"
-                  : "text-movistar-navy hover:bg-movistar-blue/10"
-              }`}
+              className={`acc-link md-state ${pathname === l.href ? "active" : ""}`}
             >
-              <span>{l.icon}</span>
+              <span className="material-symbols-outlined" style={{ fontSize: 20 }}>
+                {l.icon}
+              </span>
               {l.label}
             </Link>
           </li>
@@ -62,36 +59,21 @@ function Group({ title, links, pathname }) {
   );
 }
 
-const tierLabel = {
-  regular: "Cuenta Regular",
-  vip: "Cuenta VIP",
-  seller: "Cuenta Seller"
-};
-
-const tierBadge = {
-  regular: "bg-movistar-blue/10 text-movistar-blue",
-  vip: "bg-black text-white",
-  seller: "bg-movistar-navy text-white"
-};
-
 export default function AccountSidebar() {
   const pathname = usePathname();
-  const { user, tier, isSeller, isVip, logout } = useStore();
+  const { user, tier, isSeller, logout } = useStore();
+  const info = getTier(tier);
 
   return (
-    <aside className="card h-fit p-4">
-      <div className="mb-4 flex items-center gap-3 border-b pb-4">
+    <aside className="md-card md-card-elevated acc-sidebar">
+      <div className="acc-user">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={user?.avatar || "/img/avatars/default.jpg"}
-          alt={user?.name}
-          className="h-10 w-10 rounded-full object-cover"
-        />
+        <img src={user?.avatar || "/img/avatars/default.jpg"} alt={user?.name} />
         <div>
-          <p className="text-sm font-bold text-movistar-navy">{user?.name}</p>
-          <span className={`badge mt-1 ${tierBadge[tier] || tierBadge.regular}`}>
-            {isVip && "★ "}
-            {tierLabel[tier] || tierLabel.regular}
+          <p className="name">{user?.name}</p>
+          <span className={`tier-chip tier-${info.key}`}>
+            <span className="material-symbols-outlined filled">{info.icon}</span>
+            {info.label}
           </span>
         </div>
       </div>
@@ -104,7 +86,7 @@ export default function AccountSidebar() {
       <Group title="Recompensas" links={rewardLinks} pathname={pathname} />
       <Group title="Mis datos" links={dataLinks} pathname={pathname} />
 
-      <button onClick={logout} className="btn-outline w-full">
+      <button onClick={logout} className="md-btn md-btn-outlined md-btn-block md-state">
         Cerrar sesión
       </button>
     </aside>

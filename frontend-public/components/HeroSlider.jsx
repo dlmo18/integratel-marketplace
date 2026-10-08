@@ -13,87 +13,78 @@ export default function HeroSlider({ slides = [], autoplayMs = 6000 }) {
     [count]
   );
 
-  // Autoplay con reinicio del temporizador en cada cambio.
   useEffect(() => {
     if (count <= 1) return;
     clearTimeout(timer.current);
-    timer.current = setTimeout(() => setActive((a) => (a + 1) % count), autoplayMs);
+    timer.current = setTimeout(
+      () => setActive((a) => (a + 1) % count),
+      autoplayMs
+    );
     return () => clearTimeout(timer.current);
   }, [active, count, autoplayMs]);
 
   if (count === 0) return null;
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-movistar-navy via-movistar-navy to-movistar-blue text-white">
-      {/* Slides apilados con crossfade */}
-      <div className="relative">
+    <section className="hero">
+      <div className="hero-slides">
         {slides.map((s, i) => (
           <div
             key={s.id}
-            className={`transition-opacity duration-700 ease-in-out ${
-              i === active
-                ? "relative opacity-100"
-                : "pointer-events-none absolute inset-0 opacity-0"
-            }`}
+            className={`hero-slide ${i === active ? "active" : "inactive"}`}
             aria-hidden={i !== active}
           >
-            <div className="container-page grid items-center gap-8 py-14 lg:grid-cols-2">
-              <div>
-                {s.badge && (
-                  <span className="badge bg-movistar-green text-white">
-                    {s.badge}
-                  </span>
-                )}
-                <h1 className="mt-4 text-4xl font-black leading-tight sm:text-5xl">
-                  {s.titleLine1} <br />
-                  <span className="text-movistar-blue">{s.titleHighlight}</span>
-                </h1>
-                <p className="mt-4 max-w-md text-white/80">{s.text}</p>
-                <div className="mt-6 flex flex-wrap gap-3">
-                  {s.primaryCta && (
-                    <Link href={s.primaryCta.href} className="btn-primary">
-                      {s.primaryCta.label}
-                    </Link>
+            <div className="md-container">
+              <div className="hero-grid">
+                <div>
+                  {s.badge && (
+                    <span className="md-badge md-badge-secondary">{s.badge}</span>
                   )}
-                  {s.secondaryCta && (
-                    <Link
-                      href={s.secondaryCta.href}
-                      className="btn-outline border-white text-white hover:bg-white hover:text-movistar-navy"
-                    >
-                      {s.secondaryCta.label}
-                    </Link>
-                  )}
+                  <h1 className="md-display-small">
+                    {s.titleLine1} <br />
+                    <span className="hl">{s.titleHighlight}</span>
+                  </h1>
+                  <p className="md-body-large">{s.text}</p>
+                  <div className="hero-ctas">
+                    {s.primaryCta && (
+                      <Link href={s.primaryCta.href} className="md-btn md-btn-on-dark md-state">
+                        {s.primaryCta.label}
+                      </Link>
+                    )}
+                    {s.secondaryCta && (
+                      <Link href={s.secondaryCta.href} className="md-btn md-btn-outlined-on-dark md-state">
+                        {s.secondaryCta.label}
+                      </Link>
+                    )}
+                  </div>
                 </div>
-              </div>
-              <div className="relative">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={s.image}
-                  alt={s.titleHighlight || s.titleLine1}
-                  className="h-64 w-full rounded-3xl object-cover shadow-2xl sm:h-80 lg:h-[22rem]"
-                />
+                <div>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    className="hero-img"
+                    src={s.image}
+                    alt={s.titleHighlight || s.titleLine1}
+                  />
+                </div>
               </div>
             </div>
           </div>
         ))}
       </div>
 
-      {/* Bullets de control */}
       {count > 1 && (
-        <div className="container-page relative -mt-4 flex justify-center gap-2 pb-6 lg:justify-start">
-          {slides.map((s, i) => (
-            <button
-              key={s.id}
-              onClick={() => go(i)}
-              aria-label={`Ir al slide ${i + 1}`}
-              aria-current={i === active}
-              className={`h-2.5 rounded-full transition-all ${
-                i === active
-                  ? "w-8 bg-white"
-                  : "w-2.5 bg-white/40 hover:bg-white/70"
-              }`}
-            />
-          ))}
+        <div className="md-container">
+          <div className="hero-bullets">
+            {slides.map((s, i) => (
+              <button
+                key={s.id}
+                onClick={() => go(i)}
+                aria-label={`Ir al slide ${i + 1}`}
+                aria-current={i === active}
+                className={`hero-bullet ${i === active ? "on" : ""}`}
+              />
+            ))}
+          </div>
         </div>
       )}
     </section>

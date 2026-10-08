@@ -1,13 +1,11 @@
 import Lorem from "@/components/Lorem";
 
-export const metadata = { title: "Términos y condiciones · Integratel" };
+export const metadata = { title: "Términos y condiciones · Movistar" };
 
 export default function TerminosPage() {
   return (
     <div>
-      <h1 className="mb-4 text-2xl font-bold text-movistar-navy">
-        Términos y condiciones
-      </h1>
+      <h1 className="md-headline-small" style={{ marginBottom: 16 }}>Términos y condiciones</h1>
       <Lorem
         sections={[
           "1. Aceptación de los términos",

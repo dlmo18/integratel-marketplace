@@ -7,36 +7,48 @@ export default function PaymentMethodsPage() {
   const methods = user?.paymentMethods || [];
 
   return (
-    <div className="space-y-4">
-      <div className="flex items-center justify-between">
-        <h2 className="text-xl font-bold text-movistar-navy">Medios de pago</h2>
-        <button className="btn-primary">+ Agregar medio</button>
+    <div className="md-stack">
+      <div className="md-row-between">
+        <h2 className="md-title-large" style={{ margin: 0 }}>Medios de pago</h2>
+        <button className="md-btn md-btn-filled md-state">+ Agregar medio</button>
       </div>
 
       {methods.length === 0 ? (
-        <div className="card p-8 text-center text-movistar-gray-med">
+        <div className="md-card md-card-elevated md-card-pad md-center md-muted">
           No tienes medios de pago registrados.
         </div>
       ) : (
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div style={{ display: "grid", gap: 16, gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))" }}>
           {methods.map((m) => (
-            <div key={m.id} className="card flex items-center gap-4 p-5">
-              <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-movistar-blue/10 text-2xl">
-                {m.type === "card" ? "💳" : "📲"}
+            <div key={m.id} className="md-card md-card-elevated md-card-pad md-row" style={{ gap: 16 }}>
+              <span
+                className="md-center"
+                style={{
+                  display: "inline-flex",
+                  height: 48,
+                  width: 48,
+                  alignItems: "center",
+                  justifyContent: "center",
+                  borderRadius: "var(--md-shape-lg)",
+                  background: "color-mix(in srgb, var(--md-primary) 12%, transparent)",
+                  color: "var(--md-primary)"
+                }}
+              >
+                <span className="material-symbols-outlined">{m.type === "card" ? "credit_card" : "smartphone"}</span>
               </span>
-              <div className="flex-1">
-                <p className="font-bold text-movistar-navy">
+              <div className="md-grow">
+                <p className="md-title-small" style={{ margin: 0 }}>
                   {m.brand}
                   {m.last4 ? ` ****${m.last4}` : ""}
                 </p>
-                <p className="text-xs text-movistar-gray-med">
+                <p className="md-muted md-body-small" style={{ margin: 0 }}>
                   {m.type === "card"
                     ? `${m.holder} · Vence ${m.expiry}`
                     : `Billetera · ${m.phone}`}
                 </p>
               </div>
               {m.default && (
-                <span className="badge bg-movistar-green text-white">Predeterminado</span>
+                <span className="md-badge md-badge-secondary">Predeterminado</span>
               )}
             </div>
           ))}

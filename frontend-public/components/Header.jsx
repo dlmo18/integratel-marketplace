@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { useStore } from "@/context/StoreContext";
@@ -26,20 +27,19 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   const [catOpen, setCatOpen] = useState(false);
 
+  const isActive = (item) =>
+    item.href === pathname ||
+    (item.hasMenu && pathname.startsWith("/categoria"));
+
   return (
-    <header className="sticky top-0 z-40 bg-movistar-navy text-white shadow">
-      {/* Barra superior informativa */}
-      <div className="bg-movistar-blue/90 text-xs">
-        <div className="container-page flex h-8 items-center justify-between">
+    <header className="hdr">
+      {/* Barra informativa superior */}
+      <div className="hdr-info">
+        <div className="md-container">
           <span>Envíos a todo el Perú · Compra 100% segura</span>
-          <div className="hidden gap-4 sm:flex">
-            <Link href="/soporte/seguimiento" className="hover:underline">
-              Seguir pedido
-            </Link>
-            <Link
-              href="/soporte/cambios-devoluciones"
-              className="hover:underline"
-            >
+          <div className="hdr-info-links">
+            <Link href="/soporte/seguimiento">Seguir pedido</Link>
+            <Link href="/soporte/cambios-devoluciones">
               Cambios y devoluciones
             </Link>
           </div>
@@ -47,165 +47,143 @@ export default function Header() {
       </div>
 
       {/* Nivel 1: logo + buscador + acciones */}
-      <div className="container-page flex h-16 items-center gap-4">
-        <Link href="/" className="flex shrink-0 items-center gap-2">
-          <span className="text-2xl font-black tracking-tight">
-            integra<span className="text-movistar-blue">tel</span>
-          </span>
-          <span className="hidden rounded bg-movistar-green px-2 py-0.5 text-[10px] font-bold uppercase sm:inline">
-            Marketplace
-          </span>
-        </Link>
-
-        {/* Buscador con autocompletado (ocupa el centro) */}
-        <div className="hidden flex-1 md:block">
-          <SearchAutocomplete />
-        </div>
-
-        <div className="ml-auto flex items-center gap-2 sm:gap-3">
-          {/* Favoritos */}
-          <Link
-            href="/cuenta/favoritos"
-            className="relative rounded-full bg-white p-2 text-movistar-navy hover:bg-white/70"
-            aria-label="Lista de deseos"
-            title="Lista de deseos"
-          >
-            <span className="text-xl">❤️</span>
-            {favoritesCount > 0 && (
-              <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-movistar-green text-[10px] font-bold text-white">
-                {favoritesCount}
-              </span>
-            )}
+      <div className="md-container">
+        <div className="hdr-main">
+          <Link href="/" className="hdr-logo" aria-label="Movistar Marketplace">
+            <Image src="/img/logo.svg" width={120} height={34} alt="Movistar" priority />
+            <span className="tag">Marketplace</span>
           </Link>
 
-          <CartPreview />
+          <div className="hdr-search">
+            <SearchAutocomplete />
+          </div>
 
-          {user ? (
-            <div className="hidden items-center gap-2 sm:flex">
-              <Link
-                href="/cuenta"
-                className="btn-outline border-white text-white hover:bg-white hover:text-movistar-navy"
-              >
-                Mi cuenta
-              </Link>
-              <button onClick={logout} className="text-sm hover:underline">
-                Salir
-              </button>
-            </div>
-          ) : (
-            <Link href="/login" className="hidden btn-primary sm:inline-flex">
-              Ingresar
+          <div className="hdr-actions">
+            <Link
+              href="/cuenta/favoritos"
+              className="hdr-icon-btn md-state"
+              aria-label="Lista de deseos"
+              title="Lista de deseos"
+            >
+              <span className="material-symbols-outlined">favorite</span>
+              {favoritesCount > 0 && (
+                <span className="md-count">{favoritesCount}</span>
+              )}
             </Link>
-          )}
 
-          <button
-            className="rounded p-2 hover:bg-white/10 md:hidden"
-            onClick={() => setOpen((v) => !v)}
-            aria-label="Abrir menú"
-          >
-            ☰
-          </button>
+            <CartPreview />
+
+            {user ? (
+              <div className="hdr-account">
+                <Link
+                  href="/cuenta"
+                  className="md-btn md-btn-outlined-on-dark md-btn-sm md-state"
+                >
+                  Mi cuenta
+                </Link>
+                <button
+                  onClick={logout}
+                  className="md-btn md-btn-text md-btn-sm md-state"
+                  style={{ color: "var(--md-on-primary)" }}
+                >
+                  Salir
+                </button>
+              </div>
+            ) : (
+              <Link
+                href="/login"
+                className="md-btn md-btn-on-dark md-btn-sm md-state hdr-account"
+              >
+                Ingresar
+              </Link>
+            )}
+
+            <button
+              className="hdr-icon-btn md-state hdr-menu-btn"
+              onClick={() => setOpen((v) => !v)}
+              aria-label="Abrir menú"
+            >
+              <span className="material-symbols-outlined">
+                {open ? "close" : "menu"}
+              </span>
+            </button>
+          </div>
+        </div>
+
+        {/* Buscador en móvil */}
+        <div className="hdr-search-mobile">
+          <SearchAutocomplete />
         </div>
       </div>
 
-      {/* Buscador en móvil (debajo del nivel 1) */}
-      <div className="container-page pb-3 md:hidden">
-        <SearchAutocomplete />
-      </div>
-
-      {/* Nivel 2: menú de navegación */}
-      <div className="hidden border-t border-white/10 bg-movistar-navy md:block">
-        <div className="container-page">
-          <nav className="flex items-center gap-6 py-2.5">
-            {nav.map((item) =>
-              item.hasMenu ? (
-                <div key={item.href} className="group relative">
-                  <Link
-                    href={item.href}
-                    className={`inline-flex items-center gap-1 text-sm font-medium transition-colors hover:text-movistar-blue ${
-                      pathname === item.href ||
-                      pathname.startsWith("/categoria")
-                        ? "text-movistar-blue"
-                        : "text-white"
-                    }`}
-                  >
-                    {item.label}
-                    <span className="text-[10px] transition-transform group-hover:rotate-180">
-                      ▼
-                    </span>
-                  </Link>
-
-                  {/* Mega-menú de categorías */}
-                  <div className="invisible absolute left-0 top-full z-50 w-72 pt-3 opacity-0 transition-all group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-                    <div className="overflow-hidden rounded-2xl bg-white text-movistar-navy shadow-2xl ring-1 ring-black/5">
-                      <Link
-                        href="/catalogo"
-                        className="block border-b bg-movistar-gray px-4 py-2.5 text-xs font-semibold uppercase tracking-wide text-movistar-gray-med hover:text-movistar-blue"
-                      >
-                        Ver todo el catálogo →
-                      </Link>
-                      <ul className="grid grid-cols-1 py-1">
-                        {categories.map((c) => (
-                          <li key={c.id}>
-                            <Link
-                              href={`/categoria/${c.slug}`}
-                              className="flex items-center gap-3 px-4 py-2.5 text-sm hover:bg-movistar-gray hover:text-movistar-blue"
-                            >
-                              <span className="text-lg">{c.icon}</span>
-                              <span className="flex-1 font-medium">
-                                {c.name}
-                              </span>
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              ) : (
+      {/* Nivel 2: navegación (desktop) */}
+      <nav className="hdr-nav">
+        <div className="md-container">
+          {nav.map((item) =>
+            item.hasMenu ? (
+              <div key={item.href} className="hdr-megamenu">
                 <Link
-                  key={item.href}
                   href={item.href}
-                  className={`text-sm font-medium transition-colors hover:text-movistar-blue ${
-                    pathname === item.href
-                      ? "text-movistar-blue"
-                      : "text-white"
-                  }`}
+                  className={`md-state ${isActive(item) ? "active" : ""}`}
                 >
                   {item.label}
+                  <span className="material-symbols-outlined" aria-hidden>
+                    expand_more
+                  </span>
                 </Link>
-              )
-            )}
-          </nav>
+                <div className="panel">
+                  <div className="panel-inner">
+                    <Link href="/catalogo" className="panel-head">
+                      Ver todo el catálogo →
+                    </Link>
+                    {categories.map((c) => (
+                      <Link key={c.id} href={`/categoria/${c.slug}`}>
+                        <span style={{ fontSize: "1.1rem" }}>{c.icon}</span>
+                        <span>{c.name}</span>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`md-state ${isActive(item) ? "active" : ""}`}
+              >
+                {item.label}
+              </Link>
+            )
+          )}
         </div>
-      </div>
+      </nav>
 
       {/* Menú móvil */}
       {open && (
-        <div className="border-t border-white/10 bg-movistar-navy md:hidden">
-          <div className="container-page flex flex-col py-3">
+        <div className="hdr-mobile">
+          <div className="md-container">
             {nav.map((item) =>
               item.hasMenu ? (
                 <div key={item.href}>
                   <button
                     onClick={() => setCatOpen((v) => !v)}
-                    className="flex w-full items-center justify-between py-2 text-sm"
                     aria-expanded={catOpen}
+                    style={{
+                      display: "flex",
+                      width: "100%",
+                      justifyContent: "space-between",
+                      alignItems: "center"
+                    }}
                   >
                     <span>{item.label}</span>
-                    <span
-                      className={`text-[10px] transition-transform ${
-                        catOpen ? "rotate-180" : ""
-                      }`}
-                    >
-                      ▼
+                    <span className="material-symbols-outlined">
+                      {catOpen ? "expand_less" : "expand_more"}
                     </span>
                   </button>
                   {catOpen && (
-                    <div className="mb-1 ml-2 flex flex-col border-l border-white/15 pl-3">
+                    <div style={{ paddingLeft: 12 }}>
                       <Link
                         href="/catalogo"
-                        className="py-1.5 text-xs font-semibold uppercase tracking-wide text-white/70"
                         onClick={() => {
                           setOpen(false);
                           setCatOpen(false);
@@ -217,14 +195,12 @@ export default function Header() {
                         <Link
                           key={c.id}
                           href={`/categoria/${c.slug}`}
-                          className="flex items-center gap-2 py-1.5 text-sm"
                           onClick={() => {
                             setOpen(false);
                             setCatOpen(false);
                           }}
                         >
-                          <span>{c.icon}</span>
-                          {c.name}
+                          {c.icon} {c.name}
                         </Link>
                       ))}
                     </div>
@@ -234,35 +210,22 @@ export default function Header() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="py-2 text-sm"
                   onClick={() => setOpen(false)}
                 >
                   {item.label}
                 </Link>
               )
             )}
-            <Link
-              href="/cuenta/favoritos"
-              className="py-2 text-sm"
-              onClick={() => setOpen(false)}
-            >
+            <Link href="/cuenta/favoritos" onClick={() => setOpen(false)}>
               ❤️ Lista de deseos
               {favoritesCount > 0 ? ` (${favoritesCount})` : ""}
             </Link>
             {user ? (
-              <Link
-                href="/cuenta"
-                className="py-2 text-sm"
-                onClick={() => setOpen(false)}
-              >
+              <Link href="/cuenta" onClick={() => setOpen(false)}>
                 Mi cuenta
               </Link>
             ) : (
-              <Link
-                href="/login"
-                className="py-2 text-sm"
-                onClick={() => setOpen(false)}
-              >
+              <Link href="/login" onClick={() => setOpen(false)}>
                 Ingresar / Registrarme
               </Link>
             )}

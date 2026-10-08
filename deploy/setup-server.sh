@@ -9,7 +9,7 @@
 #   sudo bash deploy/setup-server.sh
 set -euo pipefail
 
-DEPLOY_PATH="${DEPLOY_PATH:-/opt/integratel-marketplace}"
+DEPLOY_PATH="${DEPLOY_PATH:-/var/www/integratel/marketplace}"
 CONF_SRC="$DEPLOY_PATH/deploy/apache/integratel-marketplace.conf"
 CONF_DST="/etc/apache2/sites-available/integratel-marketplace.conf"
 

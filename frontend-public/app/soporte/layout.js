@@ -8,9 +8,9 @@ export default function SoporteLayout({ children }) {
         title="Soporte"
         subtitle="Estamos para ayudarte. Elige una opción para continuar."
       />
-      <div className="container-page py-8">
+      <div className="md-container md-page">
         <SupportTabs />
-        <div className="py-8">{children}</div>
+        <div>{children}</div>
       </div>
     </div>
   );

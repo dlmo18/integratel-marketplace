@@ -7,15 +7,17 @@ export default function SellerOnly({ children }) {
   const { isSeller } = useStore();
   if (!isSeller) {
     return (
-      <div className="card p-10 text-center">
-        <span className="text-4xl">🔒</span>
-        <h2 className="mt-3 text-lg font-bold text-movistar-navy">
+      <div className="md-card md-card-elevated md-card-pad md-center">
+        <span className="material-symbols-outlined" style={{ fontSize: 40, color: "var(--md-on-surface-variant)" }}>
+          lock
+        </span>
+        <h2 className="md-title-large" style={{ marginTop: 8 }}>
           Sección exclusiva para Sellers
         </h2>
-        <p className="mt-1 text-sm text-movistar-gray-med">
+        <p className="md-muted" style={{ marginTop: 4 }}>
           Debes tener una cuenta de tipo Seller para acceder a esta sección.
         </p>
-        <Link href="/registro?tipo=seller" className="btn-green mt-4">
+        <Link href="/registro?tipo=seller" className="md-btn md-btn-green md-state" style={{ marginTop: 16 }}>
           Darse de alta como Seller
         </Link>
       </div>

@@ -7,11 +7,11 @@ const LOREM = [
 
 export default function Lorem({ paragraphs = 3, sections = [] }) {
   return (
-    <div className="prose max-w-none text-movistar-gray-med">
+    <div className="md-muted" style={{ maxWidth: "none", lineHeight: 1.7 }}>
       {sections.length > 0
         ? sections.map((s, i) => (
-            <div key={i} className="mb-6">
-              <h2 className="mb-2 text-xl font-bold text-movistar-navy">
+            <div key={i} style={{ marginBottom: 24 }}>
+              <h2 className="md-title-large" style={{ marginBottom: 8, color: "var(--md-on-surface)" }}>
                 {s}
               </h2>
               <p>{LOREM[i % LOREM.length]}</p>
@@ -19,7 +19,7 @@ export default function Lorem({ paragraphs = 3, sections = [] }) {
             </div>
           ))
         : Array.from({ length: paragraphs }).map((_, i) => (
-            <p key={i} className="mb-4">
+            <p key={i} style={{ marginBottom: 16 }}>
               {LOREM[i % LOREM.length]}
             </p>
           ))}

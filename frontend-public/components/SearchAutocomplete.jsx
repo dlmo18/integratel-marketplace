@@ -9,9 +9,7 @@ import { formatCurrency } from "@/lib/format";
 const allProducts = getProducts();
 const MAX_RESULTS = 6;
 
-// Buscador del header con autocompletado en vivo. Filtra el catálogo mientras
-// se escribe y muestra una lista con imagen, nombre, marca y precio. Permite
-// ir directo a un producto o a la búsqueda completa en el catálogo.
+// Buscador del header con autocompletado en vivo.
 export default function SearchAutocomplete() {
   const router = useRouter();
   const [query, setQuery] = useState("");
@@ -25,13 +23,11 @@ export default function SearchAutocomplete() {
     return allProducts
       .filter(
         (p) =>
-          p.name.toLowerCase().includes(q) ||
-          p.brand.toLowerCase().includes(q)
+          p.name.toLowerCase().includes(q) || p.brand.toLowerCase().includes(q)
       )
       .slice(0, MAX_RESULTS);
   }, [query]);
 
-  // Cierra al hacer clic fuera.
   useEffect(() => {
     const onClick = (e) => {
       if (containerRef.current && !containerRef.current.contains(e.target)) {
@@ -65,11 +61,8 @@ export default function SearchAutocomplete() {
       setActive((a) => Math.max(a - 1, -1));
     } else if (e.key === "Enter") {
       e.preventDefault();
-      if (active >= 0 && results[active]) {
-        goToProduct(results[active].slug);
-      } else {
-        goToCatalog();
-      }
+      if (active >= 0 && results[active]) goToProduct(results[active].slug);
+      else goToCatalog();
     } else if (e.key === "Escape") {
       setOpen(false);
     }
@@ -78,16 +71,16 @@ export default function SearchAutocomplete() {
   const showPanel = open && query.trim().length >= 2;
 
   return (
-    <div ref={containerRef} className="relative w-full">
+    <div ref={containerRef} style={{ position: "relative", width: "100%" }}>
       <form
         onSubmit={(e) => {
           e.preventDefault();
           goToCatalog();
         }}
-        className="flex items-center overflow-hidden rounded-full bg-white shadow-sm"
+        className="md-search"
         role="search"
       >
-        <span className="pl-4 text-movistar-gray-med">🔍</span>
+        <span className="material-symbols-outlined">search</span>
         <input
           value={query}
           onChange={(e) => {
@@ -99,52 +92,40 @@ export default function SearchAutocomplete() {
           onKeyDown={onKeyDown}
           type="search"
           placeholder="Busca productos, marcas y más…"
-          className="w-full bg-transparent px-3 py-2.5 text-sm text-movistar-navy outline-none placeholder:text-movistar-gray-med"
           aria-label="Buscar productos"
           aria-expanded={showPanel}
           autoComplete="off"
         />
-        <button
-          type="submit"
-          className="m-1 rounded-full bg-movistar-blue px-4 py-1.5 text-xs font-semibold text-white hover:bg-movistar-blue/90"
-        >
-          Buscar
-        </button>
       </form>
 
       {showPanel && (
-        <div className="absolute left-0 right-0 top-full z-50 mt-2 overflow-hidden rounded-2xl bg-white text-movistar-navy shadow-2xl ring-1 ring-black/5">
+        <div className="menu-pop" style={{ left: 0, right: 0, width: "auto" }}>
           {results.length === 0 ? (
-            <div className="px-4 py-6 text-center text-sm text-movistar-gray-med">
+            <div className="md-center md-muted" style={{ padding: "24px 16px", fontSize: "0.875rem" }}>
               Sin resultados para “{query.trim()}”.
             </div>
           ) : (
-            <ul className="max-h-96 divide-y overflow-y-auto">
+            <ul style={{ listStyle: "none", margin: 0, padding: 0, maxHeight: 384, overflowY: "auto" }}>
               {results.map((p, i) => (
                 <li key={p.id}>
                   <button
                     type="button"
                     onMouseEnter={() => setActive(i)}
                     onClick={() => goToProduct(p.slug)}
-                    className={`flex w-full items-center gap-3 px-4 py-2.5 text-left ${
-                      active === i ? "bg-movistar-gray" : "hover:bg-movistar-gray"
-                    }`}
+                    className="search-result"
+                    style={active === i ? { background: "var(--md-surface-container)" } : undefined}
                   >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={p.images?.[0]}
-                      alt={p.name}
-                      className="h-12 w-12 flex-shrink-0 rounded-lg bg-movistar-gray object-cover"
-                    />
-                    <div className="min-w-0 flex-1">
-                      <p className="line-clamp-1 text-sm font-semibold">
+                    <img src={p.images?.[0]} alt={p.name} />
+                    <div className="md-grow" style={{ minWidth: 0, textAlign: "left" }}>
+                      <p className="md-body-medium" style={{ margin: 0, fontWeight: 600, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
                         {p.name}
                       </p>
-                      <p className="text-xs uppercase text-movistar-gray-med">
+                      <p className="md-muted" style={{ margin: 0, fontSize: "0.7rem", textTransform: "uppercase" }}>
                         {p.brand}
                       </p>
                     </div>
-                    <span className="whitespace-nowrap text-sm font-bold text-movistar-blue">
+                    <span className="md-primary-text" style={{ fontWeight: 700, fontSize: "0.875rem", whiteSpace: "nowrap" }}>
                       {formatCurrency(p.price, p.currency)}
                     </span>
                   </button>
@@ -152,11 +133,7 @@ export default function SearchAutocomplete() {
               ))}
             </ul>
           )}
-          <button
-            type="button"
-            onClick={goToCatalog}
-            className="block w-full border-t bg-movistar-gray px-4 py-2.5 text-center text-xs font-semibold uppercase tracking-wide text-movistar-blue hover:underline"
-          >
+          <button type="button" onClick={goToCatalog} className="panel-head" style={{ width: "100%", cursor: "pointer", border: "none", borderTop: "1px solid var(--md-outline-variant)", background: "var(--md-surface-container)", color: "var(--md-primary)", textAlign: "center", padding: "10px 16px", fontSize: "0.75rem", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.4px" }}>
             Ver todos los resultados en el catálogo →
           </button>
         </div>

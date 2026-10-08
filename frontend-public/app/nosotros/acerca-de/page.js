@@ -1,36 +1,20 @@
 import Link from "next/link";
 import StatCard from "@/components/StatCard";
 
-export const metadata = { title: "Acerca de · Integratel" };
+export const metadata = { title: "Acerca de · Movistar" };
 
 const stats = [
-  { label: "Clientes activos", value: "250K+", icon: "👥", accent: "blue" },
-  { label: "Sellers registrados", value: "3,800+", icon: "🏪", accent: "green" },
-  { label: "Productos publicados", value: "120K+", icon: "📦", accent: "navy" },
-  { label: "Ciudades con cobertura", value: "25", icon: "📍", accent: "blue" }
+  { label: "Clientes activos", value: "250K+", icon: "👥", accent: "primary" },
+  { label: "Sellers registrados", value: "3,800+", icon: "🏪", accent: "secondary" },
+  { label: "Productos publicados", value: "120K+", icon: "📦", accent: "primary" },
+  { label: "Ciudades con cobertura", value: "25", icon: "📍", accent: "tertiary" }
 ];
 
 const values = [
-  {
-    icon: "🤝",
-    title: "Confianza",
-    text: "Compras protegidas, sellers verificados y seguimiento en cada pedido."
-  },
-  {
-    icon: "⚡",
-    title: "Agilidad",
-    text: "Publicar, comprar y pagar en pocos pasos, sin fricciones."
-  },
-  {
-    icon: "🌎",
-    title: "Cercanía",
-    text: "Pensado para el Perú, con envíos a todo el país y soporte local."
-  },
-  {
-    icon: "💡",
-    title: "Innovación",
-    text: "Un asistente con IA que te acompaña a comprar y vender mejor."
-  }
+  { icon: "🤝", title: "Confianza", text: "Compras protegidas, sellers verificados y seguimiento en cada pedido." },
+  { icon: "⚡", title: "Agilidad", text: "Publicar, comprar y pagar en pocos pasos, sin fricciones." },
+  { icon: "🌎", title: "Cercanía", text: "Pensado para el Perú, con envíos a todo el país y soporte local." },
+  { icon: "💡", title: "Innovación", text: "Un asistente con IA que te acompaña a comprar y vender mejor." }
 ];
 
 const team = [
@@ -41,169 +25,106 @@ const team = [
 
 export default function AcercaDePage() {
   return (
-    <div className="space-y-14">
+    <div className="md-stack" style={{ gap: 56 }}>
       {/* Hero */}
-      <section className="relative overflow-hidden rounded-3xl bg-movistar-navy text-white">
+      <section style={{ position: "relative", overflow: "hidden", borderRadius: "var(--md-shape-xl)", background: "linear-gradient(135deg, var(--md-hero-from), var(--md-hero-to))", color: "#fff" }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/img/banners/hero-ecommerce.jpg"
-          alt="Equipo Integratel"
-          className="absolute inset-0 h-full w-full object-cover opacity-30"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-movistar-navy via-movistar-navy/85 to-transparent" />
-        <div className="relative max-w-2xl px-6 py-16 sm:px-10">
-          <span className="badge bg-movistar-green text-white">Nuestra historia</span>
-          <h1 className="mt-3 text-4xl font-bold leading-tight sm:text-5xl">
+        <img src="/img/banners/hero-ecommerce.jpg" alt="Equipo Movistar" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: 0.25 }} />
+        <div style={{ position: "relative", maxWidth: 640, padding: "64px 40px" }}>
+          <span className="md-badge md-badge-secondary">Nuestra historia</span>
+          <h1 className="md-display-small" style={{ marginTop: 12, fontWeight: 800 }}>
             Conectamos a todo el Perú con un solo marketplace
           </h1>
-          <p className="mt-4 text-white/85">
+          <p style={{ marginTop: 16, color: "rgba(255,255,255,0.85)" }}>
             Nacimos para que comprar y vender sea simple, seguro y para todos:
             desde equipos y accesorios Movistar hasta productos de miles de
             emprendedores locales.
           </p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <Link href="/catalogo" className="btn-primary">
-              Explorar catálogo
-            </Link>
-            <Link
-              href="/soporte/vender"
-              className="btn-outline border-white text-white hover:bg-white hover:text-movistar-navy"
-            >
-              Quiero vender
-            </Link>
+          <div className="md-row md-wrap" style={{ gap: 12, marginTop: 24 }}>
+            <Link href="/catalogo" className="md-btn md-btn-on-dark md-state">Explorar catálogo</Link>
+            <Link href="/soporte/vender" className="md-btn md-btn-outlined-on-dark md-state">Quiero vender</Link>
           </div>
         </div>
       </section>
 
       {/* Estadísticas */}
-      <section className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-        {stats.map((s) => (
-          <StatCard key={s.label} {...s} />
-        ))}
+      <section style={{ display: "grid", gap: 16, gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))" }}>
+        {stats.map((s) => <StatCard key={s.label} {...s} />)}
       </section>
 
-      {/* Misión / Visión con imágenes */}
-      <section className="grid gap-6 md:grid-cols-2">
-        <article className="card overflow-hidden">
+      {/* Misión / Visión */}
+      <section style={{ display: "grid", gap: 24, gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))" }}>
+        <article className="md-card md-card-elevated">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/img/banners/hero-compras.jpg"
-            alt="Nuestra misión"
-            className="h-48 w-full object-cover"
-          />
-          <div className="p-6">
-            <h2 className="flex items-center gap-2 text-xl font-bold text-movistar-navy">
-              <span className="text-2xl">🎯</span> Nuestra misión
-            </h2>
-            <p className="mt-2 text-movistar-gray-med">
-              Democratizar el comercio digital en el Perú, dando a cada persona
-              y emprendedor las herramientas para comprar y vender con confianza,
-              sin importar su tamaño ni su rubro.
+          <img src="/img/banners/hero-compras.jpg" alt="Nuestra misión" style={{ height: 192, width: "100%", objectFit: "cover" }} />
+          <div className="md-card-pad">
+            <h2 className="md-title-large" style={{ margin: 0, display: "flex", alignItems: "center", gap: 8 }}><span style={{ fontSize: "1.5rem" }}>🎯</span> Nuestra misión</h2>
+            <p className="md-muted" style={{ marginTop: 8 }}>
+              Democratizar el comercio digital en el Perú, dando a cada persona y
+              emprendedor las herramientas para comprar y vender con confianza.
             </p>
           </div>
         </article>
-
-        <article className="card overflow-hidden">
+        <article className="md-card md-card-elevated">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/img/banners/hero-ofertas.jpg"
-            alt="Nuestra visión"
-            className="h-48 w-full object-cover"
-          />
-          <div className="p-6">
-            <h2 className="flex items-center gap-2 text-xl font-bold text-movistar-navy">
-              <span className="text-2xl">🔭</span> Nuestra visión
-            </h2>
-            <p className="mt-2 text-movistar-gray-med">
-              Ser el marketplace de referencia del país: el lugar donde los
-              peruanos encuentran lo que buscan y donde cada seller hace crecer
-              su negocio con tecnología de primer nivel.
+          <img src="/img/banners/hero-ofertas.jpg" alt="Nuestra visión" style={{ height: 192, width: "100%", objectFit: "cover" }} />
+          <div className="md-card-pad">
+            <h2 className="md-title-large" style={{ margin: 0, display: "flex", alignItems: "center", gap: 8 }}><span style={{ fontSize: "1.5rem" }}>🔭</span> Nuestra visión</h2>
+            <p className="md-muted" style={{ marginTop: 8 }}>
+              Ser el marketplace de referencia del país: donde los peruanos
+              encuentran lo que buscan y cada seller hace crecer su negocio.
             </p>
           </div>
         </article>
       </section>
 
-      {/* Valores con íconos */}
+      {/* Valores */}
       <section>
-        <div className="mb-6 text-center">
-          <h2 className="text-2xl font-bold text-movistar-navy">
-            Nuestros valores
-          </h2>
-          <p className="mt-1 text-movistar-gray-med">
-            Lo que nos guía en cada decisión del marketplace.
-          </p>
+        <div className="md-center" style={{ marginBottom: 24 }}>
+          <h2 className="md-headline-small">Nuestros valores</h2>
+          <p className="md-muted" style={{ marginTop: 4 }}>Lo que nos guía en cada decisión del marketplace.</p>
         </div>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div style={{ display: "grid", gap: 16, gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))" }}>
           {values.map((v) => (
-            <div
-              key={v.title}
-              className="card p-6 text-center transition-transform hover:-translate-y-1"
-            >
-              <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-movistar-blue/10 text-3xl">
-                {v.icon}
-              </span>
-              <h3 className="mt-4 font-bold text-movistar-navy">{v.title}</h3>
-              <p className="mt-2 text-sm text-movistar-gray-med">{v.text}</p>
+            <div key={v.title} className="md-card md-card-elevated md-card-pad md-center">
+              <span style={{ margin: "0 auto", display: "flex", height: 56, width: 56, alignItems: "center", justifyContent: "center", borderRadius: "var(--md-shape-lg)", fontSize: "1.8rem", background: "color-mix(in srgb, var(--md-primary) 12%, transparent)" }}>{v.icon}</span>
+              <h3 className="md-title-medium" style={{ marginTop: 16 }}>{v.title}</h3>
+              <p className="md-muted md-body-medium" style={{ marginTop: 8 }}>{v.text}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Equipo con avatares */}
+      {/* Equipo */}
       <section>
-        <div className="mb-6 text-center">
-          <h2 className="text-2xl font-bold text-movistar-navy">
-            Nuestro equipo
-          </h2>
-          <p className="mt-1 text-movistar-gray-med">
-            Personas apasionadas por el comercio y la tecnología.
-          </p>
+        <div className="md-center" style={{ marginBottom: 24 }}>
+          <h2 className="md-headline-small">Nuestro equipo</h2>
+          <p className="md-muted" style={{ marginTop: 4 }}>Personas apasionadas por el comercio y la tecnología.</p>
         </div>
-        <div className="grid gap-6 sm:grid-cols-3">
+        <div style={{ display: "grid", gap: 24, gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))" }}>
           {team.map((m) => (
-            <div key={m.name} className="card p-6 text-center">
+            <div key={m.name} className="md-card md-card-elevated md-card-pad md-center">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={m.img}
-                alt={m.name}
-                className="mx-auto h-24 w-24 rounded-full object-cover ring-4 ring-movistar-blue/15"
-              />
-              <h3 className="mt-4 font-bold text-movistar-navy">{m.name}</h3>
-              <p className="text-sm text-movistar-blue">{m.role}</p>
+              <img src={m.img} alt={m.name} style={{ margin: "0 auto", height: 96, width: 96, borderRadius: "50%", objectFit: "cover", boxShadow: "0 0 0 4px color-mix(in srgb, var(--md-primary) 15%, transparent)" }} />
+              <h3 className="md-title-medium" style={{ marginTop: 16 }}>{m.name}</h3>
+              <p className="md-primary-text md-body-medium">{m.role}</p>
             </div>
           ))}
         </div>
       </section>
 
       {/* CTA final */}
-      <section className="relative overflow-hidden rounded-3xl bg-movistar-blue text-white">
+      <section style={{ position: "relative", overflow: "hidden", borderRadius: "var(--md-shape-xl)", background: "var(--md-primary)", color: "#fff" }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/img/banners/seller-cta.jpg"
-          alt=""
-          className="absolute inset-0 h-full w-full object-cover opacity-20"
-        />
-        <div className="relative flex flex-col items-center gap-4 px-6 py-12 text-center">
-          <h2 className="text-2xl font-bold sm:text-3xl">
-            ¿Listo para ser parte de Integratel?
-          </h2>
-          <p className="max-w-xl text-white/90">
-            Compra con confianza o empieza a vender hoy mismo. Miles de personas
-            ya forman parte de nuestra comunidad.
+        <img src="/img/banners/seller-cta.jpg" alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: 0.2 }} />
+        <div className="md-center" style={{ position: "relative", display: "flex", flexDirection: "column", alignItems: "center", gap: 16, padding: "48px 24px" }}>
+          <h2 className="md-headline-small">¿Listo para ser parte de Movistar Marketplace?</h2>
+          <p style={{ maxWidth: 560, color: "rgba(255,255,255,0.9)" }}>
+            Compra con confianza o empieza a vender hoy mismo. Miles de personas ya forman parte de nuestra comunidad.
           </p>
-          <div className="flex flex-wrap justify-center gap-3">
-            <Link
-              href="/registro"
-              className="btn bg-white text-movistar-blue hover:bg-white/90"
-            >
-              Crear cuenta
-            </Link>
-            <Link
-              href="/soporte/vender"
-              className="btn-outline border-white text-white hover:bg-white hover:text-movistar-blue"
-            >
-              Vender en el marketplace
-            </Link>
+          <div className="md-row md-wrap" style={{ justifyContent: "center", gap: 12 }}>
+            <Link href="/registro" className="md-btn md-btn-on-dark md-state">Crear cuenta</Link>
+            <Link href="/soporte/vender" className="md-btn md-btn-outlined-on-dark md-state">Vender en el marketplace</Link>
           </div>
         </div>
       </section>

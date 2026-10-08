@@ -6,9 +6,8 @@ const API_BASE =
   process.env.NEXT_PUBLIC_API_URL || "http://localhost:3002/api";
 
 const welcomeFor = (name) =>
-  `¡Hola! Soy ${name}, tu agente de ventas de Integratel 🛍️ Puedo ayudarte a encontrar productos, comprar o vender en el marketplace. ¿Qué buscas hoy?`;
+  `¡Hola! Soy ${name}, tu agente de ventas de Movistar 🛍️ Puedo ayudarte a encontrar productos, comprar o vender en el marketplace. ¿Qué buscas hoy?`;
 
-// Formatea montos en soles.
 const soles = (n) => `S/ ${Number(n).toLocaleString("es-PE")}`;
 
 export default function VirtualAssistant() {
@@ -20,8 +19,6 @@ export default function VirtualAssistant() {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // ===== Estado del perfilador =====
-  // mode: "chat" | "profile"
   const [mode, setMode] = useState("chat");
   const [questions, setQuestions] = useState([]);
   const [step, setStep] = useState(0);
@@ -29,7 +26,6 @@ export default function VirtualAssistant() {
 
   const scrollRef = useRef(null);
 
-  // Obtiene el nombre del agente desde el backend (definido en AI_SYSTEM_NAME).
   useEffect(() => {
     let cancelled = false;
     (async () => {
@@ -61,7 +57,6 @@ export default function VirtualAssistant() {
     setMessages((m) => [...m, { from: "bot", text, ...extra }]);
   const pushUser = (text) => setMessages((m) => [...m, { from: "user", text }]);
 
-  // ===== Chat normal =====
   const send = async (e) => {
     e.preventDefault();
     const text = input.trim();
@@ -96,7 +91,6 @@ export default function VirtualAssistant() {
     }
   };
 
-  // ===== Perfilador =====
   const startProfiling = async () => {
     if (loading) return;
     setLoading(true);
@@ -136,7 +130,6 @@ export default function VirtualAssistant() {
       return;
     }
 
-    // Última respuesta: pide recomendación.
     setMode("chat");
     setLoading(true);
     try {
@@ -151,9 +144,7 @@ export default function VirtualAssistant() {
         products: data.products || []
       });
     } catch (err) {
-      pushBot(
-        "No pude generar las recomendaciones. Intenta de nuevo en unos momentos."
-      );
+      pushBot("No pude generar las recomendaciones. Intenta de nuevo en unos momentos.");
     } finally {
       setLoading(false);
       setQuestions([]);
@@ -174,69 +165,57 @@ export default function VirtualAssistant() {
     <>
       <button
         onClick={() => setOpen((v) => !v)}
-        className="fixed bottom-5 right-5 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-movistar-blue text-2xl text-white shadow-lg transition-transform hover:scale-105"
+        className="assistant-fab md-state"
         aria-label="Asistente virtual"
       >
-        {open ? "✕" : "💬"}
+        <span className="material-symbols-outlined" style={{ fontSize: 26 }}>
+          {open ? "close" : "chat"}
+        </span>
       </button>
 
       {open && (
-        <div className="fixed bottom-24 right-5 z-50 flex h-[32rem] w-[22rem] flex-col overflow-hidden rounded-2xl bg-white shadow-2xl">
-          <div className="flex items-center gap-2 bg-movistar-navy p-4 text-white">
+        <div className="assistant-panel">
+          <div className="assistant-head">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/img/avatars/ia-avatar.png"
               alt={agentName}
-              className="h-9 w-9 rounded-full bg-movistar-blue object-cover"
+              style={{ height: 36, width: 36, borderRadius: "50%", objectFit: "cover", background: "rgba(255,255,255,0.2)" }}
             />
             <div>
-              <p className="text-sm font-bold">Agente {agentName}</p>
-              <p className="text-[10px] text-white/70">Ventas · IA en línea</p>
+              <p style={{ margin: 0, fontSize: "0.875rem", fontWeight: 700 }}>
+                Agente {agentName}
+              </p>
+              <p style={{ margin: 0, fontSize: "0.65rem", opacity: 0.8 }}>
+                Ventas · IA en línea
+              </p>
             </div>
           </div>
 
-          <div ref={scrollRef} className="flex-1 space-y-3 overflow-y-auto bg-movistar-gray p-4">
+          <div ref={scrollRef} className="assistant-body">
             {messages.map((m, i) => (
-              <div key={i} className="space-y-2">
-                <div
-                  className={`flex ${m.from === "user" ? "justify-end" : "justify-start"}`}
-                >
-                  <span
-                    className={`max-w-[80%] whitespace-pre-wrap rounded-2xl px-3 py-2 text-sm ${
-                      m.from === "user"
-                        ? "bg-movistar-blue text-white"
-                        : "bg-white text-movistar-navy shadow"
-                    }`}
-                  >
-                    {m.text}
-                  </span>
+              <div key={i} className="md-col" style={{ gap: 8 }}>
+                <div className={`assistant-msg ${m.from === "user" ? "user" : "bot"}`}>
+                  {m.text}
                 </div>
 
-                {/* Tarjetas de productos recomendados */}
                 {m.products && m.products.length > 0 && (
-                  <div className="space-y-2">
+                  <div className="md-col" style={{ gap: 8 }}>
                     {m.products.map((p) => (
                       <a
                         key={p.id}
                         href={`/producto/${p.slug}`}
-                        className="flex gap-3 rounded-xl bg-white p-2 shadow transition hover:shadow-md"
+                        className="md-card md-card-elevated md-row"
+                        style={{ gap: 12, padding: 8 }}
                       >
                         {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img
-                          src={p.image}
-                          alt={p.name}
-                          className="h-16 w-16 flex-shrink-0 rounded-lg object-cover"
-                        />
-                        <div className="min-w-0 flex-1">
-                          <p className="truncate text-sm font-semibold text-movistar-navy">
+                        <img src={p.image} alt={p.name} style={{ height: 56, width: 56, borderRadius: 8, objectFit: "cover", flexShrink: 0 }} />
+                        <div className="md-grow" style={{ minWidth: 0 }}>
+                          <p className="md-body-medium" style={{ margin: 0, fontWeight: 600, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
                             {p.name}
                           </p>
-                          <p className="text-sm font-bold text-movistar-blue">
-                            {soles(p.price)}
-                          </p>
-                          <p className="truncate text-[11px] text-movistar-gray-med">
-                            ⭐ {p.rating} · {p.reason}
-                          </p>
+                          <p className="md-primary-text" style={{ margin: 0, fontWeight: 700 }}>{soles(p.price)}</p>
+                          <p className="md-muted" style={{ margin: 0, fontSize: "0.7rem" }}>⭐ {p.rating} · {p.reason}</p>
                         </div>
                       </a>
                     ))}
@@ -246,73 +225,48 @@ export default function VirtualAssistant() {
             ))}
 
             {loading && (
-              <div className="flex justify-start">
-                <span className="rounded-2xl bg-white px-3 py-2 text-sm text-movistar-gray-med shadow">
-                  {agentName} está escribiendo…
-                </span>
-              </div>
+              <div className="assistant-msg bot">{agentName} está escribiendo…</div>
             )}
 
-            {/* Panel de pregunta del perfilador */}
             {currentQuestion && !loading && (
-              <div className="rounded-2xl bg-white p-3 shadow">
-                <p className="mb-1 text-[11px] font-semibold uppercase tracking-wide text-movistar-gray-med">
+              <div className="md-card md-card-elevated md-card-pad-sm">
+                <p className="md-label-medium md-muted" style={{ margin: 0 }}>
                   Pregunta {step + 1} de {questions.length}
                 </p>
-                <p className="mb-2 text-sm font-semibold text-movistar-navy">
+                <p className="md-title-small" style={{ margin: "4px 0 8px" }}>
                   {currentQuestion.question}
                 </p>
-                <div className="flex flex-wrap gap-2">
+                <div className="md-row md-wrap" style={{ gap: 8 }}>
                   {currentQuestion.options.map((opt) => (
-                    <button
-                      key={opt.value}
-                      onClick={() => answer(opt)}
-                      className="rounded-full border border-movistar-blue px-3 py-1 text-xs font-medium text-movistar-blue transition hover:bg-movistar-blue hover:text-white"
-                    >
+                    <button key={opt.value} onClick={() => answer(opt)} className="md-chip md-state">
                       {opt.label}
                     </button>
                   ))}
                 </div>
-                <button
-                  onClick={cancelProfiling}
-                  className="mt-2 text-[11px] text-movistar-gray-med underline"
-                >
+                <button onClick={cancelProfiling} className="md-btn md-btn-text md-btn-sm" style={{ marginTop: 8 }}>
                   Cancelar
                 </button>
               </div>
             )}
           </div>
 
-          {/* Barra inferior: CTA del perfilador + input de chat */}
-          <div className="border-t">
+          <div className="assistant-foot">
             {mode === "chat" && !loading && (
-              <div className="px-3 pt-2">
-                <button
-                  onClick={startProfiling}
-                  className="w-full rounded-full bg-movistar-green/10 px-3 py-2 text-xs font-semibold text-movistar-green transition hover:bg-movistar-green/20"
-                >
-                  ✨ Encontrar mi producto ideal
-                </button>
-              </div>
+              <button onClick={startProfiling} className="md-btn md-btn-tonal md-btn-block md-btn-sm md-state">
+                ✨ Encontrar mi producto ideal
+              </button>
             )}
-            <form onSubmit={send} className="flex gap-2 p-3">
+            <form onSubmit={send} className="md-row" style={{ gap: 8 }}>
               <input
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder={
-                  mode === "profile"
-                    ? "Responde las opciones de arriba…"
-                    : "Escribe un mensaje..."
-                }
-                className="input"
+                placeholder={mode === "profile" ? "Responde las opciones de arriba…" : "Escribe un mensaje..."}
+                className="md-input"
+                style={{ borderRadius: "var(--md-shape-full)", borderBottom: "none", background: "var(--md-surface-container-high)" }}
                 disabled={loading || mode === "profile"}
               />
-              <button
-                type="submit"
-                className="btn-primary px-4"
-                disabled={loading || mode === "profile"}
-              >
-                ➤
+              <button type="submit" className="md-btn md-btn-filled md-state" disabled={loading || mode === "profile"} aria-label="Enviar">
+                <span className="material-symbols-outlined" style={{ fontSize: 18 }}>send</span>
               </button>
             </form>
           </div>

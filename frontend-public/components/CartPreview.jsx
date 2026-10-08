@@ -6,9 +6,7 @@ import { usePathname } from "next/navigation";
 import { useStore } from "@/context/StoreContext";
 import { formatCurrency } from "@/lib/format";
 
-// Previsualización del carrito (mini-cart) que se despliega en la misma
-// pantalla al pulsar el ícono del carrito, antes de redirigir al carrito
-// completo o al pago.
+// Mini-cart desplegable desde el ícono del carrito.
 export default function CartPreview() {
   const { cart, cartCount, subtotal, discount, setQty, removeFromCart } =
     useStore();
@@ -16,12 +14,10 @@ export default function CartPreview() {
   const containerRef = useRef(null);
   const pathname = usePathname();
 
-  // Cierra al navegar a otra ruta.
   useEffect(() => {
     setOpen(false);
   }, [pathname]);
 
-  // Cierra al hacer clic fuera o con la tecla Escape.
   useEffect(() => {
     if (!open) return;
     const onClick = (e) => {
@@ -29,9 +25,7 @@ export default function CartPreview() {
         setOpen(false);
       }
     };
-    const onKey = (e) => {
-      if (e.key === "Escape") setOpen(false);
-    };
+    const onKey = (e) => e.key === "Escape" && setOpen(false);
     document.addEventListener("mousedown", onClick);
     document.addEventListener("keydown", onKey);
     return () => {
@@ -43,143 +37,113 @@ export default function CartPreview() {
   const total = Math.max(0, subtotal - discount);
 
   return (
-    <div ref={containerRef} className="relative">
+    <div ref={containerRef} style={{ position: "relative" }}>
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="relative rounded-full bg-white p-2 hover:bg-white/70"
+        className="hdr-icon-btn md-state"
         aria-label="Carrito de compras"
         aria-haspopup="true"
         aria-expanded={open}
       >
-        <span className="text-xl">🛒</span>
-        {cartCount > 0 && (
-          <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-movistar-green text-[10px] font-bold text-white">
-            {cartCount}
-          </span>
-        )}
+        <span className="material-symbols-outlined">shopping_cart</span>
+        {cartCount > 0 && <span className="md-count">{cartCount}</span>}
       </button>
 
       {open && (
-        <div className="absolute right-0 top-full z-50 mt-2 w-80 overflow-hidden rounded-2xl bg-white text-movistar-navy shadow-2xl ring-1 ring-black/5">
-          <div className="flex items-center justify-between border-b px-4 py-3">
-            <p className="text-sm font-bold">
+        <div className="menu-pop">
+          <div
+            className="md-row-between"
+            style={{ padding: "12px 16px", borderBottom: "1px solid var(--md-outline-variant)" }}
+          >
+            <p className="md-title-small" style={{ margin: 0 }}>
               Tu carrito{cartCount > 0 ? ` (${cartCount})` : ""}
             </p>
             <button
               onClick={() => setOpen(false)}
-              className="text-movistar-gray-med hover:text-movistar-navy"
               aria-label="Cerrar"
+              style={{ background: "none", border: "none", cursor: "pointer", color: "var(--md-on-surface-variant)" }}
             >
-              ✕
+              <span className="material-symbols-outlined" style={{ fontSize: 20 }}>close</span>
             </button>
           </div>
 
           {cart.length === 0 ? (
-            <div className="px-4 py-8 text-center">
-              <p className="text-3xl">🛒</p>
-              <p className="mt-2 text-sm text-movistar-gray-med">
-                Tu carrito está vacío.
-              </p>
-              <Link
-                href="/catalogo"
-                onClick={() => setOpen(false)}
-                className="btn-primary mt-4 inline-flex"
-              >
+            <div className="md-center" style={{ padding: "32px 16px" }}>
+              <span className="material-symbols-outlined" style={{ fontSize: 36, color: "var(--md-on-surface-variant)" }}>
+                shopping_cart
+              </span>
+              <p className="md-muted" style={{ marginTop: 8 }}>Tu carrito está vacío.</p>
+              <Link href="/catalogo" onClick={() => setOpen(false)} className="md-btn md-btn-filled md-state" style={{ marginTop: 12 }}>
                 Ver catálogo
               </Link>
             </div>
           ) : (
             <>
-              <ul className="max-h-72 divide-y overflow-y-auto">
+              <ul style={{ listStyle: "none", margin: 0, padding: 0, maxHeight: 288, overflowY: "auto" }}>
                 {cart.map((item) => (
-                  <li key={item.id} className="flex gap-3 px-4 py-3">
+                  <li
+                    key={item.id}
+                    className="md-row"
+                    style={{ padding: "12px 16px", gap: 12, borderBottom: "1px solid var(--md-outline-variant)", alignItems: "flex-start" }}
+                  >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      src={
-                        item.image ||
-                        "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='56' height='56'><rect width='56' height='56' fill='%23e5e7eb'/></svg>"
-                      }
+                      src={item.image}
                       alt={item.name}
-                      className="h-14 w-14 flex-shrink-0 rounded-lg bg-movistar-gray object-cover"
+                      style={{ height: 56, width: 56, borderRadius: 8, objectFit: "cover", background: "var(--md-surface-variant)", flexShrink: 0 }}
                     />
-                    <div className="min-w-0 flex-1">
+                    <div className="md-grow" style={{ minWidth: 0 }}>
                       <Link
                         href={`/producto/${item.slug}`}
                         onClick={() => setOpen(false)}
-                        className="line-clamp-2 text-xs font-semibold hover:text-movistar-blue"
+                        className="md-body-medium"
+                        style={{ display: "block", fontWeight: 600 }}
                       >
                         {item.name}
                       </Link>
-                      <div className="mt-1 flex items-center justify-between">
-                        <div className="flex items-center gap-1">
-                          <button
-                            onClick={() => setQty(item.id, item.qty - 1)}
-                            className="flex h-6 w-6 items-center justify-center rounded-full border text-sm leading-none hover:bg-movistar-gray"
-                            aria-label="Disminuir cantidad"
-                          >
-                            −
-                          </button>
-                          <span className="w-6 text-center text-xs font-semibold">
-                            {item.qty}
-                          </span>
-                          <button
-                            onClick={() => setQty(item.id, item.qty + 1)}
-                            className="flex h-6 w-6 items-center justify-center rounded-full border text-sm leading-none hover:bg-movistar-gray"
-                            aria-label="Aumentar cantidad"
-                          >
-                            +
-                          </button>
+                      <div className="md-row-between" style={{ marginTop: 4 }}>
+                        <div className="md-row" style={{ gap: 4 }}>
+                          <button onClick={() => setQty(item.id, item.qty - 1)} className="qty-btn" aria-label="Disminuir">−</button>
+                          <span style={{ width: 24, textAlign: "center", fontWeight: 600, fontSize: "0.8rem" }}>{item.qty}</span>
+                          <button onClick={() => setQty(item.id, item.qty + 1)} className="qty-btn" aria-label="Aumentar">+</button>
                         </div>
-                        <span className="text-xs font-bold text-movistar-blue">
+                        <span className="md-primary-text" style={{ fontWeight: 700, fontSize: "0.8rem" }}>
                           {formatCurrency(item.price * item.qty)}
                         </span>
                       </div>
                     </div>
                     <button
                       onClick={() => removeFromCart(item.id)}
-                      className="self-start text-movistar-gray-med hover:text-red-500"
                       aria-label={`Quitar ${item.name}`}
+                      style={{ background: "none", border: "none", cursor: "pointer", color: "var(--md-on-surface-variant)" }}
                     >
-                      🗑️
+                      <span className="material-symbols-outlined" style={{ fontSize: 18 }}>delete</span>
                     </button>
                   </li>
                 ))}
               </ul>
 
-              <div className="border-t px-4 py-3">
-                <div className="flex items-center justify-between text-sm">
-                  <span className="text-movistar-gray-med">Subtotal</span>
-                  <span className="font-semibold">
-                    {formatCurrency(subtotal)}
-                  </span>
+              <div style={{ padding: "12px 16px", borderTop: "1px solid var(--md-outline-variant)" }}>
+                <div className="md-row-between md-body-medium">
+                  <span className="md-muted">Subtotal</span>
+                  <span style={{ fontWeight: 600 }}>{formatCurrency(subtotal)}</span>
                 </div>
                 {discount > 0 && (
-                  <div className="mt-1 flex items-center justify-between text-sm text-movistar-green">
+                  <div className="md-row-between md-body-medium" style={{ color: "var(--md-secondary)", marginTop: 4 }}>
                     <span>Descuento</span>
-                    <span className="font-semibold">
-                      -{formatCurrency(discount)}
-                    </span>
+                    <span style={{ fontWeight: 600 }}>-{formatCurrency(discount)}</span>
                   </div>
                 )}
-                <div className="mt-1 flex items-center justify-between text-base font-bold">
+                <div className="md-row-between" style={{ marginTop: 4, fontWeight: 700 }}>
                   <span>Total</span>
                   <span>{formatCurrency(total)}</span>
                 </div>
-
-                <div className="mt-3 flex flex-col gap-2">
-                  <Link
-                    href="/checkout/carrito"
-                    onClick={() => setOpen(false)}
-                    className="btn-outline w-full justify-center text-center"
-                  >
+                <div className="md-col" style={{ marginTop: 12, gap: 8 }}>
+                  <Link href="/checkout/carrito" onClick={() => setOpen(false)} className="md-btn md-btn-outlined md-btn-block md-state">
                     Ver carrito completo
                   </Link>
-                  <Link
-                    href="/checkout/pago"
-                    onClick={() => setOpen(false)}
-                    className="btn-primary w-full justify-center text-center"
-                  >
+                  <Link href="/checkout/pago" onClick={() => setOpen(false)} className="md-btn md-btn-filled md-btn-block md-state">
                     Ir a pagar
                   </Link>
                 </div>

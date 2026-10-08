@@ -1,18 +1,18 @@
 import DemoForm from "@/components/DemoForm";
 
-export const metadata = { title: "Contáctanos · Integratel" };
+export const metadata = { title: "Contáctanos · Movistar" };
 
 export default function ContactPage() {
   return (
-    <div className="grid gap-8 lg:grid-cols-2">
+    <div style={{ display: "grid", gap: 32, gridTemplateColumns: "1fr" }} className="gc-layout">
       <div>
-        <h1 className="mb-3 text-2xl font-bold text-movistar-navy">Contáctanos</h1>
-        <p className="text-movistar-gray-med">
+        <h1 className="md-headline-small" style={{ marginBottom: 12 }}>Contáctanos</h1>
+        <p className="md-muted">
           ¿Tienes dudas o consultas? Escríbenos y te responderemos a la brevedad.
         </p>
-        <ul className="mt-6 space-y-3 text-sm">
+        <ul style={{ listStyle: "none", margin: "24px 0 0", padding: 0, display: "flex", flexDirection: "column", gap: 12, fontSize: "0.9rem" }}>
           <li>📞 (01) 555 1234</li>
-          <li>✉️ soporte@integratel.demo</li>
+          <li>✉️ soporte@movistar.demo</li>
           <li>📍 Av. Arequipa 4545, Miraflores, Lima</li>
           <li>🕘 Lun a Sáb de 9:00 a 18:00</li>
         </ul>

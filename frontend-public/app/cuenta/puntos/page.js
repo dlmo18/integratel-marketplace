@@ -54,49 +54,44 @@ export default function PointsPage() {
   };
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <h2 className="text-xl font-bold text-movistar-navy">Canje de puntos</h2>
-        <Link href="/cuenta/vouchers" className="text-sm font-semibold text-movistar-blue hover:underline">
+    <div className="md-stack">
+      <div className="md-row-between">
+        <h2 className="md-title-large" style={{ margin: 0 }}>Canje de puntos</h2>
+        <Link href="/cuenta/vouchers" className="md-primary-text md-title-small">
           Ver mis vouchers →
         </Link>
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-3">
-        <StatCard label="Puntos disponibles" value={balance.toLocaleString("es-PE")} icon="⭐" accent="blue" />
-        <StatCard label="Puntos ganados" value={earned.toLocaleString("es-PE")} icon="📈" accent="green" />
-        <StatCard label="Vouchers canjeados hoy" value={redeemed.length} icon="🎟️" accent="navy" />
+      <div style={{ display: "grid", gap: 16, gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))" }}>
+        <StatCard label="Puntos disponibles" value={balance.toLocaleString("es-PE")} icon={<span className="material-symbols-outlined filled">star</span>} accent="primary" />
+        <StatCard label="Puntos ganados" value={earned.toLocaleString("es-PE")} icon={<span className="material-symbols-outlined">trending_up</span>} accent="secondary" />
+        <StatCard label="Vouchers canjeados hoy" value={redeemed.length} icon={<span className="material-symbols-outlined">confirmation_number</span>} accent="primary" />
       </div>
 
       {message && (
-        <div
-          className={`rounded-xl p-4 text-sm ${
-            message.type === "success"
-              ? "bg-movistar-green/10 text-movistar-green"
-              : "bg-red-50 text-red-600"
-          }`}
-        >
+        <div className={`md-alert ${message.type === "success" ? "md-alert-success" : "md-alert-error"}`}>
           {message.text}
         </div>
       )}
 
       {/* Catálogo de recompensas */}
       <div>
-        <h3 className="mb-3 font-bold text-movistar-navy">Canjea tus puntos por vouchers</h3>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <h3 className="md-title-medium" style={{ margin: "0 0 12px" }}>Canjea tus puntos por vouchers</h3>
+        <div style={{ display: "grid", gap: 16, gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))" }}>
           {rewards.map((rw) => {
             const canRedeem = balance >= rw.cost;
             return (
-              <div key={rw.id} className="card flex flex-col p-5">
-                <span className="text-3xl">{rw.discountType === "percent" ? "🏷️" : "💵"}</span>
-                <p className="mt-2 font-semibold text-movistar-navy">{rw.title}</p>
-                <p className="mt-1 text-sm text-movistar-gray-med">
+              <div key={rw.id} className="md-card md-card-elevated md-card-pad md-col">
+                <span className="material-symbols-outlined" style={{ fontSize: 32, color: "var(--md-primary)" }}>{rw.discountType === "percent" ? "sell" : "payments"}</span>
+                <p className="md-title-small" style={{ marginTop: 8 }}>{rw.title}</p>
+                <p className="md-muted md-body-medium" style={{ marginTop: 4 }}>
                   {rw.cost.toLocaleString("es-PE")} puntos
                 </p>
                 <button
                   onClick={() => redeem(rw)}
                   disabled={!canRedeem}
-                  className={`mt-auto ${canRedeem ? "btn-primary" : "btn-outline cursor-not-allowed opacity-50"} mt-4`}
+                  className={`md-btn md-state ${canRedeem ? "md-btn-filled" : "md-btn-outlined"}`}
+                  style={{ marginTop: "auto", marginBlockStart: 16 }}
                 >
                   {canRedeem ? "Canjear" : "Puntos insuficientes"}
                 </button>
@@ -108,14 +103,14 @@ export default function PointsPage() {
 
       {/* Vouchers recién generados */}
       {redeemed.length > 0 && (
-        <div className="card p-5">
-          <h3 className="mb-3 font-bold text-movistar-navy">Vouchers generados en esta sesión</h3>
-          <ul className="space-y-2 text-sm">
+        <div className="md-card md-card-elevated md-card-pad">
+          <h3 className="md-title-medium" style={{ margin: "0 0 12px" }}>Vouchers generados en esta sesión</h3>
+          <ul className="md-stack" style={{ listStyle: "none", margin: 0, padding: 0, gap: 8 }}>
             {redeemed.map((r) => (
-              <li key={r.code} className="flex items-center justify-between rounded-lg bg-movistar-gray p-3">
-                <span className="font-mono font-bold text-movistar-navy">{r.code}</span>
+              <li key={r.code} className="md-row-between md-body-medium" style={{ borderRadius: "var(--md-shape-md)", background: "var(--md-surface-container)", padding: 12 }}>
+                <span style={{ fontFamily: "monospace", fontWeight: 700 }}>{r.code}</span>
                 <span>{r.label}</span>
-                <span className="text-movistar-gray-med">-{r.cost} pts</span>
+                <span className="md-muted">-{r.cost} pts</span>
               </li>
             ))}
           </ul>
@@ -123,16 +118,16 @@ export default function PointsPage() {
       )}
 
       {/* Historial */}
-      <div className="card p-5">
-        <h3 className="mb-3 font-bold text-movistar-navy">Historial de puntos</h3>
-        <div className="space-y-2">
+      <div className="md-card md-card-elevated md-card-pad">
+        <h3 className="md-title-medium" style={{ margin: "0 0 12px" }}>Historial de puntos</h3>
+        <div>
           {history.map((h) => (
-            <div key={h.id} className="flex items-center justify-between border-b py-2 text-sm last:border-0">
+            <div key={h.id} className="md-row-between md-body-medium" style={{ borderBottom: "1px solid var(--md-outline-variant)", paddingBlock: 8 }}>
               <div>
-                <p className="font-medium text-movistar-navy">{h.concept}</p>
-                <p className="text-xs text-movistar-gray-med">{formatDate(h.date)}</p>
+                <p className="md-title-small" style={{ margin: 0 }}>{h.concept}</p>
+                <p className="md-muted md-body-small" style={{ margin: 0 }}>{formatDate(h.date)}</p>
               </div>
-              <span className={`font-bold ${h.points >= 0 ? "text-movistar-green" : "text-red-500"}`}>
+              <span style={{ fontWeight: 700, color: h.points >= 0 ? "var(--md-secondary)" : "var(--md-error)" }}>
                 {h.points >= 0 ? "+" : ""}
                 {h.points.toLocaleString("es-PE")} pts
               </span>

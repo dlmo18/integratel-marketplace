@@ -5,7 +5,7 @@
     "slug": "movistar",
     "description": "Equipos móviles, accesorios y planes de la marca Movistar.",
     "icon": "📱",
-    "image": "/img/categories/movistar.svg"
+    "image": "/img/categories/movistar.jpg"
   },
   {
     "id": "tecnologia",
@@ -13,7 +13,7 @@
     "slug": "tecnologia",
     "description": "Laptops, tablets, wearables y gadgets.",
     "icon": "💻",
-    "image": "/img/categories/tecnologia.svg"
+    "image": "/img/categories/tecnologia.jpg"
   },
   {
     "id": "hogar",
@@ -21,7 +21,7 @@
     "slug": "hogar",
     "description": "Electrodomésticos y artículos para el hogar.",
     "icon": "🏠",
-    "image": "/img/categories/hogar.svg"
+    "image": "/img/categories/hogar.jpg"
   },
   {
     "id": "over-the-top",
@@ -29,7 +29,7 @@
     "slug": "over-the-top",
     "description": "Suscripciones de streaming: Netflix, Disney+, Prime Video y más.",
     "icon": "�",
-    "image": "/img/categories/over-the-top.svg"
+    "image": "/img/categories/over-the-top.jpg"
   },
   {
     "id": "deportes",
@@ -37,7 +37,7 @@
     "slug": "deportes",
     "description": "Equipamiento y ropa deportiva.",
     "icon": "⚽",
-    "image": "/img/categories/deportes.svg"
+    "image": "/img/categories/deportes.jpg"
   },
   {
     "id": "servicios-digitales",
@@ -45,7 +45,7 @@
     "slug": "servicios-digitales",
     "description": "Licencias de software: Microsoft 365, Office, antivirus, Adobe y más.",
     "icon": "🧩",
-    "image": "/img/categories/servicios-digitales.svg"
+    "image": "/img/categories/servicios-digitales.jpg"
   },
   {
     "id": "juguetes",
@@ -53,6 +53,6 @@
     "slug": "juguetes",
     "description": "Juguetes y entretenimiento para todas las edades.",
     "icon": "🧸",
-    "image": "/img/categories/juguetes.svg"
+    "image": "/img/categories/juguetes.jpg"
   }
 ]

@@ -5,8 +5,7 @@ import { useStore } from "@/context/StoreContext";
 import { getProductById } from "@/lib/data";
 import { formatCurrency } from "@/lib/format";
 
-// Bloque de mini-tarjetas con los productos favoritos del usuario. Se muestra
-// solo si hay favoritos guardados. Enlaza a la lista completa en Mi Cuenta.
+// Bloque "Tus Favoritos" (mini-tarjetas). Solo si hay favoritos guardados.
 export default function FavoritesBlock({ limit = 6 }) {
   const { favorites, addToCart, toggleFavorite } = useStore();
 
@@ -18,73 +17,54 @@ export default function FavoritesBlock({ limit = 6 }) {
   if (products.length === 0) return null;
 
   return (
-    <section className="container-page py-12">
-      <div className="mb-6 flex items-end justify-between">
-        <h2 className="flex items-center gap-2 text-2xl font-bold text-movistar-navy">
-          <span>❤️</span> Tus Favoritos
-        </h2>
-        <Link
-          href="/cuenta/favoritos"
-          className="text-sm font-semibold text-movistar-blue hover:underline"
-        >
-          Ver lista de deseos →
-        </Link>
-      </div>
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
-        {products.map((p) => {
-          const outOfStock = p.stock <= 0;
-          return (
-            <div
-              key={p.id}
-              className="card group flex flex-col overflow-hidden transition-transform hover:-translate-y-1"
-            >
-              <div className="relative">
-                <Link href={`/producto/${p.slug}`} className="block">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={p.images?.[0]}
-                    alt={p.name}
-                    className={`aspect-square w-full object-cover ${
-                      outOfStock ? "opacity-60 grayscale" : ""
-                    }`}
-                    loading="lazy"
-                  />
-                </Link>
-                <button
-                  type="button"
-                  onClick={() => toggleFavorite(p)}
-                  className="absolute right-2 top-2 flex h-7 w-7 items-center justify-center rounded-full bg-red-500 text-xs text-white shadow-sm"
-                  aria-label="Quitar de favoritos"
-                  title="Quitar de favoritos"
-                >
-                  ❤️
-                </button>
-              </div>
-              <div className="flex flex-1 flex-col p-3">
-                <Link
-                  href={`/producto/${p.slug}`}
-                  className="line-clamp-2 text-xs font-semibold hover:text-movistar-blue"
-                >
-                  {p.name}
-                </Link>
-                <p className="mt-1 text-sm font-bold text-movistar-navy">
-                  {formatCurrency(p.price, p.currency)}
-                </p>
-                <button
-                  onClick={() => addToCart(p, 1)}
-                  disabled={outOfStock}
-                  className={`mt-2 w-full px-2 py-1.5 text-xs ${
-                    outOfStock
-                      ? "btn-outline cursor-not-allowed opacity-50"
-                      : "btn-primary"
-                  }`}
-                >
-                  {outOfStock ? "Agotado" : "Agregar"}
-                </button>
-              </div>
-            </div>
-          );
-        })}
+    <section className="md-section">
+      <div className="md-container">
+        <div className="section-head">
+          <h2 className="md-headline-medium" style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
+            <span className="material-symbols-outlined filled" style={{ color: "var(--md-error)" }}>favorite</span>
+            Tus Favoritos
+          </h2>
+          <Link href="/cuenta/favoritos" className="section-link">
+            Ver lista de deseos →
+          </Link>
+        </div>
+        <div className="prod-grid-6">
+          {products.map((p) => {
+            const outOfStock = p.stock <= 0;
+            return (
+              <article key={p.id} className="md-card md-card-elevated pcard">
+                <div className="pcard-media">
+                  <Link href={`/producto/${p.slug}`}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={p.images?.[0]} alt={p.name} className={outOfStock ? "out" : ""} loading="lazy" />
+                  </Link>
+                  <button
+                    type="button"
+                    onClick={() => toggleFavorite(p)}
+                    className="pcard-fav on md-state"
+                    aria-label="Quitar de favoritos"
+                  >
+                    <span className="material-symbols-outlined filled" style={{ fontSize: 18 }}>favorite</span>
+                  </button>
+                </div>
+                <div className="pcard-body" style={{ padding: 12 }}>
+                  <Link href={`/producto/${p.slug}`} className="pcard-name">{p.name}</Link>
+                  <p className="pcard-price" style={{ marginTop: 8 }}>
+                    {formatCurrency(p.price, p.currency)}
+                  </p>
+                  <button
+                    onClick={() => addToCart(p, 1)}
+                    disabled={outOfStock}
+                    className={`md-btn md-btn-sm md-state ${outOfStock ? "md-btn-outlined" : "md-btn-filled"}`}
+                    style={{ marginTop: 8, width: "100%" }}
+                  >
+                    {outOfStock ? "Agotado" : "Agregar"}
+                  </button>
+                </div>
+              </article>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

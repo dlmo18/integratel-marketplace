@@ -7,34 +7,53 @@ import Toaster from "@/components/Toaster";
 import CompareBar from "@/components/CompareBar";
 
 export const metadata = {
-  title: "Integratel Marketplace",
+  title: "Movistar Marketplace",
   description:
-    "Marketplace piloto estilo Movistar: equipos, accesorios y productos de sellers.",
+    "Marketplace Movistar: equipos, accesorios, servicios digitales y productos de sellers."
 };
 
 // Aplica el tema desde localStorage antes de pintar, evitando el flash de color.
+// Perfiles de comprador: blue (N1) / gold (N2) / platinium (N3) / black (N4).
+// Vendedores: seller. Sin sesión => blue.
 const themeInit = `
 try {
   var u = JSON.parse(localStorage.getItem('itm_user') || 'null');
-  var t = u ? (u.tier || (u.type === 'seller' ? 'seller' : 'regular')) : 'regular';
+  var t = 'blue';
+  if (u) { t = u.type === 'seller' ? 'seller' : (u.tier || 'blue'); }
   document.documentElement.setAttribute('data-theme', t);
 } catch (e) {}
 `;
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="es" data-theme="regular">
+    <html lang="es" data-theme="blue">
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;800&display=swap"
+          rel="stylesheet"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap"
+          rel="stylesheet"
+        />
         <script dangerouslySetInnerHTML={{ __html: themeInit }} />
       </head>
-      <body className="flex min-h-screen flex-col">
+      <body>
         <StoreProvider>
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
-          <VirtualAssistant />
-          <CompareBar />
-          <Toaster />
+          <div className="md-app">
+            <Header />
+            <main className="md-main">{children}</main>
+            <Footer />
+            <VirtualAssistant />
+            <CompareBar />
+            <Toaster />
+          </div>
         </StoreProvider>
       </body>
     </html>

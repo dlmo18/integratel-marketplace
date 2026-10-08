@@ -19,45 +19,47 @@ function List({ userId }) {
   const net = txns.reduce((a, t) => a + t.net, 0);
 
   return (
-    <div className="space-y-4">
-      <h2 className="text-xl font-bold text-movistar-navy">Transacciones de pago</h2>
-      <div className="card p-4 text-sm">
+    <div className="md-stack">
+      <h2 className="md-title-large" style={{ margin: 0 }}>Transacciones de pago</h2>
+      <div className="md-card md-card-elevated md-card-pad-sm md-body-medium">
         Total neto acumulado:{" "}
-        <span className="font-bold text-movistar-green">{formatCurrency(net)}</span>
+        <span style={{ fontWeight: 700, color: "var(--md-secondary)" }}>{formatCurrency(net)}</span>
       </div>
-      <div className="card overflow-x-auto">
-        <table className="w-full text-left text-sm">
-          <thead className="bg-movistar-gray text-movistar-navy">
-            <tr>
-              <th className="p-3">ID</th>
-              <th className="p-3">Venta</th>
-              <th className="p-3">Fecha</th>
-              <th className="p-3">Método</th>
-              <th className="p-3 text-right">Monto</th>
-              <th className="p-3 text-right">Comisión</th>
-              <th className="p-3 text-right">Neto</th>
-              <th className="p-3">Estado</th>
-            </tr>
-          </thead>
-          <tbody>
-            {txns.map((t) => (
-              <tr key={t.id} className="border-t">
-                <td className="p-3 font-semibold">{t.id}</td>
-                <td className="p-3">{t.saleId}</td>
-                <td className="p-3">{formatDate(t.date)}</td>
-                <td className="p-3">{t.method}</td>
-                <td className="p-3 text-right">{formatCurrency(t.amount)}</td>
-                <td className="p-3 text-right text-red-500">-{formatCurrency(t.fee)}</td>
-                <td className="p-3 text-right font-bold">{formatCurrency(t.net)}</td>
-                <td className="p-3">
-                  <span className={`badge capitalize ${t.status === "abonado" ? "bg-movistar-green text-white" : "bg-yellow-400 text-movistar-navy"}`}>
-                    {t.status}
-                  </span>
-                </td>
+      <div className="md-card md-card-elevated">
+        <div className="md-table-wrap">
+          <table className="md-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Venta</th>
+                <th>Fecha</th>
+                <th>Método</th>
+                <th style={{ textAlign: "right" }}>Monto</th>
+                <th style={{ textAlign: "right" }}>Comisión</th>
+                <th style={{ textAlign: "right" }}>Neto</th>
+                <th>Estado</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {txns.map((t) => (
+                <tr key={t.id}>
+                  <td style={{ fontWeight: 600 }}>{t.id}</td>
+                  <td>{t.saleId}</td>
+                  <td>{formatDate(t.date)}</td>
+                  <td>{t.method}</td>
+                  <td style={{ textAlign: "right" }}>{formatCurrency(t.amount)}</td>
+                  <td style={{ textAlign: "right", color: "var(--md-error)" }}>-{formatCurrency(t.fee)}</td>
+                  <td style={{ textAlign: "right", fontWeight: 700 }}>{formatCurrency(t.net)}</td>
+                  <td>
+                    <span className={`md-badge ${t.status === "abonado" ? "md-badge-secondary" : "md-badge-primary-container"}`} style={{ textTransform: "capitalize" }}>
+                      {t.status}
+                    </span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

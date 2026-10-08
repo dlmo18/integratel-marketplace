@@ -9,17 +9,20 @@ function Progress({ status }) {
   const cancelled = status === "cancelado";
   const current = steps.indexOf(status);
   return (
-    <div className="flex items-center gap-1">
+    <div className="md-row" style={{ gap: 4 }}>
       {steps.map((s, i) => (
         <div
           key={s}
-          className={`h-2 flex-1 rounded-full ${
-            cancelled
-              ? "bg-red-200"
+          style={{
+            height: 8,
+            flex: 1,
+            borderRadius: "var(--md-shape-full)",
+            background: cancelled
+              ? "var(--md-error-container)"
               : i <= current
-              ? "bg-movistar-green"
-              : "bg-gray-200"
-          }`}
+              ? "var(--md-secondary)"
+              : "var(--md-outline-variant)"
+          }}
           title={s}
         />
       ))}
@@ -28,10 +31,10 @@ function Progress({ status }) {
 }
 
 const statusBadge = {
-  "en preparación": "bg-movistar-blue text-white",
-  "en camino": "bg-movistar-blue text-white",
-  entregado: "bg-movistar-green text-white",
-  cancelado: "bg-red-500 text-white"
+  "en preparación": "md-badge-primary",
+  "en camino": "md-badge-primary",
+  entregado: "md-badge-secondary",
+  cancelado: "md-badge-error"
 };
 
 export default function DeliveriesPage() {
@@ -39,20 +42,20 @@ export default function DeliveriesPage() {
   const orders = getOrdersByBuyer(user?.id);
 
   return (
-    <div className="space-y-4">
-      <h2 className="text-xl font-bold text-movistar-navy">Estado de entregas</h2>
+    <div className="md-stack">
+      <h2 className="md-title-large" style={{ margin: 0 }}>Estado de entregas</h2>
       {orders.map((o) => (
-        <div key={o.id} className="card p-5">
-          <div className="flex items-center justify-between">
-            <p className="font-bold text-movistar-navy">{o.id}</p>
-            <span className={`badge capitalize ${statusBadge[o.status] || "bg-gray-200 text-movistar-navy"}`}>{o.status}</span>
+        <div key={o.id} className="md-card md-card-elevated md-card-pad">
+          <div className="md-row-between">
+            <p className="md-title-small" style={{ margin: 0 }}>{o.id}</p>
+            <span className={`md-badge ${statusBadge[o.status] || "md-badge-neutral"}`} style={{ textTransform: "capitalize" }}>{o.status}</span>
           </div>
-          <p className="mt-1 text-xs text-movistar-gray-med">
+          <p className="md-muted md-body-small" style={{ marginTop: 4 }}>
             Tracking: {o.tracking} · {o.shippingAddress}
           </p>
-          <div className="mt-3">
+          <div style={{ marginTop: 12 }}>
             <Progress status={o.status} />
-            <div className="mt-1 flex justify-between text-[10px] uppercase text-movistar-gray-med">
+            <div className="md-row-between" style={{ marginTop: 4, fontSize: "0.625rem", textTransform: "uppercase", color: "var(--md-on-surface-variant)" }}>
               {steps.map((s) => (
                 <span key={s}>{s}</span>
               ))}
@@ -61,7 +64,7 @@ export default function DeliveriesPage() {
         </div>
       ))}
       {orders.length === 0 && (
-        <p className="text-sm text-movistar-gray-med">No hay entregas en curso.</p>
+        <p className="md-muted md-body-medium">No hay entregas en curso.</p>
       )}
     </div>
   );

@@ -13,7 +13,7 @@ export function generateStaticParams() {
 
 export function generateMetadata({ params }) {
   const product = getProductBySlug(params.slug);
-  return { title: product ? `${product.name} · Integratel` : "Producto" };
+  return { title: product ? `${product.name} · Movistar` : "Producto" };
 }
 
 export default function ProductPage({ params }) {

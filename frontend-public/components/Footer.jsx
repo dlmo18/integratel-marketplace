@@ -32,38 +32,39 @@ const columns = [
 
 export default function Footer() {
   return (
-    <footer className="mt-16 bg-movistar-blue-dark text-white">
-      <div className="container-page grid gap-8 py-12 sm:grid-cols-2 lg:grid-cols-4">
-        <div>
-          <span className="text-2xl font-black">
-            integra<span className="text-movistar-blue">tel</span>
-          </span>
-          <p className="mt-3 text-sm text-white/70">
-            El marketplace donde encuentras equipos Movistar y productos de
-            miles de sellers. Compra fácil, vende sin límites.
-          </p>
-        </div>
-        {columns.map((col) => (
-          <div key={col.title}>
-            <h4 className="mb-3 text-sm font-bold uppercase tracking-wide text-movistar-blue">
-              {col.title}
-            </h4>
-            <ul className="space-y-2 text-sm text-white/70">
-              {col.links.map((l) => (
-                <li key={l.href}>
-                  <Link href={l.href} className="hover:text-white">
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+    <footer className="ftr">
+      <div className="md-container">
+        <div className="ftr-grid">
+          <div className="ftr-brand">
+            <span className="md-title-large" style={{ fontWeight: 800 }}>
+              Movistar <span style={{ fontWeight: 500 }}>Marketplace</span>
+            </span>
+            <p>
+              El marketplace donde encuentras equipos Movistar, servicios
+              digitales y productos de miles de sellers. Compra fácil, vende sin
+              límites.
+            </p>
           </div>
-        ))}
+          {columns.map((col) => (
+            <div key={col.title}>
+              <h4>{col.title}</h4>
+              <ul>
+                {col.links.map((l) => (
+                  <li key={l.href}>
+                    <Link href={l.href}>{l.label}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
       </div>
-      <div className="border-t border-white/10 py-4">
-        <div className="container-page flex flex-col items-center justify-between gap-2 text-xs text-white/60 sm:flex-row">
-          <span>© {new Date().getFullYear()} Integratel Marketplace. Proyecto demo.</span>
-          <span>Hecho con Next.js + Tailwind · Línea gráfica inspirada en Movistar</span>
+      <div className="ftr-bottom">
+        <div className="md-container">
+          <span>
+            © {new Date().getFullYear()} Movistar Marketplace. Proyecto demo.
+          </span>
+          <span>Hecho con Next.js · Material Design 3</span>
         </div>
       </div>
     </footer>

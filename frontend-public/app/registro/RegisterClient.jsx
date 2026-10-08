@@ -16,11 +16,12 @@ export default function RegisterClient() {
 
   const submit = (e) => {
     e.preventDefault();
-    // Demo: crea una sesión en memoria/localStorage (no persiste en JSON estático)
     const id = `${type}-demo-${Date.now()}`;
     const newUser = {
       id,
       type,
+      // Los compradores nuevos empiezan en el nivel Blue (N1).
+      tier: type === "seller" ? "seller" : "blue",
       name: form.name,
       email: form.email,
       avatar: type === "seller" ? "/img/avatars/seller-001.jpg" : "/img/avatars/user-001.jpg",
@@ -34,71 +35,67 @@ export default function RegisterClient() {
   };
 
   return (
-    <div className="mx-auto w-full max-w-lg">
-      <div className="card p-8">
-        <h2 className="text-2xl font-bold text-movistar-navy">
+    <div style={{ margin: "0 auto", width: "100%", maxWidth: 520 }}>
+      <div className="md-card md-card-elevated md-card-pad">
+        <h2 className="md-headline-small">
           {type === "seller" ? "Darse de alta como Seller" : "Registrar cuenta"}
         </h2>
-        <p className="mt-1 text-sm text-movistar-gray-med">
+        <p className="md-muted md-body-medium" style={{ marginTop: 4 }}>
           Crea tu cuenta para {type === "seller" ? "vender" : "comprar"} en el marketplace.
         </p>
 
-        <div className="mt-4 grid grid-cols-2 gap-2 rounded-full bg-movistar-gray p-1">
+        <div style={{ marginTop: 16, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 4, borderRadius: "var(--md-shape-full)", background: "var(--md-surface-container-high)", padding: 4 }}>
           <button
             onClick={() => setType("buyer")}
-            className={`rounded-full py-2 text-sm font-semibold ${
-              type === "buyer" ? "bg-movistar-blue text-white" : "text-movistar-navy"
-            }`}
+            className="md-state"
+            style={{ borderRadius: "var(--md-shape-full)", padding: "8px 0", border: "none", cursor: "pointer", fontWeight: 600, fontSize: "0.85rem", background: type === "buyer" ? "var(--md-primary)" : "transparent", color: type === "buyer" ? "var(--md-on-primary)" : "var(--md-on-surface)" }}
           >
             Comprador
           </button>
           <button
             onClick={() => setType("seller")}
-            className={`rounded-full py-2 text-sm font-semibold ${
-              type === "seller" ? "bg-movistar-blue text-white" : "text-movistar-navy"
-            }`}
+            className="md-state"
+            style={{ borderRadius: "var(--md-shape-full)", padding: "8px 0", border: "none", cursor: "pointer", fontWeight: 600, fontSize: "0.85rem", background: type === "seller" ? "var(--md-primary)" : "transparent", color: type === "seller" ? "var(--md-on-primary)" : "var(--md-on-surface)" }}
           >
             Seller
           </button>
         </div>
 
-        <form onSubmit={submit} className="mt-6 space-y-4">
-          <label className="block text-sm font-medium">
-            Nombre completo
-            <input value={form.name} onChange={set("name")} className="input mt-1" required placeholder="Tu nombre" />
-          </label>
-          <label className="block text-sm font-medium">
-            Correo electrónico
-            <input type="email" value={form.email} onChange={set("email")} className="input mt-1" required placeholder="tu@correo.com" />
-          </label>
-          <label className="block text-sm font-medium">
-            Contraseña
-            <input type="password" value={form.password} onChange={set("password")} className="input mt-1" required placeholder="••••••••" />
-          </label>
+        <form onSubmit={submit} className="md-stack" style={{ marginTop: 24 }}>
+          <div>
+            <label className="md-form-label">Nombre completo</label>
+            <input value={form.name} onChange={set("name")} className="md-input" required placeholder="Tu nombre" />
+          </div>
+          <div>
+            <label className="md-form-label">Correo electrónico</label>
+            <input type="email" value={form.email} onChange={set("email")} className="md-input" required placeholder="tu@correo.com" />
+          </div>
+          <div>
+            <label className="md-form-label">Contraseña</label>
+            <input type="password" value={form.password} onChange={set("password")} className="md-input" required placeholder="••••••••" />
+          </div>
 
           {type === "seller" && (
             <>
-              <label className="block text-sm font-medium">
-                Nombre de la tienda
-                <input value={form.storeName} onChange={set("storeName")} className="input mt-1" required placeholder="Mi tienda" />
-              </label>
-              <label className="block text-sm font-medium">
-                RUC
-                <input value={form.ruc} onChange={set("ruc")} className="input mt-1" placeholder="20xxxxxxxxx" />
-              </label>
+              <div>
+                <label className="md-form-label">Nombre de la tienda</label>
+                <input value={form.storeName} onChange={set("storeName")} className="md-input" required placeholder="Mi tienda" />
+              </div>
+              <div>
+                <label className="md-form-label">RUC</label>
+                <input value={form.ruc} onChange={set("ruc")} className="md-input" placeholder="20xxxxxxxxx" />
+              </div>
             </>
           )}
 
-          <button type="submit" className={type === "seller" ? "btn-green w-full" : "btn-primary w-full"}>
+          <button type="submit" className={`md-btn md-btn-block md-state ${type === "seller" ? "md-btn-green" : "md-btn-filled"}`}>
             {type === "seller" ? "Crear cuenta de Seller" : "Crear cuenta"}
           </button>
         </form>
 
-        <p className="mt-6 text-center text-sm text-movistar-gray-med">
+        <p className="md-center md-muted md-body-medium" style={{ marginTop: 24 }}>
           ¿Ya tienes cuenta?{" "}
-          <Link href="/login" className="font-semibold text-movistar-blue hover:underline">
-            Inicia sesión
-          </Link>
+          <Link href="/login" className="md-primary-text" style={{ fontWeight: 600 }}>Inicia sesión</Link>
         </p>
       </div>
     </div>

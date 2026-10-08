@@ -2,7 +2,7 @@
   {
     "id": "user-001",
     "type": "buyer",
-    "tier": "regular",
+    "tier": "blue",
     "name": "Lucía Fernández",
     "email": "comprador@demo.com",
     "password": "demo1234",
@@ -52,13 +52,13 @@
   {
     "id": "user-002",
     "type": "buyer",
-    "tier": "vip",
+    "tier": "black",
     "name": "Ricardo Vega Prado",
-    "email": "vip@demo.com",
+    "email": "black@demo.com",
     "password": "demo1234",
     "phone": "+51 950 111 222",
     "avatar": "/img/avatars/user-001.jpg",
-    "vipSince": "2025-03-01",
+    "memberSince": "2025-03-01",
     "addresses": [
       {
         "id": "addr-201",
@@ -79,6 +79,74 @@
         "last4": "1005",
         "holder": "Ricardo Vega",
         "expiry": "11/29",
+        "default": true
+      }
+    ]
+  },
+  {
+    "id": "user-003",
+    "type": "buyer",
+    "tier": "gold",
+    "name": "Paola Ríos Campos",
+    "email": "gold@demo.com",
+    "password": "demo1234",
+    "phone": "+51 955 222 333",
+    "avatar": "/img/avatars/user-001.jpg",
+    "memberSince": "2025-06-10",
+    "addresses": [
+      {
+        "id": "addr-301",
+        "alias": "Casa",
+        "line1": "Av. Benavides 2100",
+        "district": "Miraflores",
+        "city": "Lima",
+        "region": "Lima",
+        "zip": "15048",
+        "default": true
+      }
+    ],
+    "paymentMethods": [
+      {
+        "id": "pm-301",
+        "type": "card",
+        "brand": "Visa",
+        "last4": "7788",
+        "holder": "Paola Ríos",
+        "expiry": "03/29",
+        "default": true
+      }
+    ]
+  },
+  {
+    "id": "user-004",
+    "type": "buyer",
+    "tier": "platinium",
+    "name": "Diego Salazar Luna",
+    "email": "platinium@demo.com",
+    "password": "demo1234",
+    "phone": "+51 955 444 555",
+    "avatar": "/img/avatars/user-001.jpg",
+    "memberSince": "2025-01-20",
+    "addresses": [
+      {
+        "id": "addr-401",
+        "alias": "Departamento",
+        "line1": "Av. La Encalada 1500",
+        "district": "Santiago de Surco",
+        "city": "Lima",
+        "region": "Lima",
+        "zip": "15023",
+        "default": true
+      }
+    ],
+    "paymentMethods": [
+      {
+        "id": "pm-401",
+        "type": "card",
+        "brand": "Mastercard",
+        "last4": "3344",
+        "holder": "Diego Salazar",
+        "expiry": "07/28",
         "default": true
       }
     ]

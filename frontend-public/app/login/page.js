@@ -6,6 +6,14 @@ import { useRouter } from "next/navigation";
 import { useStore } from "@/context/StoreContext";
 import { findUserByCredentials } from "@/lib/data";
 
+const demoAccounts = [
+  { mail: "comprador@demo.com", label: "Movistar Blue (Nivel 1)" },
+  { mail: "gold@demo.com", label: "Movistar Gold (Nivel 2)" },
+  { mail: "platinium@demo.com", label: "Movistar Platinium (Nivel 3)" },
+  { mail: "black@demo.com", label: "Movistar Black (Nivel 4)" },
+  { mail: "seller@demo.com", label: "Seller (tema Empresas)" }
+];
+
 export default function LoginPage() {
   const { login } = useStore();
   const router = useRouter();
@@ -31,75 +39,53 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="container-page grid min-h-[70vh] items-center py-10 lg:grid-cols-2 lg:gap-12">
-      <div className="hidden lg:block">
-        <h1 className="text-4xl font-black text-movistar-navy">
-          Bienvenido de nuevo
-        </h1>
-        <p className="mt-3 text-movistar-gray-med">
-          Ingresa para ver tus compras, gestionar tus ventas y administrar tu
-          cuenta en el marketplace.
-        </p>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/img/banners/hero-compras.jpg"
-          alt="Login"
-          className="mt-6 rounded-3xl object-cover shadow-card"
-        />
-      </div>
-
-      <div className="mx-auto w-full max-w-md">
-        <div className="card p-8">
-          <h2 className="text-2xl font-bold text-movistar-navy">Iniciar sesión</h2>
-          <form onSubmit={submit} className="mt-6 space-y-4">
-            <label className="block text-sm font-medium">
-              Correo electrónico
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="input mt-1"
-                placeholder="tu@correo.com"
-                required
-              />
-            </label>
-            <label className="block text-sm font-medium">
-              Contraseña
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="input mt-1"
-                placeholder="••••••••"
-                required
-              />
-            </label>
-            {error && <p className="text-sm text-red-500">{error}</p>}
-            <button type="submit" className="btn-primary w-full">
-              Ingresar
-            </button>
-          </form>
-
-          <div className="mt-6 rounded-xl bg-movistar-gray p-4 text-sm">
-            <p className="mb-2 font-semibold text-movistar-navy">Cuentas demo:</p>
-            <button onClick={() => quick("comprador@demo.com")} className="block text-movistar-blue hover:underline">
-              comprador@demo.com (Regular)
-            </button>
-            <button onClick={() => quick("vip@demo.com")} className="block text-movistar-blue hover:underline">
-              vip@demo.com (VIP · tema negro)
-            </button>
-            <button onClick={() => quick("seller@demo.com")} className="block text-movistar-blue hover:underline">
-              seller@demo.com (Seller · tema Empresas)
-            </button>
-            <p className="mt-1 text-movistar-gray-med">Contraseña: demo1234</p>
-          </div>
-
-          <p className="mt-6 text-center text-sm text-movistar-gray-med">
-            ¿No tienes cuenta?{" "}
-            <Link href="/registro" className="font-semibold text-movistar-blue hover:underline">
-              Regístrate
-            </Link>
+    <div className="md-container md-page" style={{ display: "grid", gap: 48, alignItems: "center", minHeight: "70vh", gridTemplateColumns: "1fr" }}>
+      <div className="login-grid">
+        <div className="login-hero">
+          <h1 className="md-display-small" style={{ fontWeight: 800 }}>Bienvenido de nuevo</h1>
+          <p className="md-muted" style={{ marginTop: 12 }}>
+            Ingresa para ver tus compras, gestionar tus ventas y administrar tu
+            cuenta en el marketplace.
           </p>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/img/banners/hero-compras.jpg" alt="Login" style={{ marginTop: 24, borderRadius: "var(--md-shape-xl)", objectFit: "cover", boxShadow: "var(--md-elev-2)", width: "100%" }} />
+        </div>
+
+        <div style={{ margin: "0 auto", width: "100%", maxWidth: 420 }}>
+          <div className="md-card md-card-elevated md-card-pad">
+            <h2 className="md-headline-small">Iniciar sesión</h2>
+            <form onSubmit={submit} className="md-stack" style={{ marginTop: 24 }}>
+              <div>
+                <label className="md-form-label">Correo electrónico</label>
+                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="md-input" placeholder="tu@correo.com" required />
+              </div>
+              <div>
+                <label className="md-form-label">Contraseña</label>
+                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="md-input" placeholder="••••••••" required />
+              </div>
+              {error && <p style={{ fontSize: "0.85rem", color: "var(--md-error)" }}>{error}</p>}
+              <button type="submit" className="md-btn md-btn-filled md-btn-block md-state">Ingresar</button>
+            </form>
+
+            <div className="md-alert md-alert-info" style={{ marginTop: 24 }}>
+              <p className="md-title-small" style={{ margin: "0 0 8px" }}>Cuentas demo:</p>
+              {demoAccounts.map((a) => (
+                <button
+                  key={a.mail}
+                  onClick={() => quick(a.mail)}
+                  style={{ display: "block", background: "none", border: "none", padding: "2px 0", cursor: "pointer", color: "var(--md-primary)", fontSize: "0.85rem", textAlign: "left" }}
+                >
+                  {a.mail} — {a.label}
+                </button>
+              ))}
+              <p className="md-muted" style={{ marginTop: 6, fontSize: "0.8rem" }}>Contraseña: demo1234</p>
+            </div>
+
+            <p className="md-center md-muted md-body-medium" style={{ marginTop: 24 }}>
+              ¿No tienes cuenta?{" "}
+              <Link href="/registro" className="md-primary-text" style={{ fontWeight: 600 }}>Regístrate</Link>
+            </p>
+          </div>
         </div>
       </div>
     </div>

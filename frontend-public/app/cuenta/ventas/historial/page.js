@@ -17,33 +17,35 @@ export default function SalesHistory() {
 function List({ userId }) {
   const sales = getSalesBySeller(userId);
   return (
-    <div className="space-y-4">
-      <h2 className="text-xl font-bold text-movistar-navy">Historial de ventas</h2>
-      <div className="card overflow-x-auto">
-        <table className="w-full text-left text-sm">
-          <thead className="bg-movistar-gray text-movistar-navy">
-            <tr>
-              <th className="p-3">Venta</th>
-              <th className="p-3">Cliente</th>
-              <th className="p-3">Fecha</th>
-              <th className="p-3">Estado</th>
-              <th className="p-3">Payout</th>
-              <th className="p-3 text-right">Total</th>
-            </tr>
-          </thead>
-          <tbody>
-            {sales.map((s) => (
-              <tr key={s.id} className="border-t">
-                <td className="p-3 font-semibold">{s.id}</td>
-                <td className="p-3">{s.buyerName}</td>
-                <td className="p-3">{formatDate(s.date)}</td>
-                <td className="p-3 capitalize">{s.status}</td>
-                <td className="p-3 capitalize">{s.payout}</td>
-                <td className="p-3 text-right font-bold">{formatCurrency(s.total)}</td>
+    <div className="md-stack">
+      <h2 className="md-title-large" style={{ margin: 0 }}>Historial de ventas</h2>
+      <div className="md-card md-card-elevated">
+        <div className="md-table-wrap">
+          <table className="md-table">
+            <thead>
+              <tr>
+                <th>Venta</th>
+                <th>Cliente</th>
+                <th>Fecha</th>
+                <th>Estado</th>
+                <th>Payout</th>
+                <th style={{ textAlign: "right" }}>Total</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {sales.map((s) => (
+                <tr key={s.id}>
+                  <td style={{ fontWeight: 600 }}>{s.id}</td>
+                  <td>{s.buyerName}</td>
+                  <td>{formatDate(s.date)}</td>
+                  <td style={{ textTransform: "capitalize" }}>{s.status}</td>
+                  <td style={{ textTransform: "capitalize" }}>{s.payout}</td>
+                  <td style={{ textAlign: "right", fontWeight: 700 }}>{formatCurrency(s.total)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

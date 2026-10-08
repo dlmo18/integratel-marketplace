@@ -128,12 +128,12 @@ export function StoreProvider({ children }) {
     if (ready) localStorage.setItem(REVIEWS_KEY, JSON.stringify(reviews));
   }, [reviews, ready]);
 
-  // Tema de color según el tipo de usuario. No logueado => "regular".
+  // Tema de color según el perfil. Compradores: blue (N1) / gold (N2) /
+  // platinium (N3) / black (N4). Vendedores: seller. Sin sesión => blue.
   const resolveTier = (u) => {
-    if (!u) return "regular";
-    if (u.tier) return u.tier;
+    if (!u) return "blue";
     if (u.type === "seller") return "seller";
-    return "regular";
+    return u.tier || "blue";
   };
   const tier = resolveTier(user);
 
@@ -295,7 +295,12 @@ export function StoreProvider({ children }) {
       user,
       tier,
       isSeller: tier === "seller",
-      isVip: tier === "vip",
+      isBuyer: tier !== "seller",
+      // Nivel del comprador (1-4). Útil para beneficios/escala de niveles.
+      tierLevel:
+        { blue: 1, gold: 2, platinium: 3, black: 4 }[tier] || 1,
+      // Compatibilidad: "VIP" ahora corresponde al nivel Black.
+      isVip: tier === "black",
       login,
       logout,
       ready

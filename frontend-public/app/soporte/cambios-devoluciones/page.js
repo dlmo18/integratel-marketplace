@@ -1,20 +1,17 @@
 import DemoForm from "@/components/DemoForm";
 
-export const metadata = { title: "Cambios y devoluciones · Integratel" };
+export const metadata = { title: "Cambios y devoluciones · Movistar" };
 
 export default function ReturnsPage() {
   return (
-    <div className="grid gap-8 lg:grid-cols-2">
+    <div style={{ display: "grid", gap: 32, gridTemplateColumns: "1fr" }} className="gc-layout">
       <div>
-        <h1 className="mb-3 text-2xl font-bold text-movistar-navy">
-          Cambios y devoluciones
-        </h1>
-        <p className="text-movistar-gray-med">
+        <h1 className="md-headline-small" style={{ marginBottom: 12 }}>Cambios y devoluciones</h1>
+        <p className="md-muted">
           Solicita el cambio o devolución de tu producto dentro de los 30 días
-          posteriores a la compra. Completa el formulario y nuestro equipo
-          revisará tu caso.
+          posteriores a la compra. Completa el formulario y nuestro equipo revisará tu caso.
         </p>
-        <div className="mt-6 space-y-3 text-sm text-movistar-gray-med">
+        <div className="md-muted md-body-medium" style={{ marginTop: 24, display: "flex", flexDirection: "column", gap: 12 }}>
           <p>✅ El producto debe estar en su empaque original.</p>
           <p>✅ Adjunta el número de pedido.</p>
           <p>✅ Reembolso en un plazo de 5 a 7 días hábiles.</p>

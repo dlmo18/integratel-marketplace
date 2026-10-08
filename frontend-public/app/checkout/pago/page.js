@@ -1,20 +1,18 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { useStore } from "@/context/StoreContext";
 import { formatCurrency, breakdownIgv } from "@/lib/format";
 
-// Fuentes de pago disponibles para el cobro compartido ("Pagos asociados").
 const SOURCES = [
-  { id: "cashback", label: "Cashback Integratel", desc: "Tu saldo disponible", icon: "🎁", color: "#019DF4" },
+  { id: "cashback", label: "Cashback Movistar", desc: "Tu saldo disponible", icon: "🎁", color: "#019DF4" },
   { id: "wallet", label: "Yape / Plin", desc: "Paga al instante", icon: "📲", color: "#8B5CF6" },
   { id: "card", label: "Tarjeta Visa/Mastercard", desc: "Crédito o débito", icon: "💳", color: "#00337A" },
   { id: "bank", label: "Cuenta bancaria", desc: "Transferencia / depósito", icon: "🏦", color: "#5CB615" },
   { id: "credit", label: "Crédito Partner", desc: "Financiamiento aprobado", icon: "🤝", color: "#0EA5A5" }
 ];
 
-// Transportistas disponibles (courier): costo y tiempo estimado.
 const COURIERS = [
   { id: "serpost", label: "Serpost", desc: "Cobertura nacional", cost: 15, eta: "3 a 6 días hábiles", icon: "📮" },
   { id: "olva", label: "Olva Courier", desc: "Envío estándar", cost: 20, eta: "2 a 4 días hábiles", icon: "🚚" },
@@ -28,26 +26,17 @@ export default function PaymentPage() {
   const { cart, subtotal, discount, voucher, user, clearCart } = useStore();
   const [done, setDone] = useState(false);
 
-  // --- Envío: transportista + dirección ---
   const savedAddresses = user?.addresses || [];
   const [courierId, setCourierId] = useState("serpost");
   const courier = COURIERS.find((c) => c.id === courierId) || COURIERS[0];
-  // Envío gratis en compras > S/1000; si no, cuesta según el courier.
   const freeShipping = subtotal > 1000;
   const shipping = subtotal === 0 ? 0 : freeShipping ? 0 : courier.cost;
 
-  const [addressMode, setAddressMode] = useState(
-    savedAddresses.length ? "saved" : "new"
-  );
+  const [addressMode, setAddressMode] = useState(savedAddresses.length ? "saved" : "new");
   const [selectedAddressId, setSelectedAddressId] = useState(
     savedAddresses.find((a) => a.default)?.id || savedAddresses[0]?.id || ""
   );
-  const [newAddress, setNewAddress] = useState({
-    line1: "",
-    district: "",
-    city: "",
-    reference: ""
-  });
+  const [newAddress, setNewAddress] = useState({ line1: "", district: "", city: "", reference: "" });
 
   const addressComplete =
     addressMode === "saved"
@@ -55,37 +44,23 @@ export default function PaymentPage() {
       : newAddress.line1.trim() && newAddress.district.trim() && newAddress.city.trim();
 
   const total = round2(Math.max(0, subtotal - discount) + shipping);
-
-  // Desglose de IGV (18%) sobre el valor de los productos (precios con IGV
-  // incluido). El envío no está afecto en este desglose demostrativo.
   const taxedAmount = Math.max(0, subtotal - discount);
   const { base: taxBase, igv } = breakdownIgv(taxedAmount);
 
-  // Estado de pagos asociados: qué fuentes están activas y con cuánto monto.
   const [selected, setSelected] = useState({ wallet: true });
   const [amounts, setAmounts] = useState({});
-
   const activeIds = Object.keys(selected).filter((k) => selected[k]);
-
-  const assigned = round2(
-    activeIds.reduce((acc, id) => acc + (Number(amounts[id]) || 0), 0)
-  );
+  const assigned = round2(activeIds.reduce((acc, id) => acc + (Number(amounts[id]) || 0), 0));
   const remaining = round2(total - assigned);
   const balanced = Math.abs(remaining) < 0.01 && activeIds.length > 0;
 
   const toggle = (id) => {
-    setSelected((prev) => {
-      const next = { ...prev, [id]: !prev[id] };
-      return next;
-    });
-    // Al activar una fuente, si no tiene monto, le asignamos el restante.
+    setSelected((prev) => ({ ...prev, [id]: !prev[id] }));
     setAmounts((prev) => {
       if (!selected[id]) {
         const rem = round2(
           total -
-            Object.keys(selected)
-              .filter((k) => selected[k] && k !== id)
-              .reduce((a, k) => a + (Number(prev[k]) || 0), 0)
+            Object.keys(selected).filter((k) => selected[k] && k !== id).reduce((a, k) => a + (Number(prev[k]) || 0), 0)
         );
         return { ...prev, [id]: rem > 0 ? rem : 0 };
       }
@@ -94,32 +69,21 @@ export default function PaymentPage() {
       return copy;
     });
   };
+  const setAmount = (id, value) => setAmounts((prev) => ({ ...prev, [id]: value }));
 
-  const setAmount = (id, value) => {
-    setAmounts((prev) => ({ ...prev, [id]: value }));
-  };
-
-  // Distribuye el total equitativamente entre las fuentes activas.
   const splitEven = () => {
     if (activeIds.length === 0) return;
     const base = Math.floor((total / activeIds.length) * 100) / 100;
     const next = {};
     activeIds.forEach((id, i) => {
-      next[id] =
-        i === activeIds.length - 1
-          ? round2(total - base * (activeIds.length - 1))
-          : base;
+      next[id] = i === activeIds.length - 1 ? round2(total - base * (activeIds.length - 1)) : base;
     });
     setAmounts(next);
   };
-
-  // Autocompleta la última fuente con el monto restante.
   const fillRemaining = () => {
     if (activeIds.length === 0) return;
     const lastId = activeIds[activeIds.length - 1];
-    const others = activeIds
-      .filter((id) => id !== lastId)
-      .reduce((a, id) => a + (Number(amounts[id]) || 0), 0);
+    const others = activeIds.filter((id) => id !== lastId).reduce((a, id) => a + (Number(amounts[id]) || 0), 0);
     setAmounts((prev) => ({ ...prev, [lastId]: round2(Math.max(0, total - others)) }));
   };
 
@@ -129,33 +93,23 @@ export default function PaymentPage() {
     setDone(true);
     clearCart();
   };
-
   const canPay = balanced && addressComplete;
 
   if (done) {
     return (
-      <div className="container-page py-16">
-        <div className="card mx-auto max-w-lg p-10 text-center">
-          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-movistar-green text-3xl text-white">
-            ✓
+      <div className="md-container md-page" style={{ paddingBlock: 64 }}>
+        <div className="md-card md-card-elevated md-card-pad md-center" style={{ margin: "0 auto", maxWidth: 520 }}>
+          <div style={{ margin: "0 auto 16px", display: "flex", height: 64, width: 64, alignItems: "center", justifyContent: "center", borderRadius: "50%", background: "var(--md-secondary)", color: "var(--md-on-secondary)" }}>
+            <span className="material-symbols-outlined" style={{ fontSize: 32 }}>check</span>
           </div>
-          <h1 className="text-2xl font-bold text-movistar-navy">
-            ¡Pago realizado con éxito!
-          </h1>
-          <p className="mt-2 text-movistar-gray-med">
-            Tu pedido fue registrado (demo) con cobro compartido entre{" "}
-            {activeIds.length} fuente(s) de pago.
+          <h1 className="md-headline-small">¡Pago realizado con éxito!</h1>
+          <p className="md-muted" style={{ marginTop: 8 }}>
+            Tu pedido fue registrado (demo) con cobro compartido entre {activeIds.length} fuente(s) de pago.
           </p>
-          <p className="mt-2 font-semibold">
-            N° de pedido: ORD-2026-{Math.floor(1000 + Math.random() * 9000)}
-          </p>
-          <div className="mt-6 flex justify-center gap-3">
-            <Link href="/cuenta/compras" className="btn-primary">
-              Ver mis compras
-            </Link>
-            <Link href="/catalogo" className="btn-outline">
-              Seguir comprando
-            </Link>
+          <p style={{ marginTop: 8, fontWeight: 600 }}>N° de pedido: ORD-2026-{Math.floor(1000 + Math.random() * 9000)}</p>
+          <div className="md-row md-center" style={{ justifyContent: "center", gap: 12, marginTop: 24 }}>
+            <Link href="/cuenta/compras" className="md-btn md-btn-filled md-state">Ver mis compras</Link>
+            <Link href="/catalogo" className="md-btn md-btn-outlined md-state">Seguir comprando</Link>
           </div>
         </div>
       </div>
@@ -164,231 +118,119 @@ export default function PaymentPage() {
 
   if (cart.length === 0) {
     return (
-      <div className="container-page py-16 text-center">
-        <p className="text-movistar-gray-med">No tienes productos en el carrito.</p>
-        <Link href="/catalogo" className="btn-primary mt-4">
-          Ir al catálogo
-        </Link>
+      <div className="md-container md-page md-center" style={{ paddingBlock: 64 }}>
+        <p className="md-muted">No tienes productos en el carrito.</p>
+        <Link href="/catalogo" className="md-btn md-btn-filled md-state" style={{ marginTop: 16 }}>Ir al catálogo</Link>
       </div>
     );
   }
 
   return (
-    <div className="container-page py-8">
-      <h1 className="mb-6 text-3xl font-bold text-movistar-navy">
-        Proceso de pago
-      </h1>
-      <form onSubmit={pay} className="grid gap-6 lg:grid-cols-[1fr_360px]">
-        <div className="space-y-6">
-          {/* Envío: transportista + dirección */}
-          <div className="card p-6">
-            <h2 className="mb-4 text-lg font-bold text-movistar-navy">
-              Envío
-            </h2>
-
-            {/* Transportista */}
-            <p className="mb-2 text-sm font-semibold text-movistar-navy">
-              Transportista
-            </p>
-            <div className="grid gap-3 sm:grid-cols-2">
+    <div className="md-container md-page">
+      <h1 className="md-headline-large" style={{ marginBottom: 24 }}>Proceso de pago</h1>
+      <form onSubmit={pay} className="checkout-layout">
+        <div className="md-stack">
+          {/* Envío */}
+          <div className="md-card md-card-elevated md-card-pad">
+            <h2 className="md-title-large" style={{ marginTop: 0 }}>Envío</h2>
+            <p className="md-title-small" style={{ marginBottom: 8 }}>Transportista</p>
+            <div style={{ display: "grid", gap: 12, gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))" }}>
               {COURIERS.map((c) => (
                 <button
                   type="button"
                   key={c.id}
                   onClick={() => setCourierId(c.id)}
-                  className={`flex items-start gap-3 rounded-xl border-2 p-3 text-left transition-colors ${
-                    courierId === c.id
-                      ? "border-movistar-blue bg-movistar-blue/5"
-                      : "border-gray-200"
-                  }`}
+                  className="md-state"
+                  style={{ display: "flex", gap: 12, alignItems: "flex-start", textAlign: "left", borderRadius: "var(--md-shape-md)", padding: 12, cursor: "pointer", border: `2px solid ${courierId === c.id ? "var(--md-primary)" : "var(--md-outline-variant)"}`, background: courierId === c.id ? "color-mix(in srgb, var(--md-primary) 6%, transparent)" : "transparent" }}
                 >
-                  <span className="text-2xl">{c.icon}</span>
-                  <div className="flex-1">
-                    <p className="text-sm font-semibold text-movistar-navy">{c.label}</p>
-                    <p className="text-xs text-movistar-gray-med">{c.desc} · {c.eta}</p>
+                  <span style={{ fontSize: "1.5rem" }}>{c.icon}</span>
+                  <div className="md-grow">
+                    <p className="md-title-small" style={{ margin: 0 }}>{c.label}</p>
+                    <p className="md-muted" style={{ margin: 0, fontSize: "0.75rem" }}>{c.desc} · {c.eta}</p>
                   </div>
-                  <span className="text-sm font-bold text-movistar-navy">
-                    {formatCurrency(c.cost)}
-                  </span>
+                  <span style={{ fontWeight: 700 }}>{formatCurrency(c.cost)}</span>
                 </button>
               ))}
             </div>
 
-            {/* Dirección de envío */}
-            <div className="mt-6">
-              <div className="mb-2 flex items-center justify-between">
-                <p className="text-sm font-semibold text-movistar-navy">
-                  Dirección de envío
-                </p>
+            {/* Dirección */}
+            <div style={{ marginTop: 24 }}>
+              <div className="md-row-between" style={{ marginBottom: 8 }}>
+                <p className="md-title-small" style={{ margin: 0 }}>Dirección de envío</p>
                 {savedAddresses.length > 0 && (
-                  <div className="flex gap-1 rounded-full bg-movistar-gray p-1 text-xs">
-                    <button
-                      type="button"
-                      onClick={() => setAddressMode("saved")}
-                      className={`rounded-full px-3 py-1 font-semibold ${
-                        addressMode === "saved" ? "bg-movistar-blue text-white" : "text-movistar-navy"
-                      }`}
-                    >
-                      Mis direcciones
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setAddressMode("new")}
-                      className={`rounded-full px-3 py-1 font-semibold ${
-                        addressMode === "new" ? "bg-movistar-blue text-white" : "text-movistar-navy"
-                      }`}
-                    >
-                      Nueva dirección
-                    </button>
+                  <div style={{ display: "flex", gap: 4, borderRadius: "var(--md-shape-full)", background: "var(--md-surface-container-high)", padding: 4, fontSize: "0.75rem" }}>
+                    <button type="button" onClick={() => setAddressMode("saved")} style={{ borderRadius: "var(--md-shape-full)", padding: "4px 12px", border: "none", cursor: "pointer", fontWeight: 600, background: addressMode === "saved" ? "var(--md-primary)" : "transparent", color: addressMode === "saved" ? "var(--md-on-primary)" : "var(--md-on-surface)" }}>Mis direcciones</button>
+                    <button type="button" onClick={() => setAddressMode("new")} style={{ borderRadius: "var(--md-shape-full)", padding: "4px 12px", border: "none", cursor: "pointer", fontWeight: 600, background: addressMode === "new" ? "var(--md-primary)" : "transparent", color: addressMode === "new" ? "var(--md-on-primary)" : "var(--md-on-surface)" }}>Nueva dirección</button>
                   </div>
                 )}
               </div>
 
               {addressMode === "saved" && savedAddresses.length > 0 ? (
-                <div className="space-y-2">
+                <div className="md-stack" style={{ gap: 8 }}>
                   {savedAddresses.map((a) => (
-                    <label
-                      key={a.id}
-                      className={`flex cursor-pointer items-start gap-3 rounded-xl border-2 p-3 ${
-                        selectedAddressId === a.id
-                          ? "border-movistar-blue bg-movistar-blue/5"
-                          : "border-gray-200"
-                      }`}
-                    >
-                      <input
-                        type="radio"
-                        name="address"
-                        checked={selectedAddressId === a.id}
-                        onChange={() => setSelectedAddressId(a.id)}
-                        className="mt-1 accent-movistar-blue"
-                      />
-                      <div className="text-sm">
-                        <p className="font-semibold text-movistar-navy">
-                          {a.alias} {a.default && <span className="badge bg-movistar-blue text-white">Principal</span>}
+                    <label key={a.id} style={{ display: "flex", gap: 12, alignItems: "flex-start", borderRadius: "var(--md-shape-md)", padding: 12, cursor: "pointer", border: `2px solid ${selectedAddressId === a.id ? "var(--md-primary)" : "var(--md-outline-variant)"}` }}>
+                      <input type="radio" name="address" checked={selectedAddressId === a.id} onChange={() => setSelectedAddressId(a.id)} style={{ marginTop: 2, accentColor: "var(--md-primary)" }} />
+                      <div style={{ fontSize: "0.875rem" }}>
+                        <p className="md-title-small" style={{ margin: 0 }}>
+                          {a.alias} {a.default && <span className="md-badge md-badge-primary">Principal</span>}
                         </p>
-                        <p className="text-movistar-gray-med">
-                          {a.line1}, {a.district}, {a.city}
-                        </p>
+                        <p className="md-muted" style={{ margin: 0 }}>{a.line1}, {a.district}, {a.city}</p>
                       </div>
                     </label>
                   ))}
                 </div>
               ) : (
-                <div className="grid gap-3 sm:grid-cols-2">
-                  <label className="block text-sm sm:col-span-2">
-                    Dirección
-                    <input
-                      value={newAddress.line1}
-                      onChange={(e) => setNewAddress((p) => ({ ...p, line1: e.target.value }))}
-                      className="input mt-1"
-                      placeholder="Av. / Calle y número"
-                      required={addressMode === "new"}
-                    />
-                  </label>
-                  <label className="block text-sm">
-                    Distrito
-                    <input
-                      value={newAddress.district}
-                      onChange={(e) => setNewAddress((p) => ({ ...p, district: e.target.value }))}
-                      className="input mt-1"
-                      placeholder="Distrito"
-                      required={addressMode === "new"}
-                    />
-                  </label>
-                  <label className="block text-sm">
-                    Ciudad
-                    <input
-                      value={newAddress.city}
-                      onChange={(e) => setNewAddress((p) => ({ ...p, city: e.target.value }))}
-                      className="input mt-1"
-                      placeholder="Ciudad"
-                      required={addressMode === "new"}
-                    />
-                  </label>
-                  <label className="block text-sm sm:col-span-2">
-                    Referencia (opcional)
-                    <input
-                      value={newAddress.reference}
-                      onChange={(e) => setNewAddress((p) => ({ ...p, reference: e.target.value }))}
-                      className="input mt-1"
-                      placeholder="Ej. frente al parque"
-                    />
-                  </label>
+                <div style={{ display: "grid", gap: 12, gridTemplateColumns: "1fr 1fr" }}>
+                  <div style={{ gridColumn: "1 / -1" }}>
+                    <label className="md-form-label">Dirección</label>
+                    <input value={newAddress.line1} onChange={(e) => setNewAddress((p) => ({ ...p, line1: e.target.value }))} className="md-input" placeholder="Av. / Calle y número" required={addressMode === "new"} />
+                  </div>
+                  <div>
+                    <label className="md-form-label">Distrito</label>
+                    <input value={newAddress.district} onChange={(e) => setNewAddress((p) => ({ ...p, district: e.target.value }))} className="md-input" placeholder="Distrito" required={addressMode === "new"} />
+                  </div>
+                  <div>
+                    <label className="md-form-label">Ciudad</label>
+                    <input value={newAddress.city} onChange={(e) => setNewAddress((p) => ({ ...p, city: e.target.value }))} className="md-input" placeholder="Ciudad" required={addressMode === "new"} />
+                  </div>
+                  <div style={{ gridColumn: "1 / -1" }}>
+                    <label className="md-form-label">Referencia (opcional)</label>
+                    <input value={newAddress.reference} onChange={(e) => setNewAddress((p) => ({ ...p, reference: e.target.value }))} className="md-input" placeholder="Ej. frente al parque" />
+                  </div>
                 </div>
               )}
             </div>
           </div>
 
           {/* Pagos asociados */}
-          <div className="card p-6">
-            <div className="mb-1 flex items-center justify-between">
-              <h2 className="text-lg font-bold text-movistar-navy">
-                Pagos asociados
-              </h2>
-              <span className="text-xs text-movistar-gray-med">
-                Cobro compartido entre varias fuentes
-              </span>
+          <div className="md-card md-card-elevated md-card-pad">
+            <div className="md-row-between">
+              <h2 className="md-title-large" style={{ margin: 0 }}>Pagos asociados</h2>
+              <span className="md-muted" style={{ fontSize: "0.75rem" }}>Cobro compartido entre varias fuentes</span>
             </div>
-            <p className="mb-4 text-sm text-movistar-gray-med">
-              Selecciona 2 o más fuentes y reparte el monto a pagar. La suma debe
-              igualar el total.
+            <p className="md-muted md-body-medium" style={{ marginTop: 4, marginBottom: 16 }}>
+              Selecciona 2 o más fuentes y reparte el monto. La suma debe igualar el total.
             </p>
 
-            <div className="space-y-3">
+            <div className="md-stack" style={{ gap: 12 }}>
               {SOURCES.map((s) => {
                 const active = !!selected[s.id];
                 return (
-                  <div
-                    key={s.id}
-                    className={`rounded-xl border-2 p-3 transition-colors ${
-                      active ? "border-movistar-blue bg-movistar-blue/5" : "border-gray-200"
-                    }`}
-                  >
-                    <div className="flex items-center gap-3">
-                      <input
-                        type="checkbox"
-                        checked={active}
-                        onChange={() => toggle(s.id)}
-                        className="h-5 w-5 accent-movistar-blue"
-                      />
-                      <span
-                        className="flex h-10 w-10 items-center justify-center rounded-lg text-xl"
-                        style={{ backgroundColor: `${s.color}22` }}
-                      >
-                        {s.icon}
-                      </span>
-                      <div className="flex-1">
-                        <p className="text-sm font-semibold text-movistar-navy">
-                          {s.label}
-                        </p>
-                        <p className="text-xs text-movistar-gray-med">{s.desc}</p>
+                  <div key={s.id} style={{ borderRadius: "var(--md-shape-md)", padding: 12, border: `2px solid ${active ? "var(--md-primary)" : "var(--md-outline-variant)"}`, background: active ? "color-mix(in srgb, var(--md-primary) 6%, transparent)" : "transparent" }}>
+                    <div className="md-row" style={{ gap: 12 }}>
+                      <input type="checkbox" checked={active} onChange={() => toggle(s.id)} style={{ height: 18, width: 18, accentColor: "var(--md-primary)" }} />
+                      <span style={{ display: "inline-flex", height: 40, width: 40, alignItems: "center", justifyContent: "center", borderRadius: "var(--md-shape-sm)", fontSize: "1.2rem", background: `${s.color}22` }}>{s.icon}</span>
+                      <div className="md-grow">
+                        <p className="md-title-small" style={{ margin: 0 }}>{s.label}</p>
+                        <p className="md-muted" style={{ margin: 0, fontSize: "0.75rem" }}>{s.desc}</p>
                       </div>
-                      {active ? (
-                        <span className="badge bg-movistar-green text-white">
-                          Aplicado
-                        </span>
-                      ) : (
-                        <span className="badge bg-movistar-blue/10 text-movistar-blue">
-                          Disponible
-                        </span>
-                      )}
+                      <span className={`md-badge ${active ? "md-badge-secondary" : "md-badge-container"}`}>{active ? "Aplicado" : "Disponible"}</span>
                     </div>
-
                     {active && (
-                      <div className="mt-3 flex items-center gap-2 pl-16">
-                        <span className="text-sm text-movistar-gray-med">S/</span>
-                        <input
-                          type="number"
-                          min="0"
-                          step="0.01"
-                          value={amounts[s.id] ?? ""}
-                          onChange={(e) => setAmount(s.id, e.target.value)}
-                          className="input w-40"
-                          placeholder="0.00"
-                        />
-                        <span className="text-xs text-movistar-gray-med">
-                          asignado a esta fuente
-                        </span>
+                      <div className="md-row" style={{ gap: 8, marginTop: 12, paddingLeft: 64 }}>
+                        <span className="md-muted" style={{ fontSize: "0.875rem" }}>S/</span>
+                        <input type="number" min="0" step="0.01" value={amounts[s.id] ?? ""} onChange={(e) => setAmount(s.id, e.target.value)} className="md-input" style={{ width: 160 }} placeholder="0.00" />
+                        <span className="md-muted" style={{ fontSize: "0.75rem" }}>asignado a esta fuente</span>
                       </div>
                     )}
                   </div>
@@ -396,45 +238,28 @@ export default function PaymentPage() {
               })}
             </div>
 
-            {/* Acciones rápidas */}
-            <div className="mt-4 flex flex-wrap gap-2">
-              <button type="button" onClick={splitEven} className="btn-outline px-4 py-1.5 text-xs">
-                Dividir en partes iguales
-              </button>
-              <button type="button" onClick={fillRemaining} className="btn-outline px-4 py-1.5 text-xs">
-                Completar restante
-              </button>
+            <div className="md-row md-wrap" style={{ gap: 8, marginTop: 16 }}>
+              <button type="button" onClick={splitEven} className="md-btn md-btn-outlined md-btn-sm md-state">Dividir en partes iguales</button>
+              <button type="button" onClick={fillRemaining} className="md-btn md-btn-outlined md-btn-sm md-state">Completar restante</button>
             </div>
 
-            {/* Distribución del pago */}
             {activeIds.length > 0 && (
-              <div className="mt-5">
-                <p className="mb-2 text-sm font-semibold text-movistar-navy">
-                  Distribución del pago
-                </p>
-                <div className="flex h-4 overflow-hidden rounded-full bg-gray-100">
+              <div style={{ marginTop: 20 }}>
+                <p className="md-title-small">Distribución del pago</p>
+                <div style={{ display: "flex", height: 16, overflow: "hidden", borderRadius: "var(--md-shape-full)", background: "var(--md-surface-container-high)" }}>
                   {activeIds.map((id) => {
                     const src = SOURCES.find((s) => s.id === id);
                     const amt = Number(amounts[id]) || 0;
                     const pct = total > 0 ? (amt / total) * 100 : 0;
-                    return (
-                      <div
-                        key={id}
-                        style={{ width: `${pct}%`, backgroundColor: src?.color }}
-                        title={`${src?.label}: ${formatCurrency(amt)}`}
-                      />
-                    );
+                    return <div key={id} style={{ width: `${pct}%`, background: src?.color }} title={`${src?.label}: ${formatCurrency(amt)}`} />;
                   })}
                 </div>
-                <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs">
+                <div className="md-row md-wrap" style={{ gap: "4px 16px", marginTop: 8, fontSize: "0.75rem" }}>
                   {activeIds.map((id) => {
                     const src = SOURCES.find((s) => s.id === id);
                     return (
-                      <span key={id} className="flex items-center gap-1">
-                        <span
-                          className="inline-block h-2 w-2 rounded-full"
-                          style={{ backgroundColor: src?.color }}
-                        />
+                      <span key={id} className="md-row" style={{ gap: 4 }}>
+                        <span style={{ display: "inline-block", height: 8, width: 8, borderRadius: "50%", background: src?.color }} />
                         {src?.label}: {formatCurrency(Number(amounts[id]) || 0)}
                       </span>
                     );
@@ -443,102 +268,44 @@ export default function PaymentPage() {
               </div>
             )}
 
-            {/* Estado de balance */}
-            <div
-              className={`mt-4 rounded-lg p-3 text-sm ${
-                balanced
-                  ? "bg-movistar-green/10 text-movistar-green"
-                  : "bg-yellow-50 text-yellow-700"
-              }`}
-            >
-              {balanced ? (
-                <>✓ La distribución cuadra con el total ({formatCurrency(total)}).</>
-              ) : (
-                <>
-                  Asignado {formatCurrency(assigned)} de {formatCurrency(total)}.{" "}
-                  {remaining > 0
-                    ? `Falta asignar ${formatCurrency(remaining)}.`
-                    : `Te excedes por ${formatCurrency(Math.abs(remaining))}.`}
-                </>
-              )}
+            <div className={`md-alert ${balanced ? "md-alert-success" : "md-alert-warning"}`} style={{ marginTop: 16 }}>
+              {balanced
+                ? <>✓ La distribución cuadra con el total ({formatCurrency(total)}).</>
+                : <>Asignado {formatCurrency(assigned)} de {formatCurrency(total)}. {remaining > 0 ? `Falta asignar ${formatCurrency(remaining)}.` : `Te excedes por ${formatCurrency(Math.abs(remaining))}.`}</>}
             </div>
           </div>
         </div>
 
         {/* Resumen */}
-        <aside className="card h-fit space-y-4 p-6">
-          <h2 className="text-lg font-bold text-movistar-navy">Tu pedido</h2>
-          <div className="max-h-48 space-y-2 overflow-y-auto text-sm">
+        <aside className="md-card md-card-elevated md-card-pad md-stack" style={{ height: "fit-content" }}>
+          <h2 className="md-title-large" style={{ margin: 0 }}>Tu pedido</h2>
+          <div style={{ maxHeight: 192, overflowY: "auto", display: "flex", flexDirection: "column", gap: 8, fontSize: "0.875rem" }}>
             {cart.map((i) => (
-              <div key={i.id} className="flex justify-between">
-                <span className="line-clamp-1">{i.qty}× {i.name}</span>
+              <div key={i.id} className="md-row-between">
+                <span style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{i.qty}× {i.name}</span>
                 <span>{formatCurrency(i.price * i.qty)}</span>
               </div>
             ))}
           </div>
-          <div className="flex justify-between border-t pt-3 text-sm">
-            <span>Subtotal</span>
-            <span>{formatCurrency(subtotal)}</span>
-          </div>
+          <div className="md-divider" />
+          <div className="md-row-between md-body-medium"><span>Subtotal</span><span>{formatCurrency(subtotal)}</span></div>
           {discount > 0 && (
-            <div className="flex justify-between text-sm text-movistar-green">
-              <span>Descuento {voucher ? `(${voucher.code})` : ""}</span>
-              <span>-{formatCurrency(discount)}</span>
+            <div className="md-row-between md-body-medium" style={{ color: "var(--md-secondary)" }}>
+              <span>Descuento {voucher ? `(${voucher.code})` : ""}</span><span>-{formatCurrency(discount)}</span>
             </div>
           )}
-
-          {/* Desglose de IGV (precios con IGV incluido) */}
-          <div className="space-y-1 border-t pt-3 text-sm text-movistar-gray-med">
-            <div className="flex justify-between">
-              <span>Base imponible</span>
-              <span>{formatCurrency(taxBase)}</span>
-            </div>
-            <div className="flex justify-between">
-              <span>IGV (18%)</span>
-              <span>{formatCurrency(igv)}</span>
-            </div>
+          <div className="md-row-between md-body-medium md-muted"><span>Base imponible</span><span>{formatCurrency(taxBase)}</span></div>
+          <div className="md-row-between md-body-medium md-muted"><span>IGV (18%)</span><span>{formatCurrency(igv)}</span></div>
+          <div className="md-row-between md-body-medium"><span>Envío ({courier.label})</span><span>{shipping === 0 ? "Gratis" : formatCurrency(shipping)}</span></div>
+          <div className="md-alert md-alert-success" style={{ fontSize: "0.78rem" }}>
+            {freeShipping ? "🎉 ¡Tu compra tiene envío gratis!" : <>🚚 Te faltan <b>{formatCurrency(Math.max(0, 1000 - subtotal))}</b> para envío gratis.</>}
           </div>
-
-          <div className="flex justify-between text-sm">
-            <span>Envío ({courier.label})</span>
-            <span>{shipping === 0 ? "Gratis" : formatCurrency(shipping)}</span>
-          </div>
-
-          {/* Aviso de envío gratis */}
-          <div className="rounded-lg bg-movistar-green/10 px-3 py-2 text-xs text-movistar-green">
-            {freeShipping ? (
-              "🎉 ¡Tu compra tiene envío gratis!"
-            ) : (
-              <>
-                🚚 Te faltan{" "}
-                <b>{formatCurrency(Math.max(0, 1000 - subtotal))}</b> para
-                envío gratis.
-              </>
-            )}
-          </div>
-
-          <div className="flex justify-between border-t pt-3 text-lg font-bold text-movistar-navy">
-            <span>Total a pagar</span>
-            <span>{formatCurrency(total)}</span>
-          </div>
-          <p className="text-[11px] text-movistar-gray-med">
-            IGV incluido en el precio de los productos.
-          </p>
-          {!addressComplete && (
-            <p className="text-xs text-yellow-700">
-              Completa la dirección de envío para continuar.
-            </p>
-          )}
-          <button
-            type="submit"
-            disabled={!canPay}
-            className={`w-full ${canPay ? "btn-green" : "btn-outline cursor-not-allowed opacity-50"}`}
-          >
-            {!balanced
-              ? "Reparte el total para pagar"
-              : !addressComplete
-              ? "Falta la dirección de envío"
-              : `Pagar ${formatCurrency(total)}`}
+          <div className="md-divider" />
+          <div className="md-row-between" style={{ fontWeight: 700, fontSize: "1.1rem" }}><span>Total a pagar</span><span>{formatCurrency(total)}</span></div>
+          <p className="md-muted" style={{ fontSize: "0.7rem", margin: 0 }}>IGV incluido en el precio de los productos.</p>
+          {!addressComplete && <p style={{ fontSize: "0.75rem", color: "var(--md-warning)" }}>Completa la dirección de envío para continuar.</p>}
+          <button type="submit" disabled={!canPay} className={`md-btn md-btn-block md-state ${canPay ? "md-btn-green" : "md-btn-outlined"}`}>
+            {!balanced ? "Reparte el total para pagar" : !addressComplete ? "Falta la dirección de envío" : `Pagar ${formatCurrency(total)}`}
           </button>
         </aside>
       </form>

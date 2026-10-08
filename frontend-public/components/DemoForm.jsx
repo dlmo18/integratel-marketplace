@@ -7,17 +7,29 @@ export default function DemoForm({ fields, submitLabel = "Enviar", successMessag
 
   if (sent) {
     return (
-      <div className="card p-8 text-center">
-        <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-movistar-green text-2xl text-white">
-          ✓
+      <div className="md-card md-card-elevated md-card-pad md-center">
+        <div
+          style={{
+            margin: "0 auto 12px",
+            display: "flex",
+            height: 56,
+            width: 56,
+            alignItems: "center",
+            justifyContent: "center",
+            borderRadius: "50%",
+            background: "var(--md-secondary)",
+            color: "var(--md-on-secondary)"
+          }}
+        >
+          <span className="material-symbols-outlined">check</span>
         </div>
-        <p className="font-semibold text-movistar-navy">
+        <p className="md-title-medium">
           {successMessage || "¡Formulario enviado correctamente!"}
         </p>
-        <p className="text-sm text-movistar-gray-med">
+        <p className="md-muted md-body-medium">
           Nos pondremos en contacto contigo pronto. (Demo)
         </p>
-        <button onClick={() => setSent(false)} className="btn-outline mt-4">
+        <button onClick={() => setSent(false)} className="md-btn md-btn-outlined md-state" style={{ marginTop: 16 }}>
           Enviar otro
         </button>
       </div>
@@ -30,15 +42,15 @@ export default function DemoForm({ fields, submitLabel = "Enviar", successMessag
         e.preventDefault();
         setSent(true);
       }}
-      className="card space-y-4 p-6"
+      className="md-card md-card-elevated md-card-pad md-stack"
     >
       {fields.map((f) => (
-        <label key={f.name} className="block text-sm font-medium text-movistar-navy">
-          {f.label}
+        <div key={f.name}>
+          <label className="md-form-label">{f.label}</label>
           {f.type === "textarea" ? (
-            <textarea className="input mt-1" rows={4} required={f.required} placeholder={f.placeholder} />
+            <textarea className="md-textarea" rows={4} required={f.required} placeholder={f.placeholder} />
           ) : f.type === "select" ? (
-            <select className="input mt-1" required={f.required}>
+            <select className="md-select" required={f.required}>
               {f.options.map((o) => (
                 <option key={o}>{o}</option>
               ))}
@@ -46,14 +58,14 @@ export default function DemoForm({ fields, submitLabel = "Enviar", successMessag
           ) : (
             <input
               type={f.type || "text"}
-              className="input mt-1"
+              className="md-input"
               required={f.required}
               placeholder={f.placeholder}
             />
           )}
-        </label>
+        </div>
       ))}
-      <button type="submit" className="btn-primary w-full">
+      <button type="submit" className="md-btn md-btn-filled md-btn-block md-state">
         {submitLabel}
       </button>
     </form>

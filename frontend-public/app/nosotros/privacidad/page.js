@@ -1,13 +1,11 @@
 import Lorem from "@/components/Lorem";
 
-export const metadata = { title: "Políticas de privacidad · Integratel" };
+export const metadata = { title: "Políticas de privacidad · Movistar" };
 
 export default function PrivacidadPage() {
   return (
     <div>
-      <h1 className="mb-4 text-2xl font-bold text-movistar-navy">
-        Políticas de privacidad
-      </h1>
+      <h1 className="md-headline-small" style={{ marginBottom: 16 }}>Políticas de privacidad</h1>
       <Lorem
         sections={[
           "Datos que recopilamos",

@@ -13,30 +13,30 @@ export default function PurchasesDashboard() {
   const delivered = orders.filter((o) => o.status === "entregado").length;
 
   return (
-    <div className="space-y-6">
-      <h2 className="text-xl font-bold text-movistar-navy">Dashboard de compras</h2>
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <StatCard label="Pedidos" value={orders.length} icon="📦" />
-        <StatCard label="Entregados" value={delivered} icon="✅" accent="green" />
-        <StatCard label="Total gastado" value={formatCurrency(totalSpent)} icon="💰" accent="navy" />
-        <StatCard label="Devoluciones" value={returns.length} icon="↩️" />
+    <div className="md-stack">
+      <h2 className="md-title-large" style={{ margin: 0 }}>Dashboard de compras</h2>
+      <div style={{ display: "grid", gap: 16, gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))" }}>
+        <StatCard label="Pedidos" value={orders.length} icon={<span className="material-symbols-outlined">inventory_2</span>} />
+        <StatCard label="Entregados" value={delivered} icon={<span className="material-symbols-outlined">check_circle</span>} accent="secondary" />
+        <StatCard label="Total gastado" value={formatCurrency(totalSpent)} icon={<span className="material-symbols-outlined">payments</span>} accent="primary" />
+        <StatCard label="Devoluciones" value={returns.length} icon={<span className="material-symbols-outlined">keyboard_return</span>} />
       </div>
 
-      <div className="card p-6">
-        <h3 className="mb-4 font-bold text-movistar-navy">Últimos pedidos</h3>
-        <div className="space-y-3">
+      <div className="md-card md-card-elevated md-card-pad">
+        <h3 className="md-title-medium" style={{ margin: "0 0 16px" }}>Últimos pedidos</h3>
+        <div className="md-stack" style={{ gap: 12 }}>
           {orders.map((o) => (
-            <div key={o.id} className="flex items-center justify-between rounded-lg bg-movistar-gray p-3 text-sm">
+            <div key={o.id} className="md-row-between" style={{ borderRadius: "var(--md-shape-md)", background: "var(--md-surface-container)", padding: 12 }}>
               <div>
-                <p className="font-semibold text-movistar-navy">{o.id}</p>
-                <p className="text-movistar-gray-med">{o.date}</p>
+                <p className="md-title-small" style={{ margin: 0 }}>{o.id}</p>
+                <p className="md-muted md-body-small" style={{ margin: 0 }}>{o.date}</p>
               </div>
-              <span className="badge bg-movistar-blue text-white capitalize">{o.status}</span>
-              <span className="font-bold">{formatCurrency(o.total)}</span>
+              <span className="md-badge md-badge-primary" style={{ textTransform: "capitalize" }}>{o.status}</span>
+              <span style={{ fontWeight: 700 }}>{formatCurrency(o.total)}</span>
             </div>
           ))}
           {orders.length === 0 && (
-            <p className="text-sm text-movistar-gray-med">Aún no tienes pedidos.</p>
+            <p className="md-muted md-body-medium">Aún no tienes pedidos.</p>
           )}
         </div>
       </div>

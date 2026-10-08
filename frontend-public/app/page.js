@@ -20,90 +20,84 @@ export default function HomePage() {
 
   return (
     <div>
-      {/* Hero slider */}
       <HeroSlider slides={heroData.slides} autoplayMs={heroData.autoplayMs} />
 
-      {/* Categorías destacadas */}
-      <section className="py-12">
-        <div className="container-page mb-6 flex items-end justify-between">
-          <div>
-            <h2 className="text-2xl font-bold text-movistar-navy">
-              Explora por categoría
-            </h2>
-            <p className="text-sm text-movistar-gray-med">
-              Acceso directo a todo nuestro catálogo
-            </p>
+      {/* Categorías */}
+      <section className="md-section">
+        <div className="md-container">
+          <div className="section-head">
+            <div>
+              <h2 className="md-headline-medium">Explora por categoría</h2>
+              <p className="sub md-body-medium">
+                Acceso directo a todo nuestro catálogo
+              </p>
+            </div>
           </div>
+          <CategoryCarousel categories={categories} />
         </div>
-        <CategoryCarousel categories={categories} />
       </section>
 
       {/* Productos destacados */}
-      <section className="container-page py-12">
-        <div className="mb-6 flex items-end justify-between">
-          <h2 className="text-2xl font-bold text-movistar-navy">
-            Productos destacados
-          </h2>
-          <Link href="/catalogo" className="text-sm font-semibold text-movistar-blue hover:underline">
-            Ver todo →
-          </Link>
-        </div>
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-          {featured.map((p) => (
-            <ProductCard key={p.id} product={p} />
-          ))}
+      <section className="md-section">
+        <div className="md-container">
+          <div className="section-head">
+            <h2 className="md-headline-medium">Productos destacados</h2>
+            <Link href="/catalogo" className="section-link">Ver todo →</Link>
+          </div>
+          <div className="prod-grid">
+            {featured.map((p) => (
+              <ProductCard key={p.id} product={p} />
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Tus favoritos (solo si hay favoritos guardados) */}
+      {/* Tus favoritos */}
       <FavoritesBlock />
 
       {/* CTA más vendidos + promociones */}
-      <section className="container-page grid gap-6 py-6 lg:grid-cols-2">
-        <div className="flex flex-col justify-center rounded-3xl bg-movistar-navy p-8 text-white">
-          <h3 className="text-2xl font-bold">Los más vendidos 🔥</h3>
-          <p className="mt-2 text-white/80">
-            Descubre lo que todos están comprando esta temporada.
-          </p>
-          <Link href="/catalogo?orden=vendidos" className="btn-primary mt-4 w-fit">
-            Ver más vendidos
-          </Link>
-        </div>
-        <div className="flex flex-col justify-center rounded-3xl bg-movistar-green p-8 text-white">
-          <h3 className="text-2xl font-bold">Promociones 🏷️</h3>
-          <p className="mt-2 text-white/90">
-            Ofertas por tiempo limitado en cientos de productos.
-          </p>
-          <Link
-            href="/catalogo?orden=ofertas"
-            className="btn mt-4 w-fit bg-white text-movistar-green hover:bg-white/90"
-          >
-            Ver promociones
-          </Link>
+      <section className="md-section" style={{ paddingBlock: 0 }}>
+        <div className="md-container">
+          <div className="cta-duo">
+            <div className="cta-box cta-primary">
+              <h3>Los más vendidos 🔥</h3>
+              <p>Descubre lo que todos están comprando esta temporada.</p>
+              <Link href="/catalogo?orden=vendidos" className="md-btn md-btn-on-dark md-state">
+                Ver más vendidos
+              </Link>
+            </div>
+            <div className="cta-box cta-secondary">
+              <h3>Promociones 🏷️</h3>
+              <p>Ofertas por tiempo limitado en cientos de productos.</p>
+              <Link href="/catalogo?orden=ofertas" className="md-btn md-btn-on-dark md-state">
+                Ver promociones
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Más vendidos grid */}
-      <section className="container-page py-12">
-        <h2 className="mb-6 text-2xl font-bold text-movistar-navy">
-          Top ventas
-        </h2>
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-          {bestSellers.map((p) => (
-            <ProductCard key={p.id} product={p} />
-          ))}
+      {/* Top ventas */}
+      <section className="md-section">
+        <div className="md-container">
+          <h2 className="md-headline-medium" style={{ marginBottom: 24 }}>Top ventas</h2>
+          <div className="prod-grid">
+            {bestSellers.map((p) => (
+              <ProductCard key={p.id} product={p} />
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Ofertas grid */}
-      <section className="container-page py-6">
-        <h2 className="mb-6 text-2xl font-bold text-movistar-navy">
-          Ofertas de la semana
-        </h2>
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-          {onSale.map((p) => (
-            <ProductCard key={p.id} product={p} />
-          ))}
+      {/* Ofertas */}
+      <section className="md-section" style={{ paddingTop: 0 }}>
+        <div className="md-container">
+          <h2 className="md-headline-medium" style={{ marginBottom: 24 }}>Ofertas de la semana</h2>
+          <div className="prod-grid">
+            {onSale.map((p) => (
+              <ProductCard key={p.id} product={p} />
+            ))}
+          </div>
         </div>
       </section>
 
@@ -111,25 +105,25 @@ export default function HomePage() {
       <RecentlyViewed />
 
       {/* CTA Seller */}
-      <section className="container-page py-12">
-        <div className="grid items-center gap-8 overflow-hidden rounded-3xl bg-gradient-to-r from-movistar-blue to-movistar-navy p-10 text-white lg:grid-cols-2">
-          <div>
-            <h2 className="text-3xl font-black">
-              Conviértete en Seller y haz crecer tu negocio
-            </h2>
-            <p className="mt-3 max-w-lg text-white/80">
-              Publica tus productos, gestiona tu stock y llega a miles de
-              clientes en todo el Perú. Sin costo de registro en la demo.
-            </p>
-            <Link href="/registro?tipo=seller" className="btn-green mt-6">
-              Empezar a vender
-            </Link>
+      <section className="md-section">
+        <div className="md-container">
+          <div className="seller-cta">
+            <div>
+              <h2>Conviértete en Seller y haz crecer tu negocio</h2>
+              <p>
+                Publica tus productos, gestiona tu stock y llega a miles de
+                clientes en todo el Perú. Sin costo de registro en la demo.
+              </p>
+              <Link href="/registro?tipo=seller" className="md-btn md-btn-on-dark md-state" style={{ marginTop: 24 }}>
+                Empezar a vender
+              </Link>
+            </div>
+            <ul>
+              <li>✅ Panel de ventas y transacciones</li>
+              <li>✅ Gestión de items, stock y precios</li>
+              <li>✅ Seguimiento de pagos y payouts</li>
+            </ul>
           </div>
-          <ul className="grid gap-3 text-sm">
-            <li className="rounded-xl bg-white/10 p-4">✅ Panel de ventas y transacciones</li>
-            <li className="rounded-xl bg-white/10 p-4">✅ Gestión de items, stock y precios</li>
-            <li className="rounded-xl bg-white/10 p-4">✅ Seguimiento de pagos y payouts</li>
-          </ul>
         </div>
       </section>
     </div>

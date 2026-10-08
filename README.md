@@ -240,3 +240,4 @@ transacciones.
 De momento se requiere que este sea un proyecto piloto por lo que se espera
 desarrollar una demo de la parte publica, el procesos de venta, la seccion de
 cuentas de clientes y de los Sellers.
+

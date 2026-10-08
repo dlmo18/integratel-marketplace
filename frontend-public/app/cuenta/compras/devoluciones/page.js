@@ -5,9 +5,9 @@ import { getReturnsByBuyer } from "@/lib/data";
 import { formatCurrency, formatDate } from "@/lib/format";
 
 const statusColor = {
-  aprobada: "bg-movistar-green text-white",
-  "en revisión": "bg-yellow-400 text-movistar-navy",
-  rechazada: "bg-red-500 text-white"
+  aprobada: "md-badge-secondary",
+  "en revisión": "md-badge-primary-container",
+  rechazada: "md-badge-error"
 };
 
 export default function ReturnsStatusPage() {
@@ -15,32 +15,32 @@ export default function ReturnsStatusPage() {
   const returns = getReturnsByBuyer(user?.id);
 
   return (
-    <div className="space-y-4">
-      <h2 className="text-xl font-bold text-movistar-navy">Estado de devoluciones</h2>
+    <div className="md-stack">
+      <h2 className="md-title-large" style={{ margin: 0 }}>Estado de devoluciones</h2>
       {returns.map((r) => (
-        <div key={r.id} className="card p-5">
-          <div className="flex items-center justify-between">
+        <div key={r.id} className="md-card md-card-elevated md-card-pad">
+          <div className="md-row-between">
             <div>
-              <p className="font-bold text-movistar-navy">{r.id}</p>
-              <p className="text-xs text-movistar-gray-med">
+              <p className="md-title-small" style={{ margin: 0 }}>{r.id}</p>
+              <p className="md-muted md-body-small" style={{ margin: 0 }}>
                 Pedido {r.orderId} · {formatDate(r.date)}
               </p>
             </div>
-            <span className={`badge capitalize ${statusColor[r.status] || "bg-gray-200"}`}>
+            <span className={`md-badge ${statusColor[r.status] || "md-badge-neutral"}`} style={{ textTransform: "capitalize" }}>
               {r.status}
             </span>
           </div>
-          <p className="mt-2 text-sm"><b>Producto:</b> {r.product}</p>
-          <p className="text-sm text-movistar-gray-med"><b>Motivo:</b> {r.reason}</p>
+          <p className="md-body-medium" style={{ marginTop: 8 }}><b>Producto:</b> {r.product}</p>
+          <p className="md-muted md-body-medium" style={{ margin: 0 }}><b>Motivo:</b> {r.reason}</p>
           {r.refund > 0 && (
-            <p className="mt-1 text-sm font-semibold text-movistar-green">
+            <p className="md-body-medium" style={{ marginTop: 4, fontWeight: 600, color: "var(--md-secondary)" }}>
               Reembolso: {formatCurrency(r.refund)}
             </p>
           )}
         </div>
       ))}
       {returns.length === 0 && (
-        <p className="text-sm text-movistar-gray-med">No tienes devoluciones registradas.</p>
+        <p className="md-muted md-body-medium">No tienes devoluciones registradas.</p>
       )}
     </div>
   );

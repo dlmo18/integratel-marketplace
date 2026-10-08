@@ -24,26 +24,26 @@ function Content({ userId }) {
   const pending = txns.filter((t) => t.status === "pendiente").length;
 
   return (
-    <div className="space-y-6">
-      <h2 className="text-xl font-bold text-movistar-navy">Dashboard de ventas</h2>
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <StatCard label="Ventas" value={sales.length} icon="🧾" />
-        <StatCard label="Ingresos" value={formatCurrency(revenue)} icon="💰" accent="green" />
-        <StatCard label="Productos" value={products.length} icon="📦" accent="navy" />
-        <StatCard label="Pagos pendientes" value={pending} icon="⏳" />
+    <div className="md-stack">
+      <h2 className="md-title-large" style={{ margin: 0 }}>Dashboard de ventas</h2>
+      <div style={{ display: "grid", gap: 16, gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))" }}>
+        <StatCard label="Ventas" value={sales.length} icon={<span className="material-symbols-outlined">receipt_long</span>} />
+        <StatCard label="Ingresos" value={formatCurrency(revenue)} icon={<span className="material-symbols-outlined">payments</span>} accent="secondary" />
+        <StatCard label="Productos" value={products.length} icon={<span className="material-symbols-outlined">inventory_2</span>} accent="primary" />
+        <StatCard label="Pagos pendientes" value={pending} icon={<span className="material-symbols-outlined">hourglass_top</span>} />
       </div>
 
-      <div className="card p-6">
-        <h3 className="mb-4 font-bold text-movistar-navy">Ventas recientes</h3>
-        <div className="space-y-3">
+      <div className="md-card md-card-elevated md-card-pad">
+        <h3 className="md-title-medium" style={{ margin: "0 0 16px" }}>Ventas recientes</h3>
+        <div className="md-stack" style={{ gap: 12 }}>
           {sales.map((s) => (
-            <div key={s.id} className="flex items-center justify-between rounded-lg bg-movistar-gray p-3 text-sm">
+            <div key={s.id} className="md-row-between" style={{ borderRadius: "var(--md-shape-md)", background: "var(--md-surface-container)", padding: 12 }}>
               <div>
-                <p className="font-semibold text-movistar-navy">{s.id}</p>
-                <p className="text-movistar-gray-med">{s.buyerName} · {s.date}</p>
+                <p className="md-title-small" style={{ margin: 0 }}>{s.id}</p>
+                <p className="md-muted md-body-small" style={{ margin: 0 }}>{s.buyerName} · {s.date}</p>
               </div>
-              <span className="badge bg-movistar-blue text-white capitalize">{s.status}</span>
-              <span className="font-bold">{formatCurrency(s.total)}</span>
+              <span className="md-badge md-badge-primary" style={{ textTransform: "capitalize" }}>{s.status}</span>
+              <span style={{ fontWeight: 700 }}>{formatCurrency(s.total)}</span>
             </div>
           ))}
         </div>

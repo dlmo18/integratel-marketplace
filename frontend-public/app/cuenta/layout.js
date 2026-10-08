@@ -14,21 +14,21 @@ export default function AccountLayout({ children }) {
   }, [ready, user, router]);
 
   if (!ready) {
-    return <div className="container-page py-20 text-center">Cargando…</div>;
+    return <div className="md-container md-page md-center" style={{ paddingBlock: 80 }}>Cargando…</div>;
   }
 
   if (!user) {
     return (
-      <div className="container-page py-20 text-center text-movistar-gray-med">
+      <div className="md-container md-page md-center md-muted" style={{ paddingBlock: 80 }}>
         Redirigiendo al inicio de sesión…
       </div>
     );
   }
 
   return (
-    <div className="container-page py-8">
-      <h1 className="mb-6 text-3xl font-bold text-movistar-navy">Mi cuenta</h1>
-      <div className="grid gap-6 lg:grid-cols-[280px_1fr]">
+    <div className="md-container md-page">
+      <h1 className="md-headline-large" style={{ marginBottom: 24 }}>Mi cuenta</h1>
+      <div className="md-with-aside">
         <AccountSidebar />
         <div>{children}</div>
       </div>

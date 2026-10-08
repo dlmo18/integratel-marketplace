@@ -7,11 +7,11 @@ import {
   getProviders
 } from "@/lib/data";
 
-export const metadata = { title: "Catálogo · Integratel Marketplace" };
+export const metadata = { title: "Catálogo · Movistar Marketplace" };
 
 export default function CatalogPage() {
   return (
-    <Suspense fallback={<div className="container-page py-20">Cargando…</div>}>
+    <Suspense fallback={<div className="md-container md-page">Cargando…</div>}>
       <CatalogClient
         products={getProducts()}
         categories={getCategories()}

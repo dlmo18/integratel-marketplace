@@ -14,7 +14,7 @@ export function generateMetadata({ params }) {
   const category = getCategoryBySlug(params.slug);
   return {
     title: category
-      ? `${category.name} · Integratel Marketplace`
+      ? `${category.name} · Movistar Marketplace`
       : "Categoría"
   };
 }

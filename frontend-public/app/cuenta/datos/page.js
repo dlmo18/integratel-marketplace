@@ -6,46 +6,46 @@ export default function PersonalDataPage() {
   const { user } = useStore();
 
   return (
-    <div className="space-y-4">
-      <h2 className="text-xl font-bold text-movistar-navy">Datos personales</h2>
-      <div className="card p-6">
-        <div className="flex items-center gap-4 border-b pb-4">
+    <div className="md-stack">
+      <h2 className="md-title-large" style={{ margin: 0 }}>Datos personales</h2>
+      <div className="md-card md-card-elevated md-card-pad">
+        <div className="md-row" style={{ gap: 16, borderBottom: "1px solid var(--md-outline-variant)", paddingBottom: 16 }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <div>
-            <p className="font-bold text-movistar-navy">{user?.name}</p>
-            <p className="text-sm capitalize text-movistar-gray-med">
+            <p className="md-title-small" style={{ margin: 0 }}>{user?.name}</p>
+            <p className="md-muted md-body-medium" style={{ margin: 0, textTransform: "capitalize" }}>
               {user?.type === "seller" ? "Cuenta Seller" : "Cuenta Comprador"}
             </p>
           </div>
         </div>
 
-        <div className="mt-4 grid gap-4 sm:grid-cols-2">
-          <label className="text-sm">
-            Nombre completo
-            <input className="input mt-1" defaultValue={user?.name} />
-          </label>
-          <label className="text-sm">
-            Correo electrónico
-            <input className="input mt-1" defaultValue={user?.email} />
-          </label>
-          <label className="text-sm">
-            Teléfono
-            <input className="input mt-1" defaultValue={user?.phone || ""} placeholder="+51 9XX XXX XXX" />
-          </label>
+        <div style={{ marginTop: 16, display: "grid", gap: 16, gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))" }}>
+          <div>
+            <label className="md-form-label">Nombre completo</label>
+            <input className="md-input" defaultValue={user?.name} />
+          </div>
+          <div>
+            <label className="md-form-label">Correo electrónico</label>
+            <input className="md-input" defaultValue={user?.email} />
+          </div>
+          <div>
+            <label className="md-form-label">Teléfono</label>
+            <input className="md-input" defaultValue={user?.phone || ""} placeholder="+51 9XX XXX XXX" />
+          </div>
           {user?.type === "seller" && (
             <>
-              <label className="text-sm">
-                Nombre de tienda
-                <input className="input mt-1" defaultValue={user?.storeName || ""} />
-              </label>
-              <label className="text-sm">
-                RUC
-                <input className="input mt-1" defaultValue={user?.ruc || ""} />
-              </label>
+              <div>
+                <label className="md-form-label">Nombre de tienda</label>
+                <input className="md-input" defaultValue={user?.storeName || ""} />
+              </div>
+              <div>
+                <label className="md-form-label">RUC</label>
+                <input className="md-input" defaultValue={user?.ruc || ""} />
+              </div>
             </>
           )}
         </div>
-        <button className="btn-primary mt-4">Guardar cambios</button>
+        <button className="md-btn md-btn-filled md-state" style={{ marginTop: 16 }}>Guardar cambios</button>
       </div>
     </div>
   );
