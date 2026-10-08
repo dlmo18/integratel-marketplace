@@ -59,10 +59,17 @@ jobs:
         run: npm run install:all
 
       - name: Crear archivos .env desde secrets
+        # Los secrets se pasan como variables de entorno (no se interpolan dentro
+        # del script). Así, contenido multilínea o con caracteres especiales como
+        # paréntesis o comillas no rompe la sintaxis de bash.
+        env:
+          ENV_BACKEND: ${{ secrets.ENV_BACKEND }}
+          ENV_FRONTEND_PUBLIC: ${{ secrets.ENV_FRONTEND_PUBLIC }}
+          ENV_FRONTEND_MANAGER: ${{ secrets.ENV_FRONTEND_MANAGER }}
         run: |
-          printf '%s' "${{ secrets.ENV_BACKEND }}" > backend/.env
-          printf '%s' "${{ secrets.ENV_FRONTEND_PUBLIC }}" > frontend-public/.env.local
-          printf '%s' "${{ secrets.ENV_FRONTEND_MANAGER }}" > frontend-manager/.env.local
+          printf '%s' "$ENV_BACKEND" > backend/.env
+          printf '%s' "$ENV_FRONTEND_PUBLIC" > frontend-public/.env.local
+          printf '%s' "$ENV_FRONTEND_MANAGER" > frontend-manager/.env.local
 
       - name: Compilar para producción
         run: npm run build
