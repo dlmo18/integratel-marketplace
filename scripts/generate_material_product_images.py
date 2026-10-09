@@ -53,7 +53,11 @@ PRODUCTS_IMG_DIR = PUBLIC_DIR / "img" / "products"
 OPENAI_MODEL = "gpt-image-1"
 
 # SD 1.5: ligero y razonable en CPU. Se puede sobreescribir con SD_LOCAL_MODEL.
-SD_LOCAL_MODEL = os.environ.get("SD_LOCAL_MODEL", "runwayml/stable-diffusion-v1-5")
+# El repo original 'runwayml/stable-diffusion-v1-5' fue retirado del Hub; usamos
+# un espejo mantenido con los mismos pesos.
+SD_LOCAL_MODEL = os.environ.get(
+    "SD_LOCAL_MODEL", "stable-diffusion-v1-5/stable-diffusion-v1-5"
+)
 
 STYLE = (
     "estilo fotografía de producto para e-commerce, fondo blanco limpio y neutro, "
