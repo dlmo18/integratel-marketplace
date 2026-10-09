@@ -638,7 +638,7 @@ body {
 /* Nivel 2: navegación */
 .hdr-nav { display: none; background-color: var(--md-primary); border-top: 1px solid rgba(255, 255, 255, 0.15); }
 @media (min-width: 768px) { .hdr-nav { display: block; } }
-.hdr-nav .md-container { display: flex; align-items: center; gap: 8px; height: 48px; overflow-x: auto; }
+.hdr-nav .md-container { display: flex; align-items: center; gap: 8px; height: 48px; }
 .hdr-nav a {
   position: relative;
   display: inline-flex;
