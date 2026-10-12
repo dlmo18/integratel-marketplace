@@ -205,8 +205,8 @@ export default function VirtualAssistant() {
                       <a
                         key={p.id}
                         href={`/producto/${p.slug}`}
-                        className="md-card md-card-elevated md-row"
-                        style={{ gap: 12, padding: 8 }}
+                        className="md-card md-card-elevated md-row "
+                        style={{ gap: 12, padding: 8, overflow: 'clip' }}
                       >
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img src={p.image} alt={p.name} style={{ height: 56, width: 56, borderRadius: 8, objectFit: "cover", flexShrink: 0 }} />
@@ -229,7 +229,7 @@ export default function VirtualAssistant() {
             )}
 
             {currentQuestion && !loading && (
-              <div className="md-card md-card-elevated md-card-pad-sm">
+              <div className="md-card md-card-elevated md-card-pad-sm" style={{'overflow': 'clip'}} >
                 <p className="md-label-medium md-muted" style={{ margin: 0 }}>
                   Pregunta {step + 1} de {questions.length}
                 </p>
