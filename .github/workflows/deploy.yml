@@ -71,8 +71,10 @@ jobs:
           printf '%s' "$ENV_FRONTEND_PUBLIC" > frontend-public/.env.local
           printf '%s' "$ENV_FRONTEND_MANAGER" > frontend-manager/.env.local
 
-      - name: Compilar para producción
-        run: npm run build
+      # Nota: NO se compila aquí. La compilación de producción se hace en el
+      # servidor (ver paso de PM2 abajo) para que el HTML servido y los chunks
+      # en disco provengan del mismo build. El job "validate" ya garantiza que
+      # el código compila antes de llegar aquí.
 
       - name: Preparar clave SSH
         run: |
@@ -87,10 +89,19 @@ jobs:
           USER: ${{ secrets.GCP_SSH_USER }}
           TARGET_DIR: ${{ secrets.DEPLOY_PATH }}
         run: |
+          # Importante: NO sincronizar carpetas .next del runner. El build del
+          # runner (paso "Compilar para producción") usa IDs/hashes propios y, si
+          # se copiara al servidor, chocaría con el `npm run build` que se ejecuta
+          # allí, dejando HTML que referencia chunks inexistentes (ChunkLoadError /
+          # 400 con MIME text/html). Se compila UNA sola vez: en el servidor.
           rsync -az --delete \
             --exclude '.git' \
             --exclude 'node_modules' \
             --exclude '.github' \
+            --exclude '.next' \
+            --exclude 'frontend-public/.next' \
+            --exclude 'frontend-manager/.next' \
+            --exclude 'backend/dist' \
             -e "ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no" \
             ./ "$USER@$HOST:${TARGET_DIR:-/opt/integratel-marketplace}/"
 
